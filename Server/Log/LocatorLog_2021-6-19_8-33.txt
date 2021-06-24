@@ -1,0 +1,121 @@
+MLocator create.
+
+===========================Loator self dump(2021-6-19 8:33)=========================
+ - Server dead count list- 
+LiveServerCount(1) : DeadServerCount(0)
+
+Country code3 cache hit miss count : 0
+Invalid IP count : 0
+Block Count : 0
+Country code check count : 0
+Block country code hit count : 0
+========================================================================================
+
+
+===========================Loator self dump(2021-6-19 9:33)=========================
+ - Server dead count list- 
+LiveServerCount(1) : DeadServerCount(0)
+
+Country code3 cache hit miss count : 0
+Invalid IP count : 0
+Block Count : 0
+Country code check count : 0
+Block country code hit count : 0
+========================================================================================
+
+
+===========================Loator self dump(2021-6-19 10:33)=========================
+ - Server dead count list- 
+LiveServerCount(1) : DeadServerCount(0)
+
+Country code3 cache hit miss count : 0
+Invalid IP count : 0
+Block Count : 0
+Country code check count : 0
+Block country code hit count : 0
+========================================================================================
+
+
+===========================Loator self dump(2021-6-19 11:33)=========================
+ - Server dead count list- 
+LiveServerCount(1) : DeadServerCount(0)
+
+Country code3 cache hit miss count : 0
+Invalid IP count : 0
+Block Count : 0
+Country code check count : 0
+Block country code hit count : 0
+========================================================================================
+
+
+===========================Loator self dump(2021-6-19 12:33)=========================
+ - Server dead count list- 
+LiveServerCount(1) : DeadServerCount(0)
+
+Country code3 cache hit miss count : 0
+Invalid IP count : 0
+Block Count : 0
+Country code check count : 0
+Block country code hit count : 0
+========================================================================================
+
+
+===========================Loator self dump(2021-6-19 13:33)=========================
+ - Server dead count list- 
+LiveServerCount(1) : DeadServerCount(0)
+
+Country code3 cache hit miss count : 0
+Invalid IP count : 0
+Block Count : 0
+Country code check count : 0
+Block country code hit count : 0
+========================================================================================
+
+
+===========================Loator self dump(2021-6-19 14:33)=========================
+ - Server dead count list- 
+LiveServerCount(1) : DeadServerCount(0)
+
+Country code3 cache hit miss count : 0
+Invalid IP count : 0
+Block Count : 0
+Country code check count : 0
+Block country code hit count : 0
+========================================================================================
+
+
+===========================Loator self dump(2021-6-19 15:33)=========================
+ - Server dead count list- 
+LiveServerCount(1) : DeadServerCount(0)
+
+Country code3 cache hit miss count : 0
+Invalid IP count : 0
+Block Count : 0
+Country code check count : 0
+Block country code hit count : 0
+========================================================================================
+
+
+===========================Loator self dump(2021-6-19 16:33)=========================
+ - Server dead count list- 
+LiveServerCount(1) : DeadServerCount(0)
+
+Country code3 cache hit miss count : 0
+Invalid IP count : 0
+Block Count : 0
+Country code check count : 0
+Block country code hit count : 0
+========================================================================================
+
+
+===========================Loator self dump(2021-6-19 17:33)=========================
+ - Server dead count list- 
+LiveServerCount(1) : DeadServerCount(0)
+
+Country code3 cache hit miss count : 0
+Invalid IP count : 0
+Block Count : 0
+Country code check count : 0
+Block country code hit count : 0
+========================================================================================
+

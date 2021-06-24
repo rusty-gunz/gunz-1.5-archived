@@ -1,0 +1,181 @@
+gameguard not running
+Load XML from memory : strings.xml(0x2711) - SUCCESS
+Load XML from memory : cserror.xml(0x2711) - SUCCESS
+[Thu Jun 17 18:10:31 2021] DBMS connected
+
+[Thu Jun 17 18:10:31 2021] Command registeration completed
+
+
+10
+MBMatchServer::AddClanServerSwitchDownSchedule - make close clan mode schedule success. next close clan mode time is 21-6-30 23:50
+
+10
+Start GambleItem Init.
+GIID : 1000001
+  GRIID : M(502003), F(502003), RentHourPeriod(360), ItemCnt(0).
+  GRIID : M(500003), F(500003), RentHourPeriod(360), ItemCnt(0).
+  GRIID : M(502001), F(502001), RentHourPeriod(360), ItemCnt(0).
+  GRIID : M(506002), F(506002), RentHourPeriod(360), ItemCnt(0).
+  GRIID : M(509003), F(509003), RentHourPeriod(360), ItemCnt(0).
+  GRIID : M(505002), F(505002), RentHourPeriod(360), ItemCnt(0).
+  GRIID : M(520032), F(520532), RentHourPeriod(360), ItemCnt(0).
+  GRIID : M(520030), F(520530), RentHourPeriod(360), ItemCnt(0).
+  GRIID : M(521014), F(521514), RentHourPeriod(360), ItemCnt(0).
+  GRIID : M(521024), F(521524), RentHourPeriod(360), ItemCnt(0).
+  GRIID : M(522009), F(522509), RentHourPeriod(360), ItemCnt(0).
+  GRIID : M(522013), F(522513), RentHourPeriod(360), ItemCnt(0).
+  GRIID : M(523027), F(523527), RentHourPeriod(360), ItemCnt(0).
+  GRIID : M(523012), F(523512), RentHourPeriod(360), ItemCnt(0).
+  GRIID : M(524016), F(524516), RentHourPeriod(360), ItemCnt(0).
+  GRIID : M(524025), F(524525), RentHourPeriod(360), ItemCnt(0).
+  GRIID : M(528002), F(528002), RentHourPeriod(360), ItemCnt(0).
+  GRIID : M(520033), F(520533), RentHourPeriod(360), ItemCnt(0).
+  GRIID : M(502004), F(502004), RentHourPeriod(360), ItemCnt(0).
+  GRIID : M(527001), F(527001), RentHourPeriod(360), ItemCnt(0).
+GIID : 1000002
+  GRIID : M(502002), F(502002), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(500004), F(500004), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(500001), F(500001), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(506004), F(506004), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(507003), F(507003), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(504501), F(504501), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(520014), F(520514), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(520029), F(520529), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(521017), F(521517), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(521027), F(521527), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(522020), F(522520), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(522004), F(522504), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(523024), F(523524), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(523005), F(523505), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(524027), F(524527), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(524012), F(524512), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(527002), F(527002), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(520034), F(520534), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(502005), F(502005), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(528001), F(528001), RentHourPeriod(168), ItemCnt(0).
+GIID : 1000003
+  GRIID : M(4), F(4), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(6), F(6), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(14), F(14), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(16), F(16), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(31), F(31), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(4023), F(4023), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(4514), F(4514), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(5016), F(5016), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(6009), F(6009), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(7004), F(7004), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(8001), F(8001), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(9001), F(9001), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(21009), F(21509), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(22006), F(22506), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(23008), F(23511), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(24007), F(24507), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(30403), F(30403), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(25005), F(25005), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(30002), F(30002), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(400007), F(400007), RentHourPeriod(168), ItemCnt(0).
+GIID : 1000004
+  GRIID : M(7), F(7), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(8), F(8), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(17), F(17), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(18), F(18), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(35), F(35), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(4022), F(4022), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(4516), F(4516), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(5020), F(5020), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(6010), F(6010), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(7009), F(7009), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(8004), F(8004), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(9007), F(9007), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(21010), F(21510), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(22007), F(22507), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(23009), F(23512), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(24008), F(24508), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(30003), F(30003), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(25006), F(25006), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(30103), F(30103), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(30305), F(30305), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(6008), F(6008), RentHourPeriod(168), ItemCnt(0).
+End GambleItem Init.
+
+Start shop GItem list log.
+GambleItemCount : 2.
+Shop GItem : 1000003
+Shop GItem : 1000004
+End shop GItem list log.
+
+
+=== Dump GambleItem Info. ===
+Gamble item list.
+Gamble item. ID(1000001), Name(Blue Box), IsTimeover(0).
+Gamble item. ID(1000002), Name(Pink Box), IsTimeover(0).
+Gamble item. ID(1000003), Name(Green Box), IsTimeover(0).
+Gamble item. ID(1000004), Name(Gold Box), IsTimeover(0).
+
+Send shop gamble item list.
+Shop gamble item count : 2
+Shop gamble item. ID(1000003), Name(Green Box).
+Shop gamble item. ID(1000004), Name(Gold Box).
+=== Completed Dump GambleItem Info. ===
+
+=======================================================================
+ BRID(1), RewardMinutePeriod(1), RewardCount(50)
+    BRIID(1), ItemID(M=506003, F=506003), RentHourPeriod(168), Rate(1000), RateRange(1000)
+=======================================================================
+init GameOn success.
+success init security.
+FILE PATH : D:\GunZ\Server\MD5HashValue.txt
+MD5 Hash Value => 3d 1f dc 59 85 dd ab 05 50 02 8a 9d 7a aa c3 a3 
+
+================================== Server configure info ==================================
+[Thu Jun 17 18:10:31 2021] Release Date : Jun 17 2021
+[Thu Jun 17 18:10:31 2021] MD5 Check Off
+[Thu Jun 17 18:10:31 2021] Loop Log Save Off
+[Thu Jun 17 18:10:31 2021] Server Country : NHNUSA
+[Thu Jun 17 18:10:31 2021] Command version : (58)
+[Thu Jun 17 18:10:31 2021] Event usable state : (false)
+[Thu Jun 17 18:10:31 2021] Load event size : (0)
+[Thu Jun 17 18:10:31 2021] FileCRCCheckSum usable state : (false)
+[Thu Jun 17 18:10:31 2021] FileCRC size : (0)
+[Thu Jun 17 18:10:31 2021] Country Code Filter usalbe state : (false)
+[Thu Jun 17 18:10:31 2021] Accept Invalied IP state : (true)
+[Thu Jun 17 18:10:31 2021] Keeper IP : (127.0.0.1)
+[Thu Jun 17 18:10:31 2021] Monitor IP : (127.0.0.1)
+[Thu Jun 17 18:10:31 2021] Ticket use : 0
+
+===========================================================================================
+
+[Thu Jun 17 18:10:31 2021] Match Server Created (Port:6000)
+
+Dueltournament Service Open(2021-6-17 Hour18, Min10) 
+[Thu Jun 17 18:10:31 2021] MDuelTournamentTimeChecker::Current Month - 6, Day - 17
+Daily Survival Ranking Request [month6 day17 hour18 min10]
+success to update CustomIP
+
+[Thu Jun 17 18:12:21 2021]  MMatchDBMgr::ExceptionHandler
+ErrSQL( {CALL spDTInsertDTCharacterInfo(2)} ), ErrCode( -1 )
+ErrMsg - Cannot insert duplicate key row in object 'dbo.DTCharacterInfo' with unique index 'DTCharacterInfo_TimeStamp_CID_IX'. The duplicate key value is (<NULL>, 2).
+The statement has been terminated.
+State:23000,Native:2601,Origin:[Microsoft][ODBC SQL Server Driver][SQL Server]
+State:01000,Native:3621,Origin:[Microsoft][ODBC SQL Server Driver][SQL Server]
+
+Cannot insert duplicate key row in object 'dbo.DTCharacterInfo' with unique index 'DTCharacterInfo_TimeStamp_CID_IX'. The duplicate key value is (<NULL>, 2).
+The statement has been terminated.
+Error InsertingDTCharInfoMMatchServer::OnAsyncResponse_GetDuelTournamentCharacterInfo - ½ÇÆÐ
+
+[Thu Jun 17 18:12:29 2021]  MMatchDBMgr::ExceptionHandler
+ErrSQL( {CALL InsertGamePlayerLog(20316920, 2, 361685, 0, 0, 0, 0)} ), ErrCode( -1 )
+ErrMsg - The INSERT statement conflicted with the FOREIGN KEY constraint "FK_GamePlayerLog_ID". The conflict occurred in database "LogDB15", table "dbo.GameLog", column 'ID'.
+The statement has been terminated.
+State:23000,Native:547,Origin:[Microsoft][ODBC SQL Server Driver][SQL Server]
+State:01000,Native:3621,Origin:[Microsoft][ODBC SQL Server Driver][SQL Server]
+
+RealCPNet> SessionCreated=3, SessionDestroyed=1 
+RealCPNet> Begin Destroy 
+RealCPNet> Destroy Process 1/4 
+RealCPNet> Destroy Process 2/4 
+RealCPNet> Destroy Process 3/4 
+RealCPNet> Destroy Process 4/4 
+RealCPNet> Destroy End 
+[Thu Jun 17 18:13:25 2021] Match Server Destoryed
+

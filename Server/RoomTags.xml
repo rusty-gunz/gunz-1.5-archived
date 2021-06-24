@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<XML id="RoomTags">
+	<MOD name="NoSwords"/>
+	<MOD name="NoClothes"/>
+	<MOD name="NoGuns"/>
+</XML>

@@ -1,0 +1,593 @@
+gameguard not running
+Load XML from memory : strings.xml(0x2711) - SUCCESS
+Load XML from memory : cserror.xml(0x2711) - SUCCESS
+[Wed Jun 23 17:37:11 2021] DBMS connected
+
+[Wed Jun 23 17:37:11 2021] Command registeration completed
+
+
+10
+MBMatchServer::AddClanServerSwitchDownSchedule - make close clan mode schedule success. next close clan mode time is 21-6-30 23:50
+
+10
+Start GambleItem Init.
+GIID : 1000001
+  GRIID : M(502003), F(502003), RentHourPeriod(360), ItemCnt(0).
+  GRIID : M(500003), F(500003), RentHourPeriod(360), ItemCnt(0).
+  GRIID : M(502001), F(502001), RentHourPeriod(360), ItemCnt(0).
+  GRIID : M(506002), F(506002), RentHourPeriod(360), ItemCnt(0).
+  GRIID : M(509003), F(509003), RentHourPeriod(360), ItemCnt(0).
+  GRIID : M(505002), F(505002), RentHourPeriod(360), ItemCnt(0).
+  GRIID : M(520032), F(520532), RentHourPeriod(360), ItemCnt(0).
+  GRIID : M(520030), F(520530), RentHourPeriod(360), ItemCnt(0).
+  GRIID : M(521014), F(521514), RentHourPeriod(360), ItemCnt(0).
+  GRIID : M(521024), F(521524), RentHourPeriod(360), ItemCnt(0).
+  GRIID : M(522009), F(522509), RentHourPeriod(360), ItemCnt(0).
+  GRIID : M(522013), F(522513), RentHourPeriod(360), ItemCnt(0).
+  GRIID : M(523027), F(523527), RentHourPeriod(360), ItemCnt(0).
+  GRIID : M(523012), F(523512), RentHourPeriod(360), ItemCnt(0).
+  GRIID : M(524016), F(524516), RentHourPeriod(360), ItemCnt(0).
+  GRIID : M(524025), F(524525), RentHourPeriod(360), ItemCnt(0).
+  GRIID : M(528002), F(528002), RentHourPeriod(360), ItemCnt(0).
+  GRIID : M(520033), F(520533), RentHourPeriod(360), ItemCnt(0).
+  GRIID : M(502004), F(502004), RentHourPeriod(360), ItemCnt(0).
+  GRIID : M(527001), F(527001), RentHourPeriod(360), ItemCnt(0).
+GIID : 1000002
+  GRIID : M(502002), F(502002), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(500004), F(500004), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(500001), F(500001), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(506004), F(506004), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(507003), F(507003), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(504501), F(504501), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(520014), F(520514), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(520029), F(520529), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(521017), F(521517), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(521027), F(521527), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(522020), F(522520), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(522004), F(522504), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(523024), F(523524), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(523005), F(523505), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(524027), F(524527), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(524012), F(524512), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(527002), F(527002), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(520034), F(520534), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(502005), F(502005), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(528001), F(528001), RentHourPeriod(168), ItemCnt(0).
+GIID : 1000003
+  GRIID : M(4), F(4), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(6), F(6), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(14), F(14), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(16), F(16), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(31), F(31), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(4023), F(4023), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(4514), F(4514), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(5016), F(5016), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(6009), F(6009), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(7004), F(7004), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(8001), F(8001), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(9001), F(9001), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(21009), F(21509), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(22006), F(22506), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(23008), F(23511), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(24007), F(24507), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(30403), F(30403), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(25005), F(25005), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(30002), F(30002), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(400007), F(400007), RentHourPeriod(168), ItemCnt(0).
+GIID : 1000004
+  GRIID : M(7), F(7), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(8), F(8), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(17), F(17), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(18), F(18), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(35), F(35), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(4022), F(4022), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(4516), F(4516), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(5020), F(5020), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(6010), F(6010), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(7009), F(7009), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(8004), F(8004), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(9007), F(9007), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(21010), F(21510), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(22007), F(22507), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(23009), F(23512), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(24008), F(24508), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(30003), F(30003), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(25006), F(25006), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(30103), F(30103), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(30305), F(30305), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(6008), F(6008), RentHourPeriod(168), ItemCnt(0).
+End GambleItem Init.
+
+Start shop GItem list log.
+GambleItemCount : 2.
+Shop GItem : 1000003
+Shop GItem : 1000004
+End shop GItem list log.
+
+
+=== Dump GambleItem Info. ===
+Gamble item list.
+Gamble item. ID(1000001), Name(Blue Box), IsTimeover(0).
+Gamble item. ID(1000002), Name(Pink Box), IsTimeover(0).
+Gamble item. ID(1000003), Name(Green Box), IsTimeover(0).
+Gamble item. ID(1000004), Name(Gold Box), IsTimeover(0).
+
+Send shop gamble item list.
+Shop gamble item count : 2
+Shop gamble item. ID(1000003), Name(Green Box).
+Shop gamble item. ID(1000004), Name(Gold Box).
+=== Completed Dump GambleItem Info. ===
+
+=======================================================================
+ BRID(1), RewardMinutePeriod(1), RewardCount(50)
+    BRIID(1), ItemID(M=506003, F=506003), RentHourPeriod(168), Rate(1000), RateRange(1000)
+=======================================================================
+init GameOn success.
+success init security.
+FILE PATH : D:\GunZ\Server\MD5HashValue.txt
+MD5 Hash Value => 3d 1f dc 59 85 dd ab 05 50 02 8a 9d 7a aa c3 a3 
+
+================================== Server configure info ==================================
+[Wed Jun 23 17:37:11 2021] Release Date : Jun 17 2021
+[Wed Jun 23 17:37:11 2021] MD5 Check Off
+[Wed Jun 23 17:37:11 2021] Loop Log Save Off
+[Wed Jun 23 17:37:11 2021] Server Country : NHNUSA
+[Wed Jun 23 17:37:11 2021] Command version : (58)
+[Wed Jun 23 17:37:11 2021] Event usable state : (false)
+[Wed Jun 23 17:37:11 2021] Load event size : (0)
+[Wed Jun 23 17:37:11 2021] FileCRCCheckSum usable state : (false)
+[Wed Jun 23 17:37:11 2021] FileCRC size : (0)
+[Wed Jun 23 17:37:11 2021] Country Code Filter usalbe state : (false)
+[Wed Jun 23 17:37:11 2021] Accept Invalied IP state : (true)
+[Wed Jun 23 17:37:11 2021] Keeper IP : (127.0.0.1)
+[Wed Jun 23 17:37:11 2021] Monitor IP : (127.0.0.1)
+[Wed Jun 23 17:37:11 2021] Ticket use : 0
+
+===========================================================================================
+
+[Wed Jun 23 17:37:11 2021] Match Server Created (Port:6000)
+
+Dueltournament Service Open(2021-6-23 Hour17, Min37) 
+Daily Survival Ranking Request [month6 day23 hour17 min37]
+success to update CustomIP
+
+[Wed Jun 23 17:37:36 2021]  MMatchDBMgr::ExceptionHandler
+ErrSQL( {CALL spDTInsertDTCharacterInfo(2)} ), ErrCode( -1 )
+ErrMsg - Cannot insert duplicate key row in object 'dbo.DTCharacterInfo' with unique index 'DTCharacterInfo_TimeStamp_CID_IX'. The duplicate key value is (<NULL>, 2).
+The statement has been terminated.
+State:23000,Native:2601,Origin:[Microsoft][ODBC SQL Server Driver][SQL Server]
+State:01000,Native:3621,Origin:[Microsoft][ODBC SQL Server Driver][SQL Server]
+
+Cannot insert duplicate key row in object 'dbo.DTCharacterInfo' with unique index 'DTCharacterInfo_TimeStamp_CID_IX'. The duplicate key value is (<NULL>, 2).
+The statement has been terminated.
+Error InsertingDTCharInfoMMatchServer::OnAsyncResponse_GetDuelTournamentCharacterInfo - 실패
+[Wed Jun 23 17:40:11 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=18, objHistoryCount=1
+
+[Wed Jun 23 17:43:11 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=18, objHistoryCount=1
+
+[Wed Jun 23 17:46:11 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=18, objHistoryCount=1
+
+[Wed Jun 23 17:49:11 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=18, objHistoryCount=0
+
+[Wed Jun 23 17:52:11 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=18, objHistoryCount=0
+
+[Wed Jun 23 17:55:11 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=18, objHistoryCount=0
+
+[Wed Jun 23 17:58:11 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=18, objHistoryCount=0
+
+[Wed Jun 23 18:01:11 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=18, objHistoryCount=0
+
+[Wed Jun 23 18:04:11 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=18, objHistoryCount=0
+
+[Wed Jun 23 18:07:11 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=18, objHistoryCount=0
+
+[Wed Jun 23 18:10:00 2021] MDuelTournamentTimeChecker::Current Month - 6, Day - 23
+[Wed Jun 23 18:10:11 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=18, objHistoryCount=0
+
+[Wed Jun 23 18:13:11 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=18, objHistoryCount=0
+
+[Wed Jun 23 18:16:11 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=18, objHistoryCount=0
+
+[Wed Jun 23 18:19:11 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=18, objHistoryCount=0
+
+[Wed Jun 23 18:22:11 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=18, objHistoryCount=0
+
+[Wed Jun 23 18:25:11 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=18, objHistoryCount=0
+
+[Wed Jun 23 18:28:11 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=18, objHistoryCount=0
+
+[Wed Jun 23 18:31:11 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=18, objHistoryCount=0
+
+[Wed Jun 23 18:34:11 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=18, objHistoryCount=0
+
+success to update CustomIP
+[Wed Jun 23 18:37:11 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=18, objHistoryCount=0
+
+[Wed Jun 23 18:40:11 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=18, objHistoryCount=0
+
+[Wed Jun 23 18:43:11 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=18, objHistoryCount=0
+
+[Wed Jun 23 18:46:11 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=18, objHistoryCount=0
+
+[Wed Jun 23 18:49:11 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=18, objHistoryCount=0
+
+[Wed Jun 23 18:52:11 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=18, objHistoryCount=0
+
+[Wed Jun 23 18:55:11 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=18, objHistoryCount=0
+
+[Wed Jun 23 18:58:11 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=18, objHistoryCount=0
+
+[Wed Jun 23 19:01:11 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=18, objHistoryCount=0
+
+[Wed Jun 23 19:04:11 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=18, objHistoryCount=0
+
+[Wed Jun 23 19:07:11 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=18, objHistoryCount=0
+
+[Wed Jun 23 19:10:11 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=18, objHistoryCount=0
+
+[Wed Jun 23 19:13:11 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=18, objHistoryCount=0
+
+[Wed Jun 23 19:16:11 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=18, objHistoryCount=0
+
+[Wed Jun 23 19:19:11 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=18, objHistoryCount=0
+
+[Wed Jun 23 19:22:11 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=18, objHistoryCount=0
+
+[Wed Jun 23 19:25:11 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=18, objHistoryCount=0
+
+
+[Wed Jun 23 19:28:09 2021]  MMatchDBMgr::ExceptionHandler
+ErrSQL( {CALL spDTInsertDTCharacterInfo(2)} ), ErrCode( -1 )
+ErrMsg - Cannot insert duplicate key row in object 'dbo.DTCharacterInfo' with unique index 'DTCharacterInfo_TimeStamp_CID_IX'. The duplicate key value is (<NULL>, 2).
+The statement has been terminated.
+State:23000,Native:2601,Origin:[Microsoft][ODBC SQL Server Driver][SQL Server]
+State:01000,Native:3621,Origin:[Microsoft][ODBC SQL Server Driver][SQL Server]
+
+Cannot insert duplicate key row in object 'dbo.DTCharacterInfo' with unique index 'DTCharacterInfo_TimeStamp_CID_IX'. The duplicate key value is (<NULL>, 2).
+The statement has been terminated.
+Error InsertingDTCharInfoMMatchServer::OnAsyncResponse_GetDuelTournamentCharacterInfo - 실패
+[Wed Jun 23 19:28:11 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=18, objHistoryCount=1
+
+[Wed Jun 23 19:28:20 2021] 127.0.0.1, 60074 is Disconnect(RCP_IO_READ Error) - Flood
+
+[Wed Jun 23 19:28:20 2021] Command Flood detected
+dump Jetman82 ( cid 2 ) cmd :  1535 1535 1535 1535 1536 1536 1536 1536 1536 1536 1536 1536 1536 1536 1536 1536 1536 1536 1536 1536 1536 1536 1536 1536 1536 1536 1536 1536 1536 1536 1536 1536 1536 1536 1536 1536 1536 1536 1536 1536 1536 1536 1536 1536 1536 1536 1536 1536 1536 1536
+[Wed Jun 23 19:28:20 2021] Command(1536) Flood detected, but i can't find matchobject
+[Wed Jun 23 19:28:20 2021] Command(1536) Flood detected, but i can't find matchobject
+[Wed Jun 23 19:28:20 2021] Command(1536) Flood detected, but i can't find matchobject
+[Wed Jun 23 19:28:20 2021] Ban Player On Flooding - Can't Find Object
+
+[Wed Jun 23 19:28:20 2021]  MMatchDBMgr::ExceptionHandler
+ErrSQL( {CALL  LogDB15..spSetHackingBlock (2, 2, 8, 127, 0, 0, 1, '2021-6-23 20:28', 1, 'DRGunZ Newbies (Lv. 1 - 50)', 'command flooding.', 1)} ), ErrCode( -1 )
+ErrMsg - Invalid object name 'GunzDB..Account'.
+State:S0002,Native:208,Origin:[Microsoft][ODBC SQL Server Driver][SQL Server]
+
+
+[Wed Jun 23 19:28:40 2021]  MMatchDBMgr::ExceptionHandler
+ErrSQL( {CALL spDTInsertDTCharacterInfo(2)} ), ErrCode( -1 )
+ErrMsg - Cannot insert duplicate key row in object 'dbo.DTCharacterInfo' with unique index 'DTCharacterInfo_TimeStamp_CID_IX'. The duplicate key value is (<NULL>, 2).
+The statement has been terminated.
+State:23000,Native:2601,Origin:[Microsoft][ODBC SQL Server Driver][SQL Server]
+State:01000,Native:3621,Origin:[Microsoft][ODBC SQL Server Driver][SQL Server]
+
+Cannot insert duplicate key row in object 'dbo.DTCharacterInfo' with unique index 'DTCharacterInfo_TimeStamp_CID_IX'. The duplicate key value is (<NULL>, 2).
+The statement has been terminated.
+Error InsertingDTCharInfoMMatchServer::OnAsyncResponse_GetDuelTournamentCharacterInfo - 실패
+[Wed Jun 23 19:30:05 2021] 127.0.0.1, 60075 is Disconnect(RCP_IO_READ Error) - Flood
+
+[Wed Jun 23 19:30:05 2021] Ban Player On Flooding - (MUID:040, ID:Jetman)
+
+[Wed Jun 23 19:30:05 2021]  MMatchDBMgr::ExceptionHandler
+ErrSQL( {CALL  LogDB15..spSetHackingBlock (2, 2, 8, 127, 0, 0, 1, '2021-6-23 20:30', 1, 'DRGunZ Newbies (Lv. 1 - 50)', 'command flooding.', 1)} ), ErrCode( -1 )
+ErrMsg - Invalid object name 'GunzDB..Account'.
+State:S0002,Native:208,Origin:[Microsoft][ODBC SQL Server Driver][SQL Server]
+
+
+[Wed Jun 23 19:30:29 2021]  MMatchDBMgr::ExceptionHandler
+ErrSQL( {CALL spDTInsertDTCharacterInfo(2)} ), ErrCode( -1 )
+ErrMsg - Cannot insert duplicate key row in object 'dbo.DTCharacterInfo' with unique index 'DTCharacterInfo_TimeStamp_CID_IX'. The duplicate key value is (<NULL>, 2).
+The statement has been terminated.
+State:23000,Native:2601,Origin:[Microsoft][ODBC SQL Server Driver][SQL Server]
+State:01000,Native:3621,Origin:[Microsoft][ODBC SQL Server Driver][SQL Server]
+
+Cannot insert duplicate key row in object 'dbo.DTCharacterInfo' with unique index 'DTCharacterInfo_TimeStamp_CID_IX'. The duplicate key value is (<NULL>, 2).
+The statement has been terminated.
+Error InsertingDTCharInfoMMatchServer::OnAsyncResponse_GetDuelTournamentCharacterInfo - 실패
+[Wed Jun 23 19:31:11 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=24, objHistoryCount=3
+
+[Wed Jun 23 19:34:11 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=24, objHistoryCount=3
+
+success to update CustomIP
+[Wed Jun 23 19:37:11 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=24, objHistoryCount=3
+
+[Wed Jun 23 19:40:11 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=24, objHistoryCount=1
+
+[Wed Jun 23 19:43:11 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=24, objHistoryCount=1
+
+[Wed Jun 23 19:46:11 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=24, objHistoryCount=1
+
+[Wed Jun 23 19:49:11 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=24, objHistoryCount=1
+
+[Wed Jun 23 19:52:11 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=24, objHistoryCount=1
+
+
+[Wed Jun 23 19:53:26 2021]  MMatchDBMgr::ExceptionHandler
+ErrSQL( {CALL spDTInsertDTCharacterInfo(2)} ), ErrCode( -1 )
+ErrMsg - Cannot insert duplicate key row in object 'dbo.DTCharacterInfo' with unique index 'DTCharacterInfo_TimeStamp_CID_IX'. The duplicate key value is (<NULL>, 2).
+The statement has been terminated.
+State:23000,Native:2601,Origin:[Microsoft][ODBC SQL Server Driver][SQL Server]
+State:01000,Native:3621,Origin:[Microsoft][ODBC SQL Server Driver][SQL Server]
+
+Cannot insert duplicate key row in object 'dbo.DTCharacterInfo' with unique index 'DTCharacterInfo_TimeStamp_CID_IX'. The duplicate key value is (<NULL>, 2).
+The statement has been terminated.
+Error InsertingDTCharInfoMMatchServer::OnAsyncResponse_GetDuelTournamentCharacterInfo - 실패
+[Wed Jun 23 19:55:11 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=24, objHistoryCount=2
+
+[Wed Jun 23 19:58:11 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=24, objHistoryCount=2
+
+
+[Wed Jun 23 20:00:43 2021]  MMatchDBMgr::ExceptionHandler
+ErrSQL( {CALL spDTInsertDTCharacterInfo(2)} ), ErrCode( -1 )
+ErrMsg - Cannot insert duplicate key row in object 'dbo.DTCharacterInfo' with unique index 'DTCharacterInfo_TimeStamp_CID_IX'. The duplicate key value is (<NULL>, 2).
+The statement has been terminated.
+State:23000,Native:2601,Origin:[Microsoft][ODBC SQL Server Driver][SQL Server]
+State:01000,Native:3621,Origin:[Microsoft][ODBC SQL Server Driver][SQL Server]
+
+Cannot insert duplicate key row in object 'dbo.DTCharacterInfo' with unique index 'DTCharacterInfo_TimeStamp_CID_IX'. The duplicate key value is (<NULL>, 2).
+The statement has been terminated.
+Error InsertingDTCharInfoMMatchServer::OnAsyncResponse_GetDuelTournamentCharacterInfo - 실패
+[Wed Jun 23 20:01:11 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=24, objHistoryCount=2
+
+
+[Wed Jun 23 20:03:24 2021]  MMatchDBMgr::ExceptionHandler
+ErrSQL( {CALL spDTInsertDTCharacterInfo(2)} ), ErrCode( -1 )
+ErrMsg - Cannot insert duplicate key row in object 'dbo.DTCharacterInfo' with unique index 'DTCharacterInfo_TimeStamp_CID_IX'. The duplicate key value is (<NULL>, 2).
+The statement has been terminated.
+State:23000,Native:2601,Origin:[Microsoft][ODBC SQL Server Driver][SQL Server]
+State:01000,Native:3621,Origin:[Microsoft][ODBC SQL Server Driver][SQL Server]
+
+Cannot insert duplicate key row in object 'dbo.DTCharacterInfo' with unique index 'DTCharacterInfo_TimeStamp_CID_IX'. The duplicate key value is (<NULL>, 2).
+The statement has been terminated.
+Error InsertingDTCharInfoMMatchServer::OnAsyncResponse_GetDuelTournamentCharacterInfo - 실패
+[Wed Jun 23 20:04:04 2021] 127.0.0.1, 60303 is Disconnect(RCP_IO_READ Error) - Flood
+
+[Wed Jun 23 20:04:04 2021] Ban Player On Flooding - (MUID:094, ID:Jetman)
+
+[Wed Jun 23 20:04:04 2021]  MMatchDBMgr::ExceptionHandler
+ErrSQL( {CALL  LogDB15..spSetHackingBlock (2, 2, 8, 127, 0, 0, 1, '2021-6-23 21:4', 1, 'DRGunZ Newbies (Lv. 1 - 50)', 'command flooding.', 1)} ), ErrCode( -1 )
+ErrMsg - Invalid object name 'GunzDB..Account'.
+State:S0002,Native:208,Origin:[Microsoft][ODBC SQL Server Driver][SQL Server]
+
+[Wed Jun 23 20:04:11 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=24, objHistoryCount=2
+
+
+[Wed Jun 23 20:04:22 2021]  MMatchDBMgr::ExceptionHandler
+ErrSQL( {CALL spDTInsertDTCharacterInfo(2)} ), ErrCode( -1 )
+ErrMsg - Cannot insert duplicate key row in object 'dbo.DTCharacterInfo' with unique index 'DTCharacterInfo_TimeStamp_CID_IX'. The duplicate key value is (<NULL>, 2).
+The statement has been terminated.
+State:23000,Native:2601,Origin:[Microsoft][ODBC SQL Server Driver][SQL Server]
+State:01000,Native:3621,Origin:[Microsoft][ODBC SQL Server Driver][SQL Server]
+
+Cannot insert duplicate key row in object 'dbo.DTCharacterInfo' with unique index 'DTCharacterInfo_TimeStamp_CID_IX'. The duplicate key value is (<NULL>, 2).
+The statement has been terminated.
+Error InsertingDTCharInfoMMatchServer::OnAsyncResponse_GetDuelTournamentCharacterInfo - 실패
+[Wed Jun 23 20:04:35 2021] 127.0.0.1, 60307 is Disconnect(RCP_IO_READ Error) - Flood
+
+[Wed Jun 23 20:04:35 2021] Ban Player On Flooding - (MUID:0109, ID:Jetman)
+
+[Wed Jun 23 20:04:35 2021]  MMatchDBMgr::ExceptionHandler
+ErrSQL( {CALL  LogDB15..spSetHackingBlock (2, 2, 8, 127, 0, 0, 1, '2021-6-23 21:4', 1, 'DRGunZ Newbies (Lv. 1 - 50)', 'command flooding.', 1)} ), ErrCode( -1 )
+ErrMsg - Invalid object name 'GunzDB..Account'.
+State:S0002,Native:208,Origin:[Microsoft][ODBC SQL Server Driver][SQL Server]
+
+[Wed Jun 23 20:07:11 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=24, objHistoryCount=3
+
+[Wed Jun 23 20:10:11 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=24, objHistoryCount=3
+
+[Wed Jun 23 20:13:11 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=24, objHistoryCount=2
+
+[Wed Jun 23 20:16:11 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=24, objHistoryCount=0
+
+
+[Wed Jun 23 20:17:27 2021]  MMatchDBMgr::ExceptionHandler
+ErrSQL( {CALL spDTInsertDTCharacterInfo(2)} ), ErrCode( -1 )
+ErrMsg - Cannot insert duplicate key row in object 'dbo.DTCharacterInfo' with unique index 'DTCharacterInfo_TimeStamp_CID_IX'. The duplicate key value is (<NULL>, 2).
+The statement has been terminated.
+State:23000,Native:2601,Origin:[Microsoft][ODBC SQL Server Driver][SQL Server]
+State:01000,Native:3621,Origin:[Microsoft][ODBC SQL Server Driver][SQL Server]
+
+Cannot insert duplicate key row in object 'dbo.DTCharacterInfo' with unique index 'DTCharacterInfo_TimeStamp_CID_IX'. The duplicate key value is (<NULL>, 2).
+The statement has been terminated.
+Error InsertingDTCharInfoMMatchServer::OnAsyncResponse_GetDuelTournamentCharacterInfo - 실패
+
+[Wed Jun 23 20:17:31 2021]  MMatchDBMgr::ExceptionHandler
+ErrSQL( {CALL InsertGamePlayerLog(16413220, 2, 887589, 0, 0, 0, 0)} ), ErrCode( -1 )
+ErrMsg - The INSERT statement conflicted with the FOREIGN KEY constraint "FK_GamePlayerLog_ID". The conflict occurred in database "LogDB15", table "dbo.GameLog", column 'ID'.
+The statement has been terminated.
+State:23000,Native:547,Origin:[Microsoft][ODBC SQL Server Driver][SQL Server]
+State:01000,Native:3621,Origin:[Microsoft][ODBC SQL Server Driver][SQL Server]
+
+
+[Wed Jun 23 20:18:15 2021]  MMatchDBMgr::ExceptionHandler
+ErrSQL( {CALL spDTInsertDTCharacterInfo(2)} ), ErrCode( -1 )
+ErrMsg - Cannot insert duplicate key row in object 'dbo.DTCharacterInfo' with unique index 'DTCharacterInfo_TimeStamp_CID_IX'. The duplicate key value is (<NULL>, 2).
+The statement has been terminated.
+State:23000,Native:2601,Origin:[Microsoft][ODBC SQL Server Driver][SQL Server]
+State:01000,Native:3621,Origin:[Microsoft][ODBC SQL Server Driver][SQL Server]
+
+Cannot insert duplicate key row in object 'dbo.DTCharacterInfo' with unique index 'DTCharacterInfo_TimeStamp_CID_IX'. The duplicate key value is (<NULL>, 2).
+The statement has been terminated.
+Error InsertingDTCharInfoMMatchServer::OnAsyncResponse_GetDuelTournamentCharacterInfo - 실패
+[Wed Jun 23 20:19:11 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=24, objHistoryCount=2
+
+
+[Wed Jun 23 20:20:30 2021]  MMatchDBMgr::ExceptionHandler
+ErrSQL( {CALL spDTInsertDTCharacterInfo(2)} ), ErrCode( -1 )
+ErrMsg - Cannot insert duplicate key row in object 'dbo.DTCharacterInfo' with unique index 'DTCharacterInfo_TimeStamp_CID_IX'. The duplicate key value is (<NULL>, 2).
+The statement has been terminated.
+State:23000,Native:2601,Origin:[Microsoft][ODBC SQL Server Driver][SQL Server]
+State:01000,Native:3621,Origin:[Microsoft][ODBC SQL Server Driver][SQL Server]
+
+Cannot insert duplicate key row in object 'dbo.DTCharacterInfo' with unique index 'DTCharacterInfo_TimeStamp_CID_IX'. The duplicate key value is (<NULL>, 2).
+The statement has been terminated.
+Error InsertingDTCharInfoMMatchServer::OnAsyncResponse_GetDuelTournamentCharacterInfo - 실패
+
+[Wed Jun 23 20:21:59 2021]  MMatchDBMgr::ExceptionHandler
+ErrSQL( {CALL spDTInsertDTCharacterInfo(2)} ), ErrCode( -1 )
+ErrMsg - Cannot insert duplicate key row in object 'dbo.DTCharacterInfo' with unique index 'DTCharacterInfo_TimeStamp_CID_IX'. The duplicate key value is (<NULL>, 2).
+The statement has been terminated.
+State:23000,Native:2601,Origin:[Microsoft][ODBC SQL Server Driver][SQL Server]
+State:01000,Native:3621,Origin:[Microsoft][ODBC SQL Server Driver][SQL Server]
+
+Cannot insert duplicate key row in object 'dbo.DTCharacterInfo' with unique index 'DTCharacterInfo_TimeStamp_CID_IX'. The duplicate key value is (<NULL>, 2).
+The statement has been terminated.
+Error InsertingDTCharInfoMMatchServer::OnAsyncResponse_GetDuelTournamentCharacterInfo - 실패
+[Wed Jun 23 20:22:11 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=24, objHistoryCount=4
+
+[Wed Jun 23 20:25:11 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=24, objHistoryCount=4
+
+[Wed Jun 23 20:28:11 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=24, objHistoryCount=3
+
+
+[Wed Jun 23 20:28:56 2021]  MMatchDBMgr::ExceptionHandler
+ErrSQL( {CALL spDTInsertDTCharacterInfo(2)} ), ErrCode( -1 )
+ErrMsg - Cannot insert duplicate key row in object 'dbo.DTCharacterInfo' with unique index 'DTCharacterInfo_TimeStamp_CID_IX'. The duplicate key value is (<NULL>, 2).
+The statement has been terminated.
+State:23000,Native:2601,Origin:[Microsoft][ODBC SQL Server Driver][SQL Server]
+State:01000,Native:3621,Origin:[Microsoft][ODBC SQL Server Driver][SQL Server]
+
+Cannot insert duplicate key row in object 'dbo.DTCharacterInfo' with unique index 'DTCharacterInfo_TimeStamp_CID_IX'. The duplicate key value is (<NULL>, 2).
+The statement has been terminated.
+Error InsertingDTCharInfoMMatchServer::OnAsyncResponse_GetDuelTournamentCharacterInfo - 실패
+[Wed Jun 23 20:31:11 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=24, objHistoryCount=2
+
+[Wed Jun 23 20:34:11 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=24, objHistoryCount=1
+
+
+[Wed Jun 23 20:35:58 2021]  MMatchDBMgr::ExceptionHandler
+ErrSQL( {CALL spDTInsertDTCharacterInfo(2)} ), ErrCode( -1 )
+ErrMsg - Cannot insert duplicate key row in object 'dbo.DTCharacterInfo' with unique index 'DTCharacterInfo_TimeStamp_CID_IX'. The duplicate key value is (<NULL>, 2).
+The statement has been terminated.
+State:23000,Native:2601,Origin:[Microsoft][ODBC SQL Server Driver][SQL Server]
+State:01000,Native:3621,Origin:[Microsoft][ODBC SQL Server Driver][SQL Server]
+
+Cannot insert duplicate key row in object 'dbo.DTCharacterInfo' with unique index 'DTCharacterInfo_TimeStamp_CID_IX'. The duplicate key value is (<NULL>, 2).
+The statement has been terminated.
+Error InsertingDTCharInfoMMatchServer::OnAsyncResponse_GetDuelTournamentCharacterInfo - 실패
+success to update CustomIP
+[Wed Jun 23 20:37:11 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=24, objHistoryCount=2
+
+[Wed Jun 23 20:40:11 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=24, objHistoryCount=2
+
+
+[Wed Jun 23 20:42:15 2021]  MMatchDBMgr::ExceptionHandler
+ErrSQL( {CALL spDTInsertDTCharacterInfo(2)} ), ErrCode( -1 )
+ErrMsg - Cannot insert duplicate key row in object 'dbo.DTCharacterInfo' with unique index 'DTCharacterInfo_TimeStamp_CID_IX'. The duplicate key value is (<NULL>, 2).
+The statement has been terminated.
+State:23000,Native:2601,Origin:[Microsoft][ODBC SQL Server Driver][SQL Server]
+State:01000,Native:3621,Origin:[Microsoft][ODBC SQL Server Driver][SQL Server]
+
+[Wed Jun 23 20:42:15 2021]  MMatchDBMgr::ExceptionHandler - Disconnect
+[Wed Jun 23 20:42:15 2021]  MMatchDBMgr::ExceptionHandler - Reconnect
+[Wed Jun 23 20:42:15 2021]  MMatchDBMgr::ExceptionHandler - This(181532916)
+Cannot insert duplicate key row in object 'dbo.DTCharacterInfo' with unique index 'DTCharacterInfo_TimeStamp_CID_IX'. The duplicate key value is (<NULL>, 2).
+The statement has been terminated.
+Error InsertingDTCharInfoMMatchServer::OnAsyncResponse_GetDuelTournamentCharacterInfo - 실패
+[Wed Jun 23 20:43:11 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=32, objHistoryCount=2
+
+[Wed Jun 23 20:46:11 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=32, objHistoryCount=2
+
+
+[Wed Jun 23 20:47:55 2021]  MMatchDBMgr::ExceptionHandler
+ErrSQL( {CALL spDTInsertDTCharacterInfo(2)} ), ErrCode( -1 )
+ErrMsg - Cannot insert duplicate key row in object 'dbo.DTCharacterInfo' with unique index 'DTCharacterInfo_TimeStamp_CID_IX'. The duplicate key value is (<NULL>, 2).
+The statement has been terminated.
+State:23000,Native:2601,Origin:[Microsoft][ODBC SQL Server Driver][SQL Server]
+State:01000,Native:3621,Origin:[Microsoft][ODBC SQL Server Driver][SQL Server]
+
+Cannot insert duplicate key row in object 'dbo.DTCharacterInfo' with unique index 'DTCharacterInfo_TimeStamp_CID_IX'. The duplicate key value is (<NULL>, 2).
+The statement has been terminated.
+Error InsertingDTCharInfoMMatchServer::OnAsyncResponse_GetDuelTournamentCharacterInfo - 실패
+[Wed Jun 23 20:49:11 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=32, objHistoryCount=2
+
+[Wed Jun 23 20:52:11 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=32, objHistoryCount=2
+
+[Wed Jun 23 20:55:11 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=32, objHistoryCount=2
+
+[Wed Jun 23 20:58:11 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=32, objHistoryCount=1
+
+[Wed Jun 23 21:01:11 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=32, objHistoryCount=1
+
+[Wed Jun 23 21:04:11 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=32, objHistoryCount=0
+
+
+[Wed Jun 23 21:05:50 2021]  MMatchDBMgr::ExceptionHandler
+ErrSQL( {CALL spDTInsertDTCharacterInfo(2)} ), ErrCode( -1 )
+ErrMsg - Cannot insert duplicate key row in object 'dbo.DTCharacterInfo' with unique index 'DTCharacterInfo_TimeStamp_CID_IX'. The duplicate key value is (<NULL>, 2).
+The statement has been terminated.
+State:23000,Native:2601,Origin:[Microsoft][ODBC SQL Server Driver][SQL Server]
+State:01000,Native:3621,Origin:[Microsoft][ODBC SQL Server Driver][SQL Server]
+
+Cannot insert duplicate key row in object 'dbo.DTCharacterInfo' with unique index 'DTCharacterInfo_TimeStamp_CID_IX'. The duplicate key value is (<NULL>, 2).
+The statement has been terminated.
+Error InsertingDTCharInfoMMatchServer::OnAsyncResponse_GetDuelTournamentCharacterInfo - 실패
+
+[Wed Jun 23 21:06:32 2021]  MMatchDBMgr::ExceptionHandler
+ErrSQL( {CALL spDTInsertDTCharacterInfo(2)} ), ErrCode( -1 )
+ErrMsg - Cannot insert duplicate key row in object 'dbo.DTCharacterInfo' with unique index 'DTCharacterInfo_TimeStamp_CID_IX'. The duplicate key value is (<NULL>, 2).
+The statement has been terminated.
+State:23000,Native:2601,Origin:[Microsoft][ODBC SQL Server Driver][SQL Server]
+State:01000,Native:3621,Origin:[Microsoft][ODBC SQL Server Driver][SQL Server]
+
+Cannot insert duplicate key row in object 'dbo.DTCharacterInfo' with unique index 'DTCharacterInfo_TimeStamp_CID_IX'. The duplicate key value is (<NULL>, 2).
+The statement has been terminated.
+Error InsertingDTCharInfoMMatchServer::OnAsyncResponse_GetDuelTournamentCharacterInfo - 실패
+[Wed Jun 23 21:07:11 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=32, objHistoryCount=2
+
+[Wed Jun 23 21:10:11 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=32, objHistoryCount=2
+
+[Wed Jun 23 21:13:11 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=32, objHistoryCount=2
+
+
+[Wed Jun 23 21:13:57 2021]  MMatchDBMgr::ExceptionHandler
+ErrSQL( {CALL spDTInsertDTCharacterInfo(3)} ), ErrCode( -1 )
+ErrMsg - Cannot insert duplicate key row in object 'dbo.DTCharacterInfo' with unique index 'DTCharacterInfo_TimeStamp_CID_IX'. The duplicate key value is (<NULL>, 3).
+The statement has been terminated.
+State:23000,Native:2601,Origin:[Microsoft][ODBC SQL Server Driver][SQL Server]
+State:01000,Native:3621,Origin:[Microsoft][ODBC SQL Server Driver][SQL Server]
+
+Cannot insert duplicate key row in object 'dbo.DTCharacterInfo' with unique index 'DTCharacterInfo_TimeStamp_CID_IX'. The duplicate key value is (<NULL>, 3).
+The statement has been terminated.
+Error InsertingDTCharInfoMMatchServer::OnAsyncResponse_GetDuelTournamentCharacterInfo - 실패
+[Wed Jun 23 21:16:11 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=2, SessionCount=2, AgentCount=0, CommandPool=32, objHistoryCount=4
+
+
+[Wed Jun 23 21:18:23 2021]  MMatchDBMgr::ExceptionHandler
+ErrSQL( {CALL spDTInsertDTCharacterInfo(3)} ), ErrCode( -1 )
+ErrMsg - Cannot insert duplicate key row in object 'dbo.DTCharacterInfo' with unique index 'DTCharacterInfo_TimeStamp_CID_IX'. The duplicate key value is (<NULL>, 3).
+The statement has been terminated.
+State:23000,Native:2601,Origin:[Microsoft][ODBC SQL Server Driver][SQL Server]
+State:01000,Native:3621,Origin:[Microsoft][ODBC SQL Server Driver][SQL Server]
+
+Cannot insert duplicate key row in object 'dbo.DTCharacterInfo' with unique index 'DTCharacterInfo_TimeStamp_CID_IX'. The duplicate key value is (<NULL>, 3).
+The statement has been terminated.
+Error InsertingDTCharInfoMMatchServer::OnAsyncResponse_GetDuelTournamentCharacterInfo - 실패
+
+[Wed Jun 23 21:18:56 2021]  MMatchDBMgr::ExceptionHandler
+ErrSQL( {CALL InsertGamePlayerLog(16413220, 3, 891275, 0, 0, 0, 0)} ), ErrCode( -1 )
+ErrMsg - The INSERT statement conflicted with the FOREIGN KEY constraint "FK_GamePlayerLog_ID". The conflict occurred in database "LogDB15", table "dbo.GameLog", column 'ID'.
+The statement has been terminated.
+State:23000,Native:547,Origin:[Microsoft][ODBC SQL Server Driver][SQL Server]
+State:01000,Native:3621,Origin:[Microsoft][ODBC SQL Server Driver][SQL Server]
+
+[Wed Jun 23 21:19:11 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=32, objHistoryCount=5
+
+RealCPNet> SessionCreated=24, SessionDestroyed=22 
+RealCPNet> Begin Destroy 
+RealCPNet> Destroy Process 1/4 
+RealCPNet> Destroy Process 2/4 
+RealCPNet> Destroy Process 3/4 
+RealCPNet> Destroy Process 4/4 
+RealCPNet> Destroy End 
+[Wed Jun 23 21:20:59 2021] Match Server Destoryed
+

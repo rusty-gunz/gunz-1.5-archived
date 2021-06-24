@@ -1,0 +1,7 @@
+gameguard not running
+Load XML from memory : strings.xml(0x2711) - SUCCESS
+Load XML from memory : cserror.xml(0x2711) - SUCCESS
+MDatabase::Connect - The specified DSN contains an architecture mismatch between the Driver and Application
+
+[Thu Jun 17 16:56:29 2021] Can't Connect To DBMS
+

@@ -1,0 +1,2908 @@
+#include "stdafx.h"
+#include "MIDLResource.h"
+#include "Mint.h"
+#include "MFrame.h"
+#include "MLabel.h"
+#include "MButton.h"
+#include "MEdit.h"
+#include "MListBox.h"
+#include "MPicture.h"
+#include "MScrollBar.h"
+#include "MSlider.h"
+#include "MGroup.h"
+#include "MComboBox.h"
+#include "MToolTip.h"
+#include "MBLabelLook.h"
+#include "MBButtonLook.h"
+#include "MBGroupLook.h"
+#include "MBFrameLook.h"
+#include "MBEditLook.h"
+#include "MBListBoxLook.h"
+#include "MBMultiColListBoxLook.h"
+#include "MBScrollBarLook.h"
+#include "MBSliderLook.h"
+#include "MBGroupLook.h"
+#include "MBitmap.h"
+#include "MPopupMenu.h"
+#include "MAnimation.h"
+#include "MCursor.h"
+#include "MBmButton.h"
+#include "MBmLabel.h"
+#include "MHotKey.h"
+//#include "MActionKey.h"
+#include "MMsgBox.h"
+#include "MTextArea.h"
+#include "MBTextAreaLook.h"
+#include "MBSliderLook.h"
+#include "MTabCtrl.h"
+#include "MPanel.h"
+#include "MDebug.h"
+#include "MBTabCtrlLook.h"
+
+MIDLResource::MIDLResource()
+{
+	m_pParent = Mint::GetInstance()->GetMainFrame();
+}
+MIDLResource::~MIDLResource()
+{
+	Clear();
+}
+
+MPOINT MIDLResource::GetPoint(rapidxml::xml_node<>* element)
+{
+	MPOINT point;
+	if (element->first_node("X"))
+		point.x = atoi(element->first_node("X")->value());
+	if (element->first_node("Y"))
+		point.x = atoi(element->first_node("Y")->value());
+	return point;
+}
+MRECT  MIDLResource::GetRect(rapidxml::xml_node<>* element)
+{
+	MRECT rect;
+	if (element->first_node("W"))
+		rect.w = atoi(element->first_node("W")->value());
+	if (element->first_node("H"))
+		rect.h = atoi(element->first_node("H")->value());
+	if (element->first_node("X"))
+		rect.x = atoi(element->first_node("X")->value());
+	if (element->first_node("Y"))
+		rect.y = atoi(element->first_node("Y")->value());
+	return rect;
+}
+MSIZE  MIDLResource::GetSize(rapidxml::xml_node<>* element)
+{
+	MSIZE size;
+	if (element->first_node("W"))
+		size.w = atoi(element->first_node("W")->value());
+	if (element->first_node("H"))
+		size.h = atoi(element->first_node("H")->value());
+	return size;
+}
+MCOLOR MIDLResource::GetColor(rapidxml::xml_node<>* element)
+{
+	MCOLOR color;
+
+	int r = 0xff, g = 0xff, b = 0xff, a = 0xff;
+	if (element->first_node("R"))
+		r = atoi(element->first_node("R")->value());
+	if (element->first_node("G"))
+		g = atoi(element->first_node("G")->value());
+	if (element->first_node("B"))
+		b = atoi(element->first_node("B")->value());
+	if (element->first_node("ALPHA"))
+		a = atoi(element->first_node("ALPHA")->value());
+
+	color.r = (unsigned char)r;
+	color.g = (unsigned char)g;
+	color.b = (unsigned char)b;
+	color.a = (unsigned char)a;
+
+	return color;
+}
+MAnchors MIDLResource::GetAnchors(rapidxml::xml_node<>* element)
+{
+	MAnchors ret;
+
+	if (element->first_node("LEFT")) {
+		if (_stricmp(element->first_node("LEFT")->value(), "true") == 0)
+			ret.m_bLeft = true;
+		else
+			ret.m_bLeft = false;
+	}
+	if (element->first_node("TOP")) {
+		if (_stricmp(element->first_node("TOP")->value(), "true") == 0)
+			ret.m_bTop = true;
+		else
+			ret.m_bTop = false;
+	}
+	if (element->first_node("RIGHT")) {
+		if (_stricmp(element->first_node("RIGHT")->value(), "true") == 0)
+			ret.m_bRight = true;
+		else
+			ret.m_bRight = false;
+	}
+	if (element->first_node("BOTTOM")) {
+		if (_stricmp(element->first_node("BOTTOM")->value(), "true") == 0)
+			ret.m_bBottom = true;
+		else
+			ret.m_bBottom = false;
+	}
+
+	return ret;
+}
+
+MAlignmentMode MIDLResource::GetAlignmentMode(rapidxml::xml_node<>* element)
+{
+	MAlignmentMode am = MAM_NOTALIGN;
+
+	char szValue[256] = "";
+
+	if (element->first_node("HALIGN")) {
+		strcpy_s(szValue, element->first_node("HALIGN")->value());
+		if (_stricmp(szValue, "LEFT") == 0) am |= MAM_LEFT;
+		else if (_stricmp(szValue, "CENTER") == 0) am |= MAM_HCENTER;
+		else if (_stricmp(szValue, "RIGHT") == 0) am |= MAM_RIGHT;
+	}
+
+	if (element->first_node("VALIGN")) {
+		strcpy_s(szValue, element->first_node("VALIGN")->value());
+
+		if (_stricmp(szValue, "TOP") == 0) am |= MAM_TOP;
+		else if (_stricmp(szValue, "CENTER") == 0) am |= MAM_VCENTER;
+		else if (_stricmp(szValue, "BOTTOM") == 0) am |= MAM_BOTTOM;
+	}
+
+	return am;
+}
+
+void MIDLResource::GetFrameBtn(MFrameBtn* pFrameBtn, MBFrameLook* pFrameLook, rapidxml::xml_node<>* element)
+{
+	if (pFrameLook == NULL) return;
+
+	for (auto childNode = element->first_node(); childNode; childNode = childNode->next_sibling())
+	{
+		if (childNode->name()[0] == '#')
+			continue;
+
+		if (!strcmp(childNode->name(), "BOUNDS")) {
+			MRECT rect = GetRect(childNode);
+			pFrameBtn->m_Rect = rect;
+		}
+		if (!strcmp(childNode->name(), "ANCHORS"))
+			pFrameBtn->m_Anchors = GetAnchors(childNode);
+	}
+	pFrameBtn->m_bVisible = true;
+
+//	pFrameBtn->m_pBitmap[0] = pFrameLook->m_pCloseButtonBitmaps[0];
+//	pFrameBtn->m_pBitmap[1] = pFrameLook->m_pCloseButtonBitmaps[1];
+}
+
+void MIDLResource::GetBmButtonBitmaps(MBitmap** ppBitmaps, rapidxml::xml_node<>* element)
+{
+	for (auto childNode = element->first_node(); childNode; childNode = childNode->next_sibling())
+	{
+		if (childNode->name()[0] == '#')
+			continue;
+
+		if (!strcmp(childNode->name(), "BITMAP")) {
+			MBitmap* pBitmap = GetBitmap(childNode);
+
+			if (pBitmap != NULL)
+			{
+				if (!strcmp(element->first_attribute("type")->value(), "up"))
+				{
+					ppBitmaps[0] = pBitmap;
+				}
+				else if (!strcmp(element->first_attribute("type")->value(), "down"))
+				{
+					ppBitmaps[1] = pBitmap;
+				}
+				else if (!strcmp(element->first_attribute("type")->value(), "disable"))
+				{
+					ppBitmaps[2] = pBitmap;
+				}
+			}
+		}
+	}
+}
+
+MBmButton* MIDLResource::GetBmButton(rapidxml::xml_node<>* element)
+{
+	MWidget* pParentWidget;	MListener* pListener;
+
+	pListener = pParentWidget = GetParentWidget(element);
+	MBmButton* pBmButton = (MBmButton*)Mint::GetInstance()->NewWidget(MINT_BMBUTTON, "", pParentWidget, pListener);
+	InsertWidget(element, pBmButton);
+
+
+	for (auto childNode = element->first_node(); childNode; childNode = childNode->next_sibling())
+	{
+		if (GetCommonWidgetProperty(pBmButton, childNode, childNode->name())) continue;
+
+		if (!strcmp(childNode->name(), "BUTTONLOOK"))
+		{
+			char szItem[256];
+			memset(szItem, 0, sizeof(szItem));
+			strcpy_s(szItem, childNode->value());
+
+			map<string, MBButtonLook*>::iterator itor = m_ButtonLookMap.find(szItem);
+			if (itor != m_ButtonLookMap.end())
+			{
+				pBmButton->ChangeCustomLook((MBButtonLook*)(*itor).second);
+			}
+		}
+
+		if (!strcmp(childNode->name(), "BITMAP"))
+		{
+			MBitmap* pBitmap = GetBitmap(childNode);
+
+			if (pBitmap != NULL)
+			{
+				if (!strcmp(childNode->first_attribute("type")->value(), "up"))
+				{
+					pBmButton->SetUpBitmap(pBitmap);
+				}
+				else if (!strcmp(childNode->first_attribute("type")->value(), "down"))
+				{
+					pBmButton->SetDownBitmap(pBitmap);
+				}
+				else if (!strcmp(childNode->first_attribute("type")->value(), "disable"))
+				{
+					pBmButton->SetDisableBitmap(pBitmap);
+				}
+				else if (!strcmp(childNode->first_attribute("type")->value(), "over"))
+				{
+					pBmButton->SetOverBitmap(pBitmap);
+				}
+			}
+		}
+		else if (!strcmp(childNode->name(), "CONFIRMMESSAGE"))
+		{
+			char szContents[256] = { 0, };
+			char szItem[256] = { 0, };
+			strcpy_s(szContents, childNode->value());
+			TransText(szContents, szItem);
+			pBmButton->SetConfirmMessageBox(szItem);
+		}
+		else if (!strcmp(childNode->name(), "CONFIRMLOOK")) {
+			if (pBmButton->m_pMsgBox != NULL)
+			{
+				char szItem[256];
+				memset(szItem, 0, sizeof(szItem));
+				strcpy_s(szItem, childNode->value());
+
+				map<string, MBFrameLook*>::iterator itor = m_FrameLookMap.find(szItem);
+				if (itor != m_FrameLookMap.end())
+				{
+					MBFrameLook* pFrameLook = (MBFrameLook*)(*itor).second;
+					pBmButton->m_pMsgBox->ChangeCustomLook(pFrameLook);
+					pBmButton->m_pMsgBox->SetTitle(pFrameLook->m_szDefaultTitle);
+				}
+			}
+		}
+		else if (!strcmp(childNode->name(), "STRETCH"))
+		{
+			pBmButton->SetStretch(true);
+		}
+		else if (!strcmp(childNode->name(), "BMTEXTCOLOR"))
+		{
+			pBmButton->m_bTextColor = true;
+			float r, g, b, a;
+			if (childNode->first_attribute("r"))
+				r = atof(childNode->first_attribute("r")->value());
+			else
+				r = 0;
+			if (childNode->first_attribute("g"))
+				g = atof(childNode->first_attribute("g")->value());
+			else
+				g = 0;
+			if (childNode->first_attribute("b"))
+				b = atof(childNode->first_attribute("b")->value());
+			else
+				b = 0;
+			if (childNode->first_attribute("a"))
+				a = atof(childNode->first_attribute("a")->value());
+			else
+				a = 255;
+			pBmButton->m_BmTextColor = MCOLOR((unsigned char)r, (unsigned char)g, (unsigned char)b, (unsigned char)a);
+		}
+		else if (!strcmp(childNode->name(), "PUSHBUTTON")) {
+			pBmButton->SetType(MBT_PUSH);
+		}
+		else if (!strcmp(childNode->name(), "SETCHECK")) {
+			pBmButton->SetCheck(true);
+		}
+		else if (!strcmp(childNode->name(), "GROUP")) {
+			char szItem[256];
+			memset(szItem, 0, sizeof(szItem));
+			strcpy_s(szItem, childNode->value());
+
+			map<string, MButtonGroup*>::iterator itor = m_ButtonGroupMap.find(szItem);
+
+			MButtonGroup *pButtonGroup;
+			if (itor != m_ButtonGroupMap.end()) {
+				pButtonGroup = itor->second;
+			}
+			else {
+				pButtonGroup = new MButtonGroup;
+				m_ButtonGroupMap.insert(map<string, MButtonGroup*>::value_type(szItem, pButtonGroup));
+			}
+
+			pBmButton->SetButtonGroup(pButtonGroup);
+		}
+	}
+	return pBmButton;
+}
+
+MBitmap* MIDLResource::GetBitmap(rapidxml::xml_node<>* element)
+{
+	bool bSourceFound = false;
+	char szFileName[256];
+
+	memset(szFileName, 0, sizeof(szFileName));
+
+	bool bBoundsFound = false;
+	MRECT rt;
+
+	for (auto childNode = element->first_node(); childNode; childNode = childNode->next_sibling())
+	{
+		if (childNode->name()[0] == '#')
+			continue;
+
+		if (!strcmp(childNode->name(), "BOUNDS")) {
+			bBoundsFound = true;
+			rt = GetRect(childNode);
+		}
+		if (!strcmp(childNode->name(), "SOURCE")) {
+			bSourceFound = true;
+			strcpy_s(szFileName, childNode->value());
+		}
+	}
+
+	if(bSourceFound && bBoundsFound) {	// 부분 bitmap 이다
+
+		if(szFileName[0]==0 || _stricmp(szFileName,"NULL")==0) return NULL;
+		MBitmap *pBitmap = MBitmapManager::Get(szFileName);
+		if(pBitmap==NULL) {
+			mlog("warning : bitmap %s not found.\n",szFileName);
+			return NULL;
+		}
+
+		MPartialBitmap *pNewBitmap = new MPartialBitmap(pBitmap,rt);
+
+		MBitmapManager::Add(pNewBitmap);	// 나중에 지워주어야 한다
+
+		return pNewBitmap;
+	}
+
+	// 그렇지 않으면 통 bitmap 이다
+
+	strcpy_s(szFileName, element->value());
+	if(szFileName[0]==0 || _stricmp(szFileName,"NULL")==0) return NULL;
+
+	MBitmap *pBitmap = MBitmapManager::Get(szFileName);
+	if(pBitmap==NULL) {
+		mlog("warning : bitmap %s not found.\n",szFileName);
+	}
+
+	return pBitmap;
+}
+
+// 부분 bitmap의 alias
+MBitmap* MIDLResource::GetBitmapAlias(rapidxml::xml_node<>* element)
+{
+	bool bSourceFound = false;
+	char szSourceFileName[256];
+
+	memset(szSourceFileName, 0, sizeof(szSourceFileName));
+
+	bool bBoundsFound = false;
+	MRECT rt;
+
+	for (auto childNode = element->first_node(); childNode; childNode = childNode->next_sibling())
+	{
+		if (!strcmp(childNode->name(), "BOUNDS"))
+		{
+			bBoundsFound = true;
+			rt = GetRect(childNode);
+		}
+		else
+			if (!strcmp(childNode->name(), "SOURCE"))
+			{
+				bSourceFound = true;
+				strcpy_s(szSourceFileName, childNode->value());
+			}
+	}
+	char szAliasName[256];
+	strcpy_s(szAliasName, element->first_attribute("name")->value());
+
+	if(bSourceFound && bBoundsFound) {	// 부분 bitmap 이다
+
+		if(szSourceFileName[0]==0 || _stricmp(szSourceFileName,"NULL")==0) return NULL;
+		MBitmap *pBitmap = MBitmapManager::Get(szSourceFileName);
+		if(pBitmap==NULL) {
+			mlog("warning : bitmap %s not found.\n",szSourceFileName);
+			return NULL;
+		}
+
+		MPartialBitmap *pNewBitmap = new MPartialBitmap(pBitmap,rt);
+		strcpy(pNewBitmap->m_szName,szAliasName);
+
+		MBitmapManager::Add(pNewBitmap);	// 나중에 지워주어야 한다
+
+		return pNewBitmap;
+	}
+
+	return NULL;
+}
+
+void MIDLResource::GetBitmaps(MBitmap** ppBitmaps, rapidxml::xml_node<>* element, const int nBitmapCount)
+{
+	for (auto childNode = element->first_node(); childNode; childNode = childNode->next_sibling())
+	{
+		if (childNode->name()[0] == '#')
+			continue;
+
+		if (!strcmp(childNode->name(), "BITMAP"))
+		{
+			int t = -1;
+			if (childNode->first_attribute("type"))
+				t = atoi(childNode->first_attribute("type")->value());
+			MBitmap* pBitmap = GetBitmap(childNode);
+
+			if ((0 <= t) && (t < nBitmapCount))
+			{
+				ppBitmaps[t] = pBitmap;
+			}
+		}
+	}
+}
+
+MBGroupLook* MIDLResource::GetGroupLook(rapidxml::xml_node<>* element)
+{
+	char szTagName[256], szFontName[256];
+	memset(szFontName, 0, sizeof(szFontName));
+	bool bDefaultLook = false;
+
+	MBGroupLook* pGroupLook = new MBGroupLook();
+
+	for (auto childNode = element->first_node(); childNode; childNode = childNode->next_sibling())
+	{
+		if (childNode->name()[0] == '#')
+			continue;
+
+		if (!strcmp(childNode->name(), "FONT"))
+			strcpy_s(szFontName, childNode->value());
+
+		if (!strcmp(childNode->name(), "TEXTPOSITION"))
+			pGroupLook->m_TitlePosition = GetPoint(childNode);
+
+		if (!strcmp(childNode->name(), "STRETCH")) {
+			bool bStretch = true;
+
+			if (_stricmp(childNode->value(), "false") == 0)
+				bStretch = false;
+			pGroupLook->m_bStretch = bStretch;
+
+		}
+		if (!strcmp(childNode->name(), "TEXTCOLOR"))
+			pGroupLook->m_FontColor = GetColor(childNode);
+
+		if (!strcmp(childNode->name(), "BITMAPS"))
+			GetBitmaps(pGroupLook->m_pFrameBitmaps, childNode, FRAME_BITMAP_COUNT);
+
+		if (!strcmp(childNode->name(), "DEFAULT")) {
+			if (_stricmp(childNode->value(), "true"))
+				bDefaultLook = true;
+			else
+				bDefaultLook = false;
+		}
+	}
+	pGroupLook->m_pFont = MFontManager::Get(szFontName);
+
+	// Default Look
+	if(bDefaultLook==true) MGroup::ChangeLook(pGroupLook);
+
+	// FrameLook 등록
+	char szItem[256];
+	if (element->first_attribute(IDL_ATTR_ITEM))
+		strcpy_s(szItem, element->first_attribute(IDL_ATTR_ITEM)->value());
+	else
+		strcpy_s(szItem, "");
+	if(!m_GroupLookMap.insert(map<string, MBGroupLook*>::value_type(string(szItem), pGroupLook)).second)
+		OutputDebugString("insert widget failed.\n");
+
+	return pGroupLook;
+}
+
+MBFrameLook* MIDLResource::GetFrameLook(rapidxml::xml_node<>* element)
+{
+	char szTagName[256], szFontName[256];
+	memset(szFontName, 0, sizeof(szFontName));
+	bool bDefaultLook = false;
+
+	MBFrameLook* pFrameLook = new MBFrameLook();
+
+	for (auto childNode = element->first_node(); childNode; childNode = childNode->next_sibling())
+	{
+		if (childNode->name()[0] == '#')
+			continue;
+
+		if (!strcmp(childNode->name(), "FONT"))
+			strcpy_s(szFontName, childNode->value());
+
+		if (!strcmp(childNode->name(), "TEXTPOSITION"))
+			pFrameLook->m_TitlePosition = GetPoint(childNode);
+
+		if (!strcmp(childNode->name(), "STRETCH")) {
+			bool bStretch = true;
+			if (_stricmp(childNode->value(), "false") == 0)
+				bStretch = false;
+			pFrameLook->m_bStretch = bStretch;
+		}
+
+		if (!strcmp(childNode->name(), "TEXTCOLOR"))
+			pFrameLook->m_FontColor = GetColor(childNode);
+
+		if (!strcmp(childNode->name(), "BGCOLOR"))
+			pFrameLook->m_BGColor = GetColor(childNode);
+
+		if (!strcmp(childNode->name(), "BITMAPS"))
+			GetBitmaps(pFrameLook->m_pFrameBitmaps, childNode, FRAME_BITMAP_COUNT);
+
+		if (!strcmp(childNode->name(), "CLOSE"))
+			GetBmButtonBitmaps(pFrameLook->m_pCloseButtonBitmaps, childNode);
+
+		if (!strcmp(childNode->name(), "MINIMIZE"))
+			GetBmButtonBitmaps(pFrameLook->m_pMinimizeButtonBitmaps, childNode);
+
+		if (!strcmp(childNode->name(), "DEFAULT")) {
+			if (_stricmp(childNode->value(), "true") == 0)
+				bDefaultLook = true;
+			else
+				bDefaultLook = false;
+		}
+		
+		if (!strcmp(childNode->name(), "CUSTOMLOOK")) {
+			pFrameLook->SetCustomLook(atoi(childNode->value()));
+		}
+
+		if (!strcmp(childNode->name(), "DEFAULTTITLE"))
+			strcpy_s(pFrameLook->m_szDefaultTitle, childNode->value());
+
+		if (!strcmp(childNode->name(), "SCALABLE"))
+			pFrameLook->SetScaleEnable(true);
+		
+	}
+	pFrameLook->m_pFont = MFontManager::Get(szFontName);
+
+	// Default Look
+	if(bDefaultLook==true) MFrame::ChangeLook(pFrameLook);
+
+	// FrameLook 등록
+	char szItem[256];
+	if (element->first_attribute(IDL_ATTR_ITEM))
+		strcpy_s(szItem, element->first_attribute(IDL_ATTR_ITEM)->value());
+	else
+		strcpy_s(szItem, "");
+	if(!m_FrameLookMap.insert(map<string, MBFrameLook*>::value_type(string(szItem), pFrameLook)).second)
+		OutputDebugString("insert widget failed.\n");
+
+	return pFrameLook;
+}
+
+
+MBTextAreaLook*	MIDLResource::GetTextAreaLook(rapidxml::xml_node<>* element)
+{
+	char szFontName[256];
+	memset(szFontName, 0, sizeof(szFontName));
+	bool bDefaultLook = false;
+
+	MBTextAreaLook* pTextAreaLook = new MBTextAreaLook();
+
+	for (auto childNode = element->first_node(); childNode; childNode = childNode->next_sibling())
+	{
+		if (childNode->name()[0] == '#')
+			continue;
+
+		if (!strcmp(childNode->name(), "FONT"))
+			strcpy_s(szFontName, childNode->value());
+		if (!strcmp(childNode->name(), "BITMAPS"))
+			GetBitmaps(pTextAreaLook->m_pFrameBitmaps, childNode, 9);
+		if (!strcmp(childNode->name(), "BGCOLOR"))
+			pTextAreaLook->SetBgColor(GetColor(childNode));
+		if (!strcmp(childNode->name(), "DEFAULT")) {
+			if (_stricmp(childNode->value(), "true") == 0)
+				bDefaultLook = true;
+		}
+	}
+	pTextAreaLook->m_pFont = MFontManager::Get(szFontName);
+
+	// Default Look
+	if(bDefaultLook==true) MTextArea::ChangeLook(pTextAreaLook);
+
+	// TextAreaLook 등록
+	char szItem[256];
+	if (element->first_attribute(IDL_ATTR_ITEM))
+		strcpy_s(szItem, element->first_attribute(IDL_ATTR_ITEM)->value());
+	else
+		strcpy_s(szItem, "");
+	if(!m_TextAreaLookMap.insert(map<string, MBTextAreaLook*>::value_type(string(szItem), pTextAreaLook)).second)
+		OutputDebugString("insert widget failed.\n");
+
+
+	return pTextAreaLook;
+}
+
+MBLabelLook* MIDLResource::GetLabelLook(rapidxml::xml_node<>* element)
+{
+	char szFontName[256];
+	memset(szFontName, 0, sizeof(szFontName));
+	bool bDefaultLook = false;
+
+	MBLabelLook* pLabelLook = new MBLabelLook();
+
+	for (auto childNode = element->first_node(); childNode; childNode = childNode->next_sibling())
+	{
+		if (childNode->name()[0] == '#')
+			continue;
+
+		if (!strcmp(childNode->name(), "FONT"))
+			strcpy_s(szFontName, childNode->value());
+
+		if (!strcmp(childNode->name(), "TEXTCOLOR"))
+			pLabelLook->m_FontColor = GetColor(childNode);
+
+		if (!strcmp(childNode->name(), "DEFAULT")) {
+			if (_stricmp(childNode->value(), "true") == 0)
+				bDefaultLook = true;
+			else
+				bDefaultLook = false;
+		}
+	}
+	pLabelLook->m_pFont = MFontManager::Get(szFontName);
+
+	// Default Look
+	if(bDefaultLook==true) MLabel::ChangeLook(pLabelLook);
+
+	// LabelLook 등록
+	char szItem[256];
+	if (element->first_attribute(IDL_ATTR_ITEM))
+		strcpy_s(szItem, element->first_attribute(IDL_ATTR_ITEM)->value());
+	else
+		strcpy_s(szItem, "");
+	if(!m_LabelLookMap.insert(map<string, MBLabelLook*>::value_type(string(szItem), pLabelLook)).second)
+		OutputDebugString("insert widget failed.\n");
+
+	return pLabelLook;
+}
+
+
+MBButtonLook* MIDLResource::GetButtonLook(rapidxml::xml_node<>* element)
+{
+    char szFontName[256];
+	memset(szFontName, 0, sizeof(szFontName));
+
+	bool bDefaultLook = false;
+
+	MBButtonLook* pButtonLook = new MBButtonLook();
+	
+	for (auto childNode = element->first_node(); childNode; childNode = childNode->next_sibling())
+	{
+		if (childNode->name()[0] == '#')
+			continue;
+
+		if (!strcmp(childNode->name(), "FONT"))
+			strcpy_s(szFontName, childNode->value());
+
+		if (!strcmp(childNode->name(), "TEXTCOLOR"))
+			pButtonLook->m_FontColor = GetColor(childNode);
+
+		if (!strcmp(childNode->name(), "TEXTDOWNCOLOR"))
+			pButtonLook->m_FontDownColor = GetColor(childNode);
+
+		if (!strcmp(childNode->name(), "TEXTDOWNOFFSET"))
+			pButtonLook->m_FontDownOffset = GetPoint(childNode);
+
+		if (!strcmp(childNode->name(), "TEXTHIGHLIGHTCOLOR"))
+			pButtonLook->m_FontHighlightColor = GetColor(childNode);
+
+		if (!strcmp(childNode->name(), "TEXTDISABLECOLOR"))
+			pButtonLook->m_FontDisableColor = GetColor(childNode);
+
+		if (!strcmp(childNode->name(), "UP"))
+			GetBitmaps(pButtonLook->m_pUpBitmaps, childNode, 9);
+
+		if (!strcmp(childNode->name(), "DOWN"))
+			GetBitmaps(pButtonLook->m_pDownBitmaps, childNode, 9);
+
+		if (!strcmp(childNode->name(), "OVER"))
+			GetBitmaps(pButtonLook->m_pOverBitmaps, childNode, 9);
+
+		if (!strcmp(childNode->name(), "FOCUS"))
+			GetBitmaps(pButtonLook->m_pFocusBitmaps, childNode, 4);
+
+		if (!strcmp(childNode->name(), "DEFAULT"))
+		{
+			if (_stricmp(childNode->value(), "true") == 0)
+				bDefaultLook = true;
+			else
+				bDefaultLook = false;
+		}
+		
+		if (!strcmp(childNode->name(), "STRETCH"))
+		{
+			bool bStretch = true;
+			if (_stricmp(childNode->value(), "true") == 0)
+				bStretch = true;
+			else
+				bStretch = false;
+
+			pButtonLook->m_bStretch = bStretch;
+		}
+		if (!strcmp(childNode->name(), "CUSTOMLOOK"))
+			pButtonLook->SetCustomLook(true);
+
+		if (!strcmp(childNode->name(), "WIRELOOK"))
+			pButtonLook->SetWireLook(true);
+
+		if (!strcmp(childNode->name(), "SCALABLE"))
+			pButtonLook->SetScaleEnable(true);
+	}
+	pButtonLook->m_pFont = MFontManager::Get(szFontName);
+
+	// Default Look
+	if(bDefaultLook==true) MButton::ChangeLook(pButtonLook);
+
+	// ButtonLook 등록
+	char szItem[256];
+	if (element->first_attribute(IDL_ATTR_ITEM))
+		strcpy_s(szItem, element->first_attribute(IDL_ATTR_ITEM)->value());
+	else
+		strcpy_s(szItem, "");
+	if(!m_ButtonLookMap.insert(map<string, MBButtonLook*>::value_type(string(szItem), pButtonLook)).second)
+		OutputDebugString("insert widget failed.\n");
+
+	return pButtonLook;
+}
+
+
+MBEditLook* MIDLResource::GetEditLook(rapidxml::xml_node<>* element)
+{
+	bool bDefaultLook = false;
+
+	MBEditLook* pEditLook = new MBEditLook();
+
+	for (auto childNode = element->first_node(); childNode; childNode = childNode->next_sibling())
+	{
+		if (childNode->name()[0] == '#')
+			continue;
+
+		if (!strcmp(childNode->name(), "FONT")) {
+			char szFontName[256];
+			strcpy_s(szFontName, childNode->value());
+			pEditLook->m_pFont = MFontManager::Get(szFontName);
+
+		}
+		if (!strcmp(childNode->name(), "BITMAPS")) {
+			GetBitmaps(pEditLook->m_pFrameBitmaps, childNode, 9);
+		}
+		if (!strcmp(childNode->name(), "DEFAULT")) {
+			if (_stricmp(childNode->value(), "true") == 0)
+				bDefaultLook = true;
+		}
+		if (!strcmp(childNode->name(), "CUSTOMLOOK"))
+			pEditLook->SetCustomLook(true);
+	}
+	// Default Look
+	if(bDefaultLook==true){
+		MEdit::ChangeLook(pEditLook);
+		MHotKey::ChangeLook(pEditLook);
+//		MActionKey::ChangeLook(pEditLook);
+	}
+
+	// EditLook 등록
+	char szItem[256];
+	if (element->first_attribute(IDL_ATTR_ITEM))
+		strcpy_s(szItem, element->first_attribute(IDL_ATTR_ITEM)->value());
+	else
+		strcpy_s(szItem, "");
+	if(!m_EditLookMap.insert(map<string, MBEditLook*>::value_type(string(szItem), pEditLook)).second)
+		OutputDebugString("insert widget failed.\n");
+
+	return pEditLook;
+}
+
+MBListBoxLook* MIDLResource::GetListBoxLook(rapidxml::xml_node<>* element, int nType)
+{
+	MBListBoxLook* pListBoxLook = new MBListBoxLook();
+
+	bool bDefaultLook = false;
+
+	for (auto childNode = element->first_node(); childNode; childNode = childNode->next_sibling())
+	{
+		if (childNode->name()[0] == '#')
+			continue;
+
+		if (!strcmp(childNode->name(), "FONT")) {
+			char szFontName[256];
+			strcpy_s(szFontName, childNode->value());
+			pListBoxLook->m_pFont = MFontManager::Get(szFontName);
+		}
+		if (!strcmp(childNode->name(), "BITMAPS"))
+			GetBitmaps(pListBoxLook->m_pFrameBitmaps, childNode, 9);
+		if (!strcmp(childNode->name(), "SELECTEDPLANECOLOR"))
+			pListBoxLook->m_SelectedPlaneColor = GetColor(childNode);
+		if (!strcmp(childNode->name(), "SELECTEDTEXTCOLOR"))
+			pListBoxLook->m_SelectedTextColor = GetColor(childNode);
+		if (!strcmp(childNode->name(), "UNFOCUSEDSELECTEDPLANECOLOR"))
+			pListBoxLook->m_UnfocusedSelectedPlaneColor = GetColor(childNode);
+		if (!strcmp(childNode->name(), "ITEMTEXTMULTILINE"))
+			pListBoxLook->m_bItemTextMultiLine = true;
+		if (!strcmp(childNode->name(), "ITEMTEXTHCENTER"))
+			pListBoxLook->m_ItemTextAlignmentMode |= MAM_HCENTER;
+		if (!strcmp(childNode->name(), "ITEMTEXTVCENTER"))
+			pListBoxLook->m_ItemTextAlignmentMode |= MAM_VCENTER;
+		if (!strcmp(childNode->name(), "ITEMBITMAP"))
+			pListBoxLook->m_pItemSlotBitmap = GetBitmap(childNode);
+		if (!strcmp(childNode->name(), "DEFAULT")) {
+			if (_stricmp(childNode->value(), "true") == 0)
+				bDefaultLook = true;
+		}
+	}
+	// Default Look
+	if(bDefaultLook==true){
+		if(nType==0)	MListBox::ChangeLook(pListBoxLook);
+		else			MComboListBox::ChangeLook(pListBoxLook);
+	}
+
+	// ListBoxLook 등록
+	char szItem[256];
+	if (element->first_attribute(IDL_ATTR_ITEM))
+		strcpy_s(szItem, element->first_attribute(IDL_ATTR_ITEM)->value());
+	else
+		strcpy_s(szItem, "");
+	if(!m_ListBoxLookMap.insert(map<string, MBListBoxLook*>::value_type(string(szItem), pListBoxLook)).second)
+		OutputDebugString("insert widget failed.\n");
+
+	return pListBoxLook;
+}
+
+MBArrowLook* MIDLResource::GetArrowLook(rapidxml::xml_node<>* element)
+{
+	MBArrowLook* pArrowLook = new MBArrowLook();
+	bool bDefaultLook = false;
+
+	for (auto childNode = element->first_node(); childNode; childNode = childNode->next_sibling())
+	{
+		if (childNode->name()[0] == '#')
+			continue;
+
+		if (!strcmp(childNode->name(), "BITMAPS"))
+			GetBitmaps(pArrowLook->m_pArrowBitmaps, childNode, 8);
+		if (!strcmp(childNode->name(), "DEFAULT")) {
+			if (_stricmp(childNode->value(), "true") == 0)
+				bDefaultLook = true;
+			else
+				bDefaultLook = false;
+		}
+	}
+
+	// Default Look
+	if(bDefaultLook==true) MArrow::ChangeLook(pArrowLook);
+
+	// ArrowLook 등록
+	char szItem[256];
+	if (element->first_attribute(IDL_ATTR_ITEM))
+		strcpy_s(szItem, element->first_attribute(IDL_ATTR_ITEM)->value());
+	else
+		strcpy_s(szItem, "");
+	if(!m_ArrowLookMap.insert(map<string, MBArrowLook*>::value_type(string(szItem), pArrowLook)).second)
+		OutputDebugString("insert widget failed.\n");
+
+	return pArrowLook;
+}
+
+MBThumbLook* MIDLResource::GetThumbLook(rapidxml::xml_node<>* element)
+{
+	bool bDefaultLook = false;
+	MBThumbLook* pThumbLook = new MBThumbLook();
+
+	for (auto childNode = element->first_node(); childNode; childNode = childNode->next_sibling())
+	{
+		if (childNode->name()[0] == '#')
+			continue;
+
+		if (!strcmp(childNode->name(), "VERTICAL")) {
+			char szType[256];
+
+			if (strlen(childNode->first_attribute("type")->value()) <= 0)
+				strcpy_s(szType, "normal");
+			else
+				strcpy_s(szType, childNode->first_attribute("type")->value());
+
+			if (!strcmp(szType, "normal"))
+				GetBitmaps(pThumbLook->m_pVBitmaps, childNode, 3);
+			if (!strcmp(szType, "pressed"))
+				GetBitmaps(pThumbLook->m_pVPressedBitmaps, childNode, 3);
+		}
+
+		if (!strcmp(childNode->name(), "HORIZONTAL")) {
+			char szType[256];
+			if (strlen(childNode->first_attribute("type")->value()) <= 0)
+				strcpy_s(szType, "normal");
+			else
+				strcpy_s(szType, childNode->first_attribute("type")->value());
+
+			if (!strcmp(szType, "normal"))
+				GetBitmaps(pThumbLook->m_pHBitmaps, childNode, 3);
+			if (!strcmp(szType, "pressed"))
+				GetBitmaps(pThumbLook->m_pHPressedBitmaps, childNode, 3);
+		}
+
+		if (!strcmp(childNode->name(), "DEFAULT")) {
+			if (_stricmp(childNode->value(), "true") == 0)
+				bDefaultLook = true;
+		}
+	}
+
+	// Default Look
+	if (bDefaultLook == true) MThumb::ChangeLook(pThumbLook);
+
+	// ThumbLook 등록
+	char szItem[256];
+	if (element->first_attribute(IDL_ATTR_ITEM))
+		strcpy_s(szItem, element->first_attribute(IDL_ATTR_ITEM)->value());
+	else
+		strcpy_s(szItem, "");
+	if (!m_ThumbLookMap.insert(map<string, MBThumbLook*>::value_type(string(szItem), pThumbLook)).second)
+		OutputDebugString("insert widget failed.\n");
+
+	return pThumbLook;
+}
+
+MBScrollBarLook* MIDLResource::GetScrollBarLook(rapidxml::xml_node<>* element)
+{
+	bool bDefaultLook = false;
+	MBScrollBarLook* pScrollBarLook = new MBScrollBarLook();
+
+	for (auto childNode = element->first_node(); childNode; childNode = childNode->next_sibling())
+	{
+		if (childNode->name()[0] == '#')
+			continue;
+
+		if (!strcmp(childNode->name(), "VERTICAL"))
+			GetBitmaps(pScrollBarLook->m_pVFrameBitmaps, childNode, 3);
+
+		if (!strcmp(childNode->name(), "HORIZONTAL"))
+			GetBitmaps(pScrollBarLook->m_pHFrameBitmaps, childNode, 3);
+		
+		if (!strcmp(childNode->name(), "DEFAULT")) {
+			if (_stricmp(childNode->value(), "true") == 0)
+				bDefaultLook = true;
+		}
+	}
+	// Default Look
+	if(bDefaultLook==true) MScrollBar::ChangeLook(pScrollBarLook);
+
+	// ScrollBarLook 등록
+	char szItem[256];
+	if (element->first_attribute(IDL_ATTR_ITEM))
+		strcpy_s(szItem, element->first_attribute(IDL_ATTR_ITEM)->value());
+	else
+		strcpy_s(szItem, "");
+	if(!m_ScrollBarLookMap.insert(map<string, MBScrollBarLook*>::value_type(string(szItem), pScrollBarLook)).second)
+		OutputDebugString("insert widget failed.\n");
+
+	return pScrollBarLook;
+}
+
+MBSliderLook* MIDLResource::GetSliderLook(rapidxml::xml_node<>* element)
+{
+	///Why was this unsued?
+	return NULL;
+}
+
+MBSliderThumbLook* MIDLResource::GetSliderThumbLook(rapidxml::xml_node<>* element)
+{
+	bool bDefaultLook = false;
+
+	MBSliderThumbLook* pSliderThumbLook = new MBSliderThumbLook();
+
+	for (auto childNode = element->first_node(); childNode; childNode = childNode->next_sibling())
+	{
+		if (childNode->name()[0] == '#')
+			continue;
+
+		if (!strcmp(childNode->name(), "BITMAP"))
+			pSliderThumbLook->m_pBitmap = GetBitmap(childNode);
+
+		if (!strcmp(childNode->name(), "DEFAULT")) {
+			if (_stricmp(childNode->name(), "true") == 0)
+				bDefaultLook = true;
+		}
+	}
+
+	// Default Look
+	if(bDefaultLook==true) MSliderThumb::ChangeLook((MSliderThumbLook*)pSliderThumbLook);
+
+	// ThumbLook 등록
+	char szItem[256];
+	if (element->first_attribute(IDL_ATTR_ITEM))
+		strcpy_s(szItem, element->first_attribute(IDL_ATTR_ITEM)->value());
+	else
+		strcpy_s(szItem, "");
+	if(!m_ThumbLookMap.insert(map<string, MBThumbLook*>::value_type(string(szItem), (MBThumbLook*)pSliderThumbLook)).second)
+		OutputDebugString("insert widget failed.\n");
+
+	return pSliderThumbLook;
+}
+
+MBTabCtrlLook* MIDLResource::GetTabCtrlLook(rapidxml::xml_node<>* element)
+{
+	bool bDefaultLook = false;
+
+	MBTabCtrlLook* pTabCtrlLook = new MBTabCtrlLook();
+
+	for (auto childNode = element->first_node(); childNode; childNode = childNode->next_sibling())
+	{
+		if (childNode->name()[0] == '#')
+			continue;
+
+		if (!strcmp(childNode->name(), "BITMAPS"))
+			GetBitmaps(pTabCtrlLook->m_pFrameBitmaps, childNode, FRAME_BITMAP_COUNT);
+		if (!strcmp(childNode->name(), "DEFAULT")) {
+			if (_stricmp(childNode->value(), "true") == 0)
+				bDefaultLook = true;
+		}
+	}
+
+	// Default Look
+	if(bDefaultLook==true) MTabCtrl::ChangeLook(pTabCtrlLook);
+
+	// MTabCtrlLook 등록
+	char szItem[256];
+	if (element->first_attribute(IDL_ATTR_ITEM))
+		strcpy_s(szItem, element->first_attribute(IDL_ATTR_ITEM)->value());
+	else
+		strcpy_s(szItem, "");
+	if(!m_TabCtrlLookMap.insert(map<string, MBTabCtrlLook*>::value_type(string(szItem), pTabCtrlLook)).second)
+		OutputDebugString("insert widget failed.\n");
+
+	return pTabCtrlLook;
+}
+
+MWidget* MIDLResource::GetParentWidget(rapidxml::xml_node<>* element)
+{
+	char szBuf[4096];
+	if (element->first_attribute(IDL_ATTR_PARENT))
+		strcpy_s(szBuf, element->first_attribute(IDL_ATTR_PARENT)->value());
+	else
+		strcpy_s(szBuf, "");
+
+	MWidgetMMap::iterator itor;
+	itor = m_WidgetMap.find(szBuf);
+	if (itor != m_WidgetMap.end())
+	{
+		return (MWidget*)(*itor).second;
+	}
+	else
+	{
+		return (MWidget*)m_pParent;
+	}
+}
+
+void MIDLResource::InsertWidget(rapidxml::xml_node<>* element, MWidget* pWidget)
+{
+	char szItem[256];
+	if (element->first_attribute("item"))
+		strcpy_s(szItem, element->first_attribute("item")->value());
+	else
+		strcpy_s(szItem, "unnamed widget");
+	strcpy(pWidget->m_szIDLName,szItem);
+	m_WidgetMap.insert(MWidgetMMap::value_type(string(szItem), pWidget));
+}
+
+bool MIDLResource::GetCommonWidgetProperty(MWidget* pWidget, rapidxml::xml_node<>* element, const char* szTagName)
+{
+	if (szTagName[0] == '#') return true;
+
+	bool bRet = false;
+	if (!strcmp(szTagName, "BOUNDS"))
+		{
+			int w = MGetWorkspaceWidth();
+			int h = MGetWorkspaceHeight();
+			if(pWidget->GetParent()!=NULL){
+				MRECT r = pWidget->GetParent()->GetRect();
+				w = r.w;
+				h = r.h;
+			}
+			MRECT rect = GetRect(element);
+			// 만약 크기가 음수라면 현재 화면에서 최대 크기
+			if(rect.w<0) rect.w = w-abs(rect.x);
+			if(rect.h<0) rect.h = h-abs(rect.y);
+
+			// 만약 위치가 CENTER_NUMBER이면 정 중앙에서 시작
+			// 만약 위치가 음수라면 좌측또는 하단으로 얼라인
+			/*
+			#define CENTER_NUMBER	-10000
+			if(rect.x<=CENTER_NUMBER) rect.x = MGetWorkspaceWidth()/2 + (rect.x-CENTER_NUMBER);
+			else if(rect.x<0) rect.x = w-rect.w+rect.x + 1;
+			if(rect.y<=CENTER_NUMBER) rect.y = MGetWorkspaceHeight()/2 + (rect.y-CENTER_NUMBER);
+			else if(rect.y<0) rect.y = h-rect.h+rect.y + 1;
+			*/
+
+			pWidget->SetBounds(rect);
+			pWidget->m_IDLRect = rect;
+			bRet = true;
+		}
+	else if (!strcmp(szTagName, "TEXT"))
+		{
+			char szText[16384], szTar[16384];
+			strcpy_s(szText, element->value());
+			TransText(szText, szTar);
+			pWidget->SetText(szTar);
+			bRet = true;
+		}
+	else if (!strcmp(szTagName, "ANCHORS"))
+		{	
+			pWidget->m_Anchors = GetAnchors(element);
+			bRet = true;
+		}
+	else if (!strcmp(szTagName, "CLIP"))
+		{
+			bool bClip = false;
+			if (_stricmp(element->value(), "true") == 0)
+				bClip = true;
+			pWidget->SetClipByParent( bClip );
+		}
+	else if (!strcmp(szTagName, "TOOLTIP"))
+		{
+			char szContents[1024];
+			char szToolTip[1024];
+			strcpy_s(szContents, element->value());
+			TransText(szContents, szToolTip);
+			pWidget->AttachToolTip(szToolTip);
+		}
+	else if (!strcmp(szTagName, "ALIGN"))
+		{
+			pWidget->SetBoundsAlignment(GetAlignmentMode(element), -1, -1);
+		}
+	else if (!strcmp(szTagName, "VISIBLE"))
+		{
+			bool bValue = true;
+			if (_stricmp(element->value(), "false") == 0)
+				bValue = false;
+			pWidget->Show(bValue);
+		}
+	else if (!strcmp(szTagName, "ENABLE"))
+		{
+			bool bValue = true;
+			if (_stricmp(element->value(), "false") == 0)
+				bValue = false;
+			pWidget->Enable(bValue);
+		}
+	else if (!strcmp(szTagName, "FOCUSABLE")) 
+		{
+			bool bValue = true;
+			if (_stricmp(element->value(), "false") == 0)
+				bValue = false;
+			pWidget->SetFocusEnable(bValue);
+		}
+
+	return bRet;
+}
+
+MFrame*	MIDLResource::GetFrame(rapidxml::xml_node<>* element)
+{
+	MWidget* pParentWidget;	MListener* pListener;
+	MBFrameLook* pFrameLook = NULL;
+
+	pListener = pParentWidget = GetParentWidget(element);
+	//	MFrame* pFrame = new MFrame("", pParentWidget, pListener);
+	MFrame* pFrame = CreateFrame("", pParentWidget, pListener);
+	InsertWidget(element, pFrame);
+
+
+	for (auto childNode = element->first_node(); childNode; childNode = childNode->next_sibling())
+	{
+		if (childNode->name()[0] == '#')
+			continue;
+
+		if (GetCommonWidgetProperty(pFrame, childNode, childNode->name())) continue;
+
+		if (!strcmp(childNode->name(), "FRAMELOOK")) {
+			char szItem[256];
+			memset(szItem, 0, sizeof(szItem));
+			strcpy_s(szItem, childNode->value());
+
+			map<string, MBFrameLook*>::iterator itor = m_FrameLookMap.find(szItem);
+			if (itor != m_FrameLookMap.end())
+			{
+				pFrameLook = (MBFrameLook*)(*itor).second;
+				pFrame->ChangeCustomLook(pFrameLook);
+			}
+			else {
+				mlog("warning : FrameLook %s not found.\n", szItem);
+			}
+		}
+		else if (!strcmp(childNode->name(), "CLOSE_BUTTON"))
+		{
+			GetFrameBtn(pFrame->GetCloseButton(), pFrameLook, childNode);
+
+		}
+		else if (!strcmp(childNode->name(), "MINIMIZE_BUTTON"))
+		{
+			GetFrameBtn(pFrame->GetMinimizeButton(), pFrameLook, childNode);
+
+		}
+		else if (!strcmp(childNode->name(), "TITLEBAR"))
+		{
+			bool bValue = true;
+			if (_stricmp(childNode->value(), "false") == 0)
+				bValue = false;
+			pFrame->m_bTitleBar = bValue;
+		}
+		else if (!strcmp(childNode->name(), "RESIZABLE"))
+		{
+			bool bValue = true;
+			if (_stricmp(childNode->value(), "false") == 0)
+				bValue = false;
+			pFrame->SetResizable(bValue);
+		}
+		else if (!strcmp(childNode->name(), "MINWIDTH"))
+		{
+			int nValue = 300;
+			if(childNode->value() != 0)
+				nValue = atoi(childNode->value());
+			pFrame->m_nMinWidth = nValue;
+		}
+		else if (!strcmp(childNode->name(), "MINHEIGHT"))
+		{
+			int nValue = 300;
+			if (childNode->value() != 0)
+				nValue = atoi(childNode->value());
+				pFrame->m_nMinHeight = nValue;
+		}
+		else if (!strcmp(childNode->name(), "MOVABLE"))
+		{
+			bool bValue = true;
+			if (_stricmp(childNode->value(), "false") == 0)
+				bValue = false;
+			pFrame->SetMovable(bValue);
+		}
+
+	}
+	return pFrame;
+}
+
+MLabel* MIDLResource::GetLabel(rapidxml::xml_node<>* element)
+{
+	char szFontName[4096];
+	MWidget* pParentWidget;	MListener* pListener;
+
+	pListener = pParentWidget = GetParentWidget(element);
+	MLabel* pLabel = (MLabel*)Mint::GetInstance()->NewWidget(MINT_LABEL, "", pParentWidget, pListener);
+	InsertWidget(element, pLabel);
+
+	for (auto childNode = element->first_node(); childNode; childNode = childNode->next_sibling())
+	{
+		if (GetCommonWidgetProperty(pLabel, childNode, childNode->name())) continue;
+
+		if (!strcmp(childNode->name(), IDL_TEXTCOLOR))
+			pLabel->SetTextColor(GetColor(childNode));
+
+		if (!strcmp(childNode->name(), "LABELLOOK")) {
+			char szItem[256];
+			memset(szItem, 0, sizeof(szItem));
+			strcpy_s(szItem, childNode->value());
+
+			map<string, MBLabelLook*>::iterator itor = m_LabelLookMap.find(szItem);
+			if (itor != m_LabelLookMap.end())
+			{
+				pLabel->ChangeCustomLook((MBLabelLook*)(*itor).second);
+			}
+		}
+		if (!strcmp(childNode->name(), "FONT")) {
+			strcpy_s(szFontName, childNode->value());
+			pLabel->SetFont(MFontManager::Get(szFontName));
+		}
+		if (!strcmp(childNode->name(), "TEXTALIGN"))
+			pLabel->SetAlignment(GetAlignmentMode(childNode));
+	}
+	return pLabel;
+}
+
+MButton* MIDLResource::GetButton(rapidxml::xml_node<>* element)
+{
+	MWidget* pParentWidget;	MListener* pListener;
+
+	pListener = pParentWidget = GetParentWidget(element);
+	MButton* pButton = (MButton*)Mint::GetInstance()->NewWidget(MINT_BUTTON, "", pParentWidget, pListener);
+	InsertWidget(element, pButton);
+
+
+	for (auto childNode = element->first_node(); childNode; childNode = childNode->next_sibling())
+	{
+		if (GetCommonWidgetProperty(pButton, childNode, childNode->name())) continue;
+
+		if (!strcmp(childNode->name(), "BUTTONLOOK"))
+		{
+			char szItem[256];
+			memset(szItem, 0, sizeof(szItem));
+			strcpy_s(szItem, childNode->value());
+
+			map<string, MBButtonLook*>::iterator itor = m_ButtonLookMap.find(szItem);
+			if (itor != m_ButtonLookMap.end())
+			{
+				pButton->ChangeCustomLook((MBButtonLook*)(*itor).second);
+			}
+		}
+		else if (!strcmp(childNode->name(), "DEFAULTKEY")) {
+			char szItem[256] = { 0, };
+			strcpy_s(szItem, childNode->value());
+			if (_stricmp(szItem, "ENTER") == 0) {
+				pButton->m_nKeyAssigned = MBKA_ENTER;
+			}
+			else if (_stricmp(szItem, "ESC") == 0) {
+				pButton->m_nKeyAssigned = MBKA_ESC;
+			}
+		}
+		else if (!strcmp(childNode->name(), "CONFIRMMESSAGE")) {
+
+			char szContents[256] = { 0, };
+			char szItem[256] = { 0, };
+			strcpy_s(szContents, childNode->value());
+			TransText(szContents, szItem);
+			pButton->SetConfirmMessageBox(szItem);
+		}
+		else if (!strcmp(childNode->name(), "CONFIRMLOOK")) {
+			if (pButton->m_pMsgBox != NULL)
+			{
+				char szItem[256];
+				memset(szItem, 0, sizeof(szItem));
+				strcpy_s(szItem, childNode->value());
+
+				map<string, MBFrameLook*>::iterator itor = m_FrameLookMap.find(szItem);
+				if (itor != m_FrameLookMap.end())
+				{
+					MBFrameLook* pFrameLook = (MBFrameLook*)(*itor).second;
+					pButton->m_pMsgBox->ChangeCustomLook(pFrameLook);
+					pButton->m_pMsgBox->SetTitle(pFrameLook->m_szDefaultTitle);
+				}
+			}
+		}
+		else if (!strcmp(childNode->name(), "PUSHBUTTON")) {
+			pButton->SetType(MBT_PUSH);
+		}
+		else if (!strcmp(childNode->name(), "PUSHBUTTON2")) {
+			pButton->SetType(MBT_PUSH2);
+		}
+		else if (!strcmp(childNode->name(), "SETCHECK")) {
+			pButton->SetCheck(true);
+		}
+		else if (!strcmp(childNode->name(), "GROUP")) {
+			char szItem[256];
+			memset(szItem, 0, sizeof(szItem));
+			strcpy_s(szItem, childNode->value());
+
+			map<string, MButtonGroup*>::iterator itor = m_ButtonGroupMap.find(szItem);
+
+			MButtonGroup *pButtonGroup;
+			if (itor != m_ButtonGroupMap.end()) {
+				pButtonGroup = itor->second;
+			}
+			else {
+				pButtonGroup = new MButtonGroup;
+				m_ButtonGroupMap.insert(map<string, MButtonGroup*>::value_type(szItem, pButtonGroup));
+			}
+
+			pButton->SetButtonGroup(pButtonGroup);
+		}
+	}
+	return pButton;
+}
+
+MEdit* MIDLResource::GetEdit(rapidxml::xml_node<>* element)
+{
+	char szBuf[4096];
+	MWidget* pParentWidget;	MListener* pListener;
+
+	pListener = pParentWidget = GetParentWidget(element);
+	MEdit* pEdit = (MEdit*)Mint::GetInstance()->NewWidget(MINT_EDIT, "", pParentWidget, pListener);
+	InsertWidget(element, pEdit);
+
+	for (auto childNode = element->first_node(); childNode; childNode = childNode->next_sibling())
+	{
+		if (GetCommonWidgetProperty(pEdit, childNode, childNode->name())) continue;
+
+		if (!strcmp(childNode->name(), "EDITLOOK"))
+		{
+			char szItem[256];
+			memset(szItem, 0, sizeof(szItem));
+			strcpy_s(szItem, childNode->value());
+
+			map<string, MBEditLook*>::iterator itor = m_EditLookMap.find(szItem);
+			if (itor != m_EditLookMap.end())
+			{
+				pEdit->ChangeCustomLook((MBEditLook*)(*itor).second);
+			}
+		}
+		else if (!strcmp(childNode->name(), "PASSWORD"))
+		{
+			bool bPassword = false;
+			if (_stricmp(childNode->value(), "true") == 0)
+				bPassword = true;
+			if (bPassword == true)
+			{
+				pEdit->SetPasswordField(true);
+			}
+		}
+		else if (!strcmp(childNode->name(), "NUMBERONLY"))
+		{
+			bool bNumberOnly = false;
+			if (_stricmp(childNode->value(), "true") == 0)
+				bNumberOnly = true;
+			if (bNumberOnly == true)
+			{
+				pEdit->SetNumberField(true);
+			}
+		}
+		else if (!strcmp(childNode->name(), "MAXLENGTH"))
+		{
+			int nMaxLength;
+			if (strlen(childNode->value()) > 0)
+				nMaxLength = atoi(childNode->value());
+			else
+				nMaxLength = 0;
+			pEdit->SetMaxLength(nMaxLength);
+		}
+	}
+
+	return pEdit;
+}
+
+MListBox* MIDLResource::GetListBox(rapidxml::xml_node<>* element)
+{
+	MWidget* pParentWidget;	MListener* pListener;
+	MListBoxLook* pListBoxLook = NULL;
+
+	pListener = pParentWidget = GetParentWidget(element);
+	MListBox* pListBox = (MListBox*)Mint::GetInstance()->NewWidget(MINT_LISTBOX, "", pParentWidget, pListener);	// RAONHAJE TODO : NewWidget에 Name 넘겨주도록 바꾸자.
+	InsertWidget(element, pListBox);
+
+	for (auto childNode = element->first_node(); childNode; childNode = childNode->next_sibling())
+	{
+		char szItem[256];
+
+		if (GetCommonWidgetProperty(pListBox, childNode, childNode->name())) continue;
+
+		else if (!strcmp(childNode->name(), "LISTBOXLOOK"))
+		{
+			memset(szItem, 0, sizeof(szItem));
+			strcpy_s(szItem, childNode->value());
+
+			map<string, MBListBoxLook*>::iterator itor = m_ListBoxLookMap.find(szItem);
+			if (itor != m_ListBoxLookMap.end())
+			{
+				pListBoxLook = (MBListBoxLook*)(*itor).second;
+				pListBox->ChangeCustomLook(pListBoxLook);
+			}
+		}
+		else if (!strcmp(childNode->name(), "SELECTED"))
+		{
+			bool bValue = true;
+			if (_stricmp(childNode->value(), "false") == 0)
+				bValue = false;
+			pListBox->SetSelected(bValue);
+		}
+		else if (!strcmp(childNode->name(), "ITEMHEIGHT"))
+		{
+			int iValue = -1;
+			if (strlen(childNode->value()) > 0)
+				iValue = atoi(childNode->value());
+			pListBox->SetItemHeight(iValue);
+		}
+		else if (!strcmp(childNode->name(), "FONT"))
+		{
+			strcpy_s(szItem, childNode->value());
+			pListBox->SetFont(MFontManager::Get(szItem));
+		}
+		else if (!strcmp(childNode->name(), "TEXTCOLOR"))
+		{
+			pListBox->m_FontColor = GetColor(childNode);
+		}
+		else if (!strcmp(childNode->name(), "TEXTALIGN"))
+		{
+			pListBox->m_FontAlign = GetAlignmentMode(childNode);
+		}
+		else if (!strcmp(childNode->name(), "NULLFRAME"))
+		{
+			pListBox->m_bNullFrame = true;
+		}
+		else if (!strcmp(childNode->name(), "MULTISELECT"))
+		{
+			pListBox->m_bMultiSelect = true;
+		}
+	}
+
+	return pListBox;
+}
+
+MPicture* MIDLResource::GetPicture(rapidxml::xml_node<>* element)
+{
+	MWidget* pParentWidget;	MListener* pListener;
+	pListener = pParentWidget = GetParentWidget(element);
+	MPicture* pPicture = (MPicture*)Mint::GetInstance()->NewWidget(MINT_PICTURE, "", pParentWidget, pListener);
+	InsertWidget(element, pPicture);
+
+
+	for (auto childNode = element->first_node(); childNode; childNode = childNode->next_sibling())
+	{
+		if (GetCommonWidgetProperty(pPicture, childNode, childNode->name())) continue;
+
+		if (!strcmp(childNode->name(), "BITMAP"))
+		{
+			MBitmap* pBitmap = GetBitmap(childNode);
+			pPicture->SetBitmap(pBitmap);
+		}
+		else if (!strcmp(childNode->name(), "STRETCH"))
+		{
+			char ctemp[16];
+			strcpy_s(ctemp, childNode->value());
+			if (ctemp[0] == 'x')
+				pPicture->SetStretch(1);
+			else if (ctemp[0] == 'y')
+				pPicture->SetStretch(2);
+			else
+				pPicture->SetStretch(3);
+		}
+		else if (!strcmp(childNode->name(), "DRAWMODE"))
+		{
+			int mode;
+			mode = atoi(childNode->value());
+			DWORD cmode = pPicture->GetDrawMode();
+			if (mode == 0) pPicture->SetDrawMode(cmode | MBM_Normal);
+			else if (mode == 1) pPicture->SetDrawMode(cmode | MBM_FlipLR);
+			else if (mode == 2) pPicture->SetDrawMode(cmode | MBM_FlipUD);
+			else if (mode == 3) pPicture->SetDrawMode(cmode | MBM_RotL90);
+			else if (mode == 4) pPicture->SetDrawMode(cmode | MBM_RotR90);
+		}
+	}
+	return pPicture;
+}
+
+MScrollBar* MIDLResource::GetScrollBar(rapidxml::xml_node<>* element)
+{
+	MWidget* pParentWidget;	MListener* pListener;
+	MScrollBarTypes ScrollBarType = MSBT_VERTICAL;
+	int nMin = 0, nMax = 0;
+
+
+	if(_stricmp(element->first_attribute("type")->value(),"h")==0)
+		ScrollBarType = MSBT_HORIZONTAL;
+
+	pListener = pParentWidget = GetParentWidget(element);
+	MScrollBar* pScrollBar = (MScrollBar*)Mint::GetInstance()->NewWidget(MINT_SCROLLBAR, "", pParentWidget, pListener);
+	pScrollBar->SetType(ScrollBarType);
+	InsertWidget(element, pScrollBar);
+
+	for (auto childNode = element->first_node(); childNode; childNode = childNode->next_sibling())
+	{
+		if (GetCommonWidgetProperty(pScrollBar, childNode, childNode->name())) continue;
+
+		if (!strcmp(childNode->name(), "MIN"))
+		{
+			if (strlen(childNode->value()) > 0)
+				nMin = atoi(childNode->value());
+		}
+		else if (!strcmp(childNode->name(), "MAX"))
+		{
+			if (strlen(childNode->value()) > 0)
+				nMax = atoi(childNode->value());
+		}
+		else if (!strcmp(childNode->name(), "VALUE"))
+		{
+			int nValue = 0;
+			if (strlen(childNode->value()) > 0)
+				nValue = atoi(childNode->value());
+			pScrollBar->SetValue(nValue);
+		}
+		else if (!strcmp(childNode->name(), "SCROLLBARLOOK"))
+		{
+			char szItem[256];
+			memset(szItem, 0, sizeof(szItem));
+			strcpy_s(szItem, childNode->value());
+
+			map<string, MBScrollBarLook*>::iterator itor = m_ScrollBarLookMap.find(szItem);
+			if (itor != m_ScrollBarLookMap.end())
+			{
+				pScrollBar->ChangeCustomLook((MBScrollBarLook*)(*itor).second);
+			}
+		}
+		else if (!strcmp(childNode->name(), "ARROWLOOK"))
+		{
+			char szItem[256];
+			memset(szItem, 0, sizeof(szItem));
+			strcpy_s(szItem, childNode->value());
+
+			map<string, MBArrowLook*>::iterator itor = m_ArrowLookMap.find(szItem);
+			if (itor != m_ArrowLookMap.end())
+				pScrollBar->ChangeCustomArrowLook((MBArrowLook*)(*itor).second);
+		}
+		else if (!strcmp(childNode->name(), "THUMBLOOK"))
+		{
+			char szItem[256];
+			memset(szItem, 0, sizeof(szItem));
+			strcpy_s(szItem, childNode->value());
+
+			map<string, MBThumbLook*>::iterator itor = m_ThumbLookMap.find(szItem);
+			if (itor != m_ThumbLookMap.end())
+				pScrollBar->ChangeCustomThumbLook((*itor).second);
+		}
+	}
+	pScrollBar->SetMinMax(nMin, nMax);
+
+	return pScrollBar;
+}
+
+MSlider* MIDLResource::GetSlider(rapidxml::xml_node<>* element)
+{
+	char szBuf[4096];
+	MWidget* pParentWidget;	MListener* pListener;
+	int nMin = 0, nMax = 0;
+
+	pListener = pParentWidget = GetParentWidget(element);
+	MSlider* pSlider = (MSlider*)Mint::GetInstance()->NewWidget(MINT_SLIDER, "", pParentWidget, pListener);
+	InsertWidget(element, pSlider);
+
+	for (auto childNode = element->first_node(); childNode; childNode = childNode->next_sibling())
+	{
+		strcpy_s(szBuf, childNode->name());
+
+		if (GetCommonWidgetProperty(pSlider, childNode, szBuf))
+			continue;
+
+		else if (!strcmp(szBuf, "MIN"))
+		{
+			if (strlen(childNode->value()) > 0)
+				nMin = atoi(childNode->value());
+		}
+		else if (!strcmp(szBuf, "MAX"))
+		{
+			if (strlen(childNode->value()) > 0)
+				nMax = atoi(childNode->value());
+		}
+		else if (!strcmp(szBuf, "VALUE"))
+		{
+			int nValue = 0;
+			if (strlen(childNode->value()) > 0)
+				nValue = atoi(childNode->value());
+			pSlider->SetValue(nValue);
+		}
+		else if (!strcmp(szBuf, "SLIDERLOOK"))
+		{
+			char szItem[256];
+			memset(szItem, 0, sizeof(szItem));
+			strcpy_s(szItem, childNode->value());
+
+			map<string, MBSliderLook*>::iterator itor = m_SliderLookMap.find(szItem);
+			if (itor != m_SliderLookMap.end())
+			{
+				pSlider->ChangeCustomLook((MBScrollBarLook*)(*itor).second);
+			}
+		}
+		else if (!strcmp(szBuf, "ARROWLOOK"))
+		{
+			char szItem[256];
+			memset(szItem, 0, sizeof(szItem));
+			strcpy_s(szItem, childNode->value());
+
+			map<string, MBArrowLook*>::iterator itor = m_ArrowLookMap.find(szItem);
+			if (itor != m_ArrowLookMap.end())
+			{
+				pSlider->m_pUp->ChangeCustomLook((MBArrowLook*)(*itor).second);
+				pSlider->m_pDown->ChangeCustomLook((MBArrowLook*)(*itor).second);
+			}
+		}
+		else if (!strcmp(szBuf, "THUMBLOOK"))
+		{
+			char szItem[256];
+			memset(szItem, 0, sizeof(szItem));
+			strcpy_s(szItem, childNode->value());
+			if (_stricmp(szItem, "ColorThumbLook") == 0)
+				pSlider->m_pThumb->m_thumbColor = MCOLOR(0xFF507df9);
+			map<string, MBThumbLook*>::iterator itor = m_ThumbLookMap.find(szItem);
+			if (itor != m_ThumbLookMap.end())
+			{
+
+				pSlider->m_pThumb->ChangeCustomLook((MBThumbLook*)(*itor).second);
+			}
+		}
+	}
+	pSlider->SetMinMax(nMin, nMax);
+
+	return pSlider;
+
+}
+
+MGroup* MIDLResource::GetGroup(rapidxml::xml_node<>* element)
+{
+	char szBuf[4096];
+	MWidget* pParentWidget;	MListener* pListener;
+	MBGroupLook* pGroupLook = NULL;
+
+	pListener = pParentWidget = GetParentWidget(element);
+	MGroup* pGroup = (MGroup*)Mint::GetInstance()->NewWidget(MINT_GROUP, "", pParentWidget, pListener);
+	InsertWidget(element, pGroup);
+
+
+	for (auto childNode = element->first_node(); childNode; childNode = childNode->next_sibling())
+	{
+		strcpy_s(szBuf, childNode->name());
+		if (GetCommonWidgetProperty(pGroup, childNode, szBuf)) continue;
+
+		if (!strcmp(szBuf, "GROUPLOOK"))
+		{
+			char szItem[256];
+			memset(szItem, 0, sizeof(szItem));
+			strcpy_s(szItem, childNode->value());
+
+			map<string, MBGroupLook*>::iterator itor = m_GroupLookMap.find(szItem);
+			if (itor != m_GroupLookMap.end())
+			{
+				pGroupLook = (MBGroupLook*)(*itor).second;
+				pGroup->ChangeCustomLook(pGroupLook);
+			}
+		}
+
+	}
+
+	return pGroup;
+}
+
+MComboBox* MIDLResource::GetComboBox(rapidxml::xml_node<>* element)
+{
+	MWidget* pParentWidget;	MListener* pListener;
+
+	pListener = pParentWidget = GetParentWidget(element);
+	MComboBox* pComboBox = (MComboBox*)Mint::GetInstance()->NewWidget(MINT_COMBOBOX, "", pParentWidget, pListener);
+	InsertWidget(element, pComboBox);
+
+
+	for (auto childNode = element->first_node(); childNode; childNode = childNode->next_sibling())
+	{
+
+		if (GetCommonWidgetProperty(pComboBox, childNode, childNode->name())) continue;
+
+		if (!strcmp(childNode->name(), "BUTTONLOOK"))
+		{
+			char szItem[256];
+			memset(szItem, 0, sizeof(szItem));
+			strcpy_s(szItem, childNode->value());
+
+			map<string, MBButtonLook*>::iterator itor = m_ButtonLookMap.find(szItem);
+			if (itor != m_ButtonLookMap.end())
+			{
+				pComboBox->ChangeCustomLook((MBButtonLook*)(*itor).second);
+			}
+		}
+		else if (!strcmp(childNode->name(), "LISTBOXLOOK"))
+		{
+			char szItem[256];
+			memset(szItem, 0, sizeof(szItem));
+			strcpy_s(szItem, childNode->value());
+
+			map<string, MBListBoxLook*>::iterator itor = m_ListBoxLookMap.find(szItem);
+			if (itor != m_ListBoxLookMap.end())
+			{
+				pComboBox->m_pListBox->ChangeCustomLook((MBListBoxLook*)(*itor).second);
+			}
+		}
+		else if (!strcmp(childNode->name(), "LISTITEM"))
+		{
+			char szItem[4096], szContents[4096];
+			strcpy_s(szContents, childNode->value());
+			TransText(szContents, szItem);
+			pComboBox->Add(szItem);
+
+			bool bSelected = false;
+
+			if (childNode->first_attribute("selected")) {
+				if (_stricmp(childNode->first_attribute("selected")->value(), "true") == 0)
+					bSelected = true;
+				else
+					bSelected = false;
+			}
+			if (bSelected)
+			{
+				pComboBox->SetSelIndex(pComboBox->GetCount() - 1);
+			}
+		}
+		else if (!strcmp(childNode->name(), "DROPSIZE"))
+		{
+			int nDropSize = 100;
+			if (strlen(childNode->value()) > 0)
+				nDropSize = atoi(childNode->value());
+			pComboBox->SetDropSize(nDropSize);
+		}
+		else if (!strcmp(childNode->name(), "COMBOTYPE"))
+		{
+			int nType = 0;
+			if (strlen(childNode->value()) > 0)
+				nType = atoi(childNode->value());
+			pComboBox->SetComboType(nType);
+		}
+		else if (!strcmp(childNode->name(), "COMBOFIRSTSIZE"))
+		{
+			int nComboSize = 0;
+			if (strlen(childNode->value()) > 0)
+				nComboSize = atoi(childNode->value());
+			pComboBox->SetNextComboBoxTypeSize(nComboSize);
+		}
+		else if (!strcmp(childNode->name(), "TEXTALIGN"))
+		{
+			MAlignmentMode mode = GetAlignmentMode(childNode);
+			pComboBox->m_pListBox->m_FontAlign = mode;
+			pComboBox->SetAlignment(mode);
+		}
+		else if (!strcmp(childNode->name(), "FONT"))
+		{
+			MFont* pFont = MFontManager::Get(childNode->value());
+			pComboBox->m_pListBox->SetFont(pFont);
+			pComboBox->SetFont(pFont);
+		}
+		else if (!strcmp(childNode->name(), "TEXTCOLOR"))
+		{
+			MCOLOR color = GetColor(childNode);
+			pComboBox->m_pListBox->m_FontColor = color;
+			pComboBox->SetTextColor(color);
+		}
+		else if (!strcmp(childNode->name(), "ITEMHEIGHT"))
+		{
+			int iValue = -1;
+			if (strlen(childNode->value()) > 0)
+				iValue = atoi(childNode->value());
+			pComboBox->m_pListBox->SetItemHeight(iValue);
+		}
+		else if (!strcmp(childNode->name(), "DROPUNDER"))
+		{
+			bool bValue;
+			if (_stricmp(childNode->value(), "true") == 0)
+				bValue = true;
+			else
+				bValue = false;
+			pComboBox->m_bAutoDrop = false;
+			pComboBox->m_bDropUnder = bValue;
+		}
+
+	}
+
+	return pComboBox;
+}
+
+MMenuItem* MIDLResource::GetMenuItem(MPopupMenu* pPopupMenu, rapidxml::xml_node<>* element)
+{
+	MMenuItem* pMenuItem = (MMenuItem*)Mint::GetInstance()->NewWidget(MINT_MENUITEM, "", NULL, NULL);
+	pPopupMenu->AddMenuItem(pMenuItem);
+	
+
+	for (auto childNode = element->first_node(); childNode; childNode = childNode->next_sibling())
+	{
+		if (childNode->name()[0] == '#')
+			continue;
+
+		else if (!strcmp(childNode->name(), "TEXT"))
+		{
+			char szItem[1024];
+			memset(szItem, 0, sizeof(szItem));
+			strcpy_s(szItem, childNode->value());
+			pMenuItem->SetText(szItem);
+		}
+		else if (!strcmp(childNode->name(), "SUBMENU"))
+		{
+			GetSubMenu(pMenuItem, childNode);
+		}
+	}
+
+	return pMenuItem;	
+}
+
+MPopupMenu* MIDLResource::GetSubMenu(MMenuItem* pParentMenuItem, rapidxml::xml_node<>* element)
+{
+	MPopupMenu* pSubMenu = pParentMenuItem->CreateSubMenu();
+	char szTagName[1024];
+
+	for (auto childNode = element->first_node(); childNode; childNode = childNode->next_sibling())
+	{
+		if (!strcmp(childNode->name(), "MENUITEM"))
+			GetMenuItem(pSubMenu, childNode);
+	}
+
+	return pSubMenu;
+}
+
+MPopupMenu* MIDLResource::GetPopupMenu(rapidxml::xml_node<>* element)
+{
+	MWidget* pParentWidget;	MListener* pListener;
+
+	pListener = pParentWidget = GetParentWidget(element);
+
+	MPopupMenuTypes t = MPMT_VERTICAL;
+
+	if (_stricmp(element->first_attribute("type")->value(), "h") == 0)
+		t = MPMT_HORIZONTAL;
+
+	MPopupMenu* pPopupMenu = (MPopupMenu*)Mint::GetInstance()->NewWidget(MINT_POPUPMENU, "", pParentWidget, pListener);
+	pPopupMenu->SetType(t);
+	InsertWidget(element, pPopupMenu);
+
+	for (auto childNode = element->first_node(); childNode; childNode = childNode->next_sibling())
+	{
+		if (GetCommonWidgetProperty(pPopupMenu, childNode, childNode->name())) continue;
+
+		else if (!strcmp(childNode->name(), "MENUITEM"))
+		{
+			GetMenuItem(pPopupMenu, childNode);
+		}
+
+	}
+
+	pPopupMenu->Show(false);
+	return pPopupMenu;
+}
+
+MAniBitmap* MIDLResource::GetAniBitmap(rapidxml::xml_node<>* element)
+{
+	MAniBitmap* pAniBitmap = new MAniBitmap;
+
+	for (auto childNode = element->first_node(); childNode; childNode = childNode->next_sibling())
+	{
+
+		if (!strcmp(childNode->name(), "BITMAP"))
+		{
+			MBitmap* pBitmap = GetBitmap(childNode);
+			if (pBitmap)
+				pAniBitmap->Add(pBitmap);
+		}
+		else if (!strcmp(childNode->name(), "DELAY"))
+		{
+			int nDelay = 0;
+			if (strlen(childNode->value()) > 0)
+				nDelay = atoi(childNode->value());
+			pAniBitmap->SetDelay(nDelay);
+		}
+	}
+
+	char szItem[256];
+	if (element->first_attribute(IDL_ATTR_ITEM))
+		strcpy_s(szItem, element->first_attribute(IDL_ATTR_ITEM)->value());
+	else
+		strcpy_s(szItem, "");
+	if(!m_AniBitmapMap.insert(map<string, MAniBitmap*>::value_type(string(szItem), pAniBitmap)).second)
+		OutputDebugString("insert widget failed.\n");
+
+	return pAniBitmap;
+}
+
+MAnimation* MIDLResource::GetAnimation(rapidxml::xml_node<>* element)
+{
+	char szBuf[4096];
+	char szAniBitmap[256];
+	MAniBitmap* pAniBitmap = NULL;
+
+	memset(szAniBitmap, 0, sizeof(szAniBitmap));
+	MWidget* pParentWidget = GetParentWidget(element);
+
+	MAnimation* pAnimation = (MAnimation*)Mint::GetInstance()->NewWidget(MINT_ANIMATION, "", pParentWidget, NULL);
+	InsertWidget(element, pAnimation);
+
+	for (auto childNode = element->first_node(); childNode; childNode = childNode->next_sibling())
+	{
+		strcpy_s(szBuf, childNode->name());
+
+		if (GetCommonWidgetProperty(pAnimation, childNode, childNode->name())) continue;
+
+		if (!strcmp(szBuf, "ANIMTEMPLATE"))
+		{
+			strcpy_s(szAniBitmap, childNode->value());
+		}
+		else if (!strcmp(szBuf, "PLAYMODE"))
+		{
+			char szPlayMode[256];
+			strcpy_s(szPlayMode, childNode->value());
+			if (!strcmp(szPlayMode, "forwardonce"))
+			{
+				pAnimation->m_nPlayMode = MAPM_FORWARDONCE;
+			}
+			else if (!strcmp(szPlayMode, "forwardbackward"))
+			{
+				pAnimation->m_nPlayMode = MAPM_FORWARDNBACKWARD;
+			}
+			else if (!strcmp(szPlayMode, "repetition"))
+			{
+				pAnimation->m_nPlayMode = MAPM_REPETITION;
+			}
+			else if (!strcmp(szPlayMode, "stop"))
+			{
+				pAnimation->m_nPlayMode = MAPM_FORWARDONCE;
+				pAnimation->m_bRunAnimation = false;
+			}
+		}
+		else if (!strcmp(szBuf, "RUN"))
+		{
+			bool bValue = true;
+			if (_stricmp(childNode->value(), "false") == 0)
+				bValue = false;
+			pAnimation->m_bRunAnimation = bValue;
+		}
+	}
+
+	map<string, MAniBitmap*>::iterator itor = m_AniBitmapMap.find(szAniBitmap);
+	if (itor != m_AniBitmapMap.end())
+	{
+		pAniBitmap = ((MAniBitmap*)(*itor).second);
+		pAnimation->SetAniBitmap(pAniBitmap);
+	}
+
+	
+	return pAnimation;
+}
+
+MCursor* MIDLResource::GetCursor(rapidxml::xml_node<>* element)
+{
+	char szBuf[4096];
+	char szItem[256];
+
+	if (element->first_attribute(IDL_ATTR_ITEM))
+		strcpy_s(szItem, element->first_attribute(IDL_ATTR_ITEM)->value());
+	else
+		strcpy_s(szItem, "");
+
+	MWidget* pParentWidget = GetParentWidget(element);
+	MCursor* pCursor = NULL;
+
+	for (auto childNode = element->first_node(); childNode; childNode = childNode->next_sibling())
+	{
+		if (!strcmp(childNode->name(), "ANIMTEMPLATE"))
+		{
+			char szAniBitmap[256];
+			MAniBitmap* pAniBitmap = NULL;
+			strcpy_s(szAniBitmap, childNode->value());
+			pAniBitmap = (m_AniBitmapMap.find(szAniBitmap))->second;
+			if (pCursor == NULL) pCursor = new MAniBitmapCursor(szItem, pAniBitmap);
+		}
+		else if (!strcmp(childNode->name(), "BITMAP"))
+		{
+			char szBitmap[256];
+			MBitmap* pBitmap = NULL;
+			strcpy_s(szBitmap, childNode->value());
+			pBitmap = MBitmapManager::Get(szBitmap);
+			if (pCursor == NULL) pCursor = new MBitmapCursor(szItem, pBitmap);
+		}
+	}
+	if (pCursor != NULL) 
+	{
+		if (pParentWidget!=NULL) pParentWidget->SetCursor(pCursor);
+		else (MWidget*)m_pParent->SetCursor(pCursor);
+
+		MCursorSystem::Add(pCursor);
+	}
+	return pCursor;
+}
+
+MBmLabel* MIDLResource::GetBmLabel(rapidxml::xml_node<>* element)
+{
+	MWidget* pParentWidget;	MListener* pListener;
+
+	pListener = pParentWidget = GetParentWidget(element);
+	MBmLabel* pBmLabel = (MBmLabel*)Mint::GetInstance()->NewWidget(MINT_BMLABEL, "", pParentWidget, pListener);
+	InsertWidget(element, pBmLabel);
+
+
+	for (auto childNode = element->first_node(); childNode; childNode = childNode->next_sibling())
+	{
+		if (GetCommonWidgetProperty(pBmLabel, childNode, childNode->name())) continue;
+
+		if (!strcmp(childNode->name(), "FONTSIZE"))
+			pBmLabel->SetCharSize(GetSize(childNode));
+		if (!strcmp(childNode->name(), "BITMAP")) {
+			MBitmap* pBitmap = GetBitmap(childNode);
+
+			if (pBitmap != NULL)
+			{
+				pBmLabel->SetLabelBitmap(pBitmap);
+			}
+		}
+	}
+	return pBmLabel;
+}
+
+MFont* MIDLResource::CreateFont(char* szAliasName, char* szFontName, int nHeight,
+								bool bBold, bool bItalic, int nOutlineStyle, bool bAntialiasing, DWORD nColorArg1, DWORD nColorArg2)
+{
+	return NULL;
+}
+
+MFont* MIDLResource::GetFont(rapidxml::xml_node<>* element)
+{
+	char szBuf[4096];
+	char szItem[256];
+	char szName[256];
+	int nHeight = 10;
+	bool bBold = false;
+	bool bItalic = false;
+	int nOutlineStyle = 0;
+	DWORD nColorArg1 = 0;
+	DWORD nColorArg2 = 0;
+	int a,r,g,b; a=r=g=b=0;
+	bool bAntialiasing = false;
+
+
+	if (element->first_attribute(IDL_ATTR_ITEM))
+		strcpy_s(szItem, element->first_attribute(IDL_ATTR_ITEM)->value());
+	else
+		strcpy_s(szItem, "");
+
+	MFont* pFont = NULL;
+
+	for (auto childNode = element->first_node(); childNode; childNode = childNode->next_sibling())
+	{
+		if (childNode->name()[0] == '#')
+			continue;
+		strcpy_s(szBuf, childNode->name());
+
+		if (!strcmp(szBuf, "FONTSET"))
+		{
+			strcpy_s(szName, childNode->value());
+		}
+		else if (!strcmp(szBuf, "FONTHEIGHT"))
+		{
+			nHeight = atoi(childNode->value());
+		}
+		else if (!strcmp(szBuf, "BOLD"))
+		{
+			bBold = true;
+		}
+		else if (!strcmp(szBuf, "ITALIC"))
+		{
+			bItalic = true;
+		}
+		else if (!strcmp(szBuf, "OUTLINESTYLE"))
+		{
+			nOutlineStyle = atoi(childNode->value());
+		}
+		else if (!strcmp(szBuf, "ANTIALIASING"))
+		{
+			bAntialiasing = true;
+		}
+		else if (!strcmp(szBuf, "COLORARG1"))
+		{
+			nColorArg1 = strtoul(childNode->value(),0,10);
+			if (childNode->first_node("A"))
+				a = atoi(childNode->first_node("A")->value());
+			if (childNode->first_node("R"))
+				r = atoi(childNode->first_node("R")->value());
+			if (childNode->first_node("G"))
+				g = atoi(childNode->first_node("G")->value());
+			if (childNode->first_node("B"))
+				b = atoi(childNode->first_node("B")->value());
+			nColorArg1 = MINT_ARGB(a, r, g, b);
+		}
+		else if (!strcmp(szBuf, "COLORARG2"))
+		{
+			nColorArg2 = strtoul(childNode->value(), 0, 10);
+			if (childNode->first_node("A"))
+				a = atoi(childNode->first_node("A")->value());
+			if (childNode->first_node("R"))
+				r = atoi(childNode->first_node("R")->value());
+			if (childNode->first_node("G"))
+				g = atoi(childNode->first_node("G")->value());
+			if (childNode->first_node("B"))
+				b = atoi(childNode->first_node("B")->value());
+			nColorArg2 = MINT_ARGB(a, r, g, b);
+		}
+	}
+
+	pFont = CreateFont(szItem, szName, nHeight, bBold, bItalic, nOutlineStyle, bAntialiasing, nColorArg1, nColorArg2);
+	if (pFont != NULL) 
+	{
+		MFontManager::Add(pFont);
+	}
+	return pFont;
+}
+
+MHotKey* MIDLResource::GetHotKey(rapidxml::xml_node<>* element)
+{
+	char szBuf[4096];
+	MWidget* pParentWidget;	MListener* pListener;
+
+	pListener = pParentWidget = GetParentWidget(element);
+	MHotKey* pHotKey = (MHotKey*)Mint::GetInstance()->NewWidget(MINT_HOTKEY, "", pParentWidget, pListener);
+	InsertWidget(element, pHotKey);
+
+
+	for (auto childNode = element->first_node(); childNode; childNode = childNode->next_sibling())
+	{
+		if (GetCommonWidgetProperty(pHotKey, childNode, childNode->name())) continue;
+
+
+		if (!strcmp(childNode->name(), "EDITLOOK"))
+		{
+			char szItem[256];
+			memset(szItem, 0, sizeof(szItem));
+			strcpy_s(szItem, childNode->value());
+
+			map<string, MBEditLook*>::iterator itor = m_EditLookMap.find(szItem);
+			if (itor != m_EditLookMap.end())
+			{
+				pHotKey->ChangeCustomLook((MBEditLook*)(*itor).second);
+			}
+		}
+
+	}
+	return pHotKey;
+}
+
+/*
+MActionKey* MIDLResource::GetActionKey( element)
+{
+	char szBuf[4096];
+	MWidget* pParentWidget;	MListener* pListener;
+
+	pListener = pParentWidget = GetParentWidget(element);
+	MActionKey* pActionKey = (MActionKey*)Mint::GetInstance()->NewWidget(MINT_ACTIONKEY, "", pParentWidget, pListener);
+	InsertWidget(element, pActionKey);
+
+	int iCount = element.GetChildNodeCount();
+
+	for (int i = 0; i < iCount; i++)
+	{
+		memset(szBuf, 0, sizeof(szBuf));
+		childElement = element.GetChildNode(i);
+		childElement.GetTagName(szBuf);
+
+		if (GetCommonWidgetProperty(pActionKey, childElement, szBuf)) continue;
+
+
+		if (!strcmp(szBuf, "EDITLOOK"))
+		{
+			char szItem[256];
+			memset(szItem, 0, sizeof(szItem));
+			childElement.GetContents(szItem);
+
+			map<string, MBEditLook*>::iterator itor = m_EditLookMap.find(szItem);
+			if (itor != m_EditLookMap.end())
+			{
+				pActionKey->ChangeCustomLook((MBEditLook*)(*itor).second);
+			}
+		}
+
+	}
+
+	return pActionKey;
+}
+*/
+
+MTextArea* MIDLResource::GetTextArea(rapidxml::xml_node<>* element)
+{
+	char szBuf[4096];
+	MWidget* pParentWidget;	MListener* pListener;
+
+	pListener = pParentWidget = GetParentWidget(element);
+	MTextArea* pTextArea = (MTextArea*)Mint::GetInstance()->NewWidget(MINT_TEXTAREA, "", pParentWidget, pListener);
+	InsertWidget(element, pTextArea);
+
+	for (auto childNode = element->first_node(); childNode; childNode = childNode->next_sibling())
+	{
+		strcpy_s(szBuf, childNode->name());
+		if (GetCommonWidgetProperty(pTextArea, childNode, szBuf)) continue;
+
+		if (!strcmp(szBuf, "EDITABLE"))
+		{
+			bool bEditable = true;
+			if (_stricmp(childNode->value(), "false") == 0)
+				bEditable = false;
+
+			pTextArea->SetEditable(bEditable);
+		}
+		else if (!strcmp(szBuf, "RESIZABLE"))
+		{
+			bool bValue = true;
+			if (_stricmp(childNode->value(), "false") == 0)
+				bValue = false;
+			pTextArea->SetResizable(bValue);
+		}
+		else if (!strcmp(szBuf, "TEXTOFFSET"))
+		{
+			pTextArea->SetTextOffset(GetPoint(childNode));
+		}
+		else if (!strcmp(szBuf, "TEXTCOLOR"))
+		{
+			pTextArea->SetTextColor(GetColor(childNode));
+		}
+		else if (!strcmp(szBuf, "TEXTAREALOOK"))
+		{
+			char szItem[256];
+			memset(szItem, 0, sizeof(szItem));
+			strcpy_s(szItem, childNode->value());
+
+			map<string, MBTextAreaLook*>::iterator itor = m_TextAreaLookMap.find(szItem);
+			if (itor != m_TextAreaLookMap.end())
+			{
+				MBTextAreaLook* pLook = (MBTextAreaLook*)(*itor).second;
+				pTextArea->ChangeCustomLook(pLook);
+				pTextArea->SetFont(pLook->m_pFont);
+			}
+		}
+		else if (!strcmp(szBuf, "MAXLENGTH"))
+		{
+			int nMaxLength;
+			if (strlen(childNode->value()) > 0)
+				nMaxLength = atoi(childNode->value());
+			else
+				nMaxLength = 0;
+
+			pTextArea->SetMaxLen(nMaxLength);
+		}
+		else if (!strcmp(szBuf, "INDENTATION"))
+		{
+			int nIndentation;
+			if (strlen(childNode->value()) > 0)
+				nIndentation = atoi(childNode->value());
+			else
+				nIndentation = 0;
+
+			pTextArea->SetIndentation(nIndentation);
+		}
+		else if (!strcmp(szBuf, "SCROLLBAR"))
+		{
+			bool bValue = true;
+			if (_stricmp(childNode->value(), "false") == 0)
+				bValue = false;		
+			
+			pTextArea->SetScrollBarEnable(bValue);
+		}
+	}
+
+	return pTextArea;
+}
+
+MTabCtrl* MIDLResource::GetTabCtrl(rapidxml::xml_node<>* element)
+{
+	MWidget* pParentWidget;	MListener* pListener;
+
+	pListener = pParentWidget = GetParentWidget(element);
+	MTabCtrl* pTabCtrl= (MTabCtrl*)Mint::GetInstance()->NewWidget(MINT_TABCTRL, "", pParentWidget, pListener);
+	InsertWidget(element, pTabCtrl);
+
+	for (auto childNode = element->first_node(); childNode; childNode = childNode->next_sibling())
+	{
+
+		if (GetCommonWidgetProperty(pTabCtrl, childNode, childNode->name())) continue;
+
+		if (!strcmp(childNode->name(), "TAB"))
+		{
+			MWidget *pButton = NULL;
+			MWidget *pFrame = NULL;
+
+			char szWidgetName[256];
+			if (strlen(childNode->first_attribute("button")->value()) > 0)
+				strcpy_s(szWidgetName, childNode->first_attribute("button")->value());
+			pButton = FindWidget(szWidgetName);
+			if (pButton != NULL &&
+				(strcmp(pButton->GetClassName(), MINT_BUTTON) == 0 ||
+					strcmp(pButton->GetClassName(), MINT_BMBUTTON) == 0))
+			{
+				if (strlen(childNode->first_attribute("widget")->value()) > 0)
+					strcpy_s(szWidgetName, childNode->first_attribute("widget")->value());
+				pFrame = FindWidget(szWidgetName);
+				pTabCtrl->Add((MButton*)pButton, pFrame);
+			}
+		}
+		else if (!strcmp(childNode->name(), "TABCONTROLLOOK"))
+		{
+			char szItem[256];
+			memset(szItem, 0, sizeof(szItem));
+			strcpy_s(szItem, childNode->value());
+
+			map<string, MBTabCtrlLook*>::iterator itor = m_TabCtrlLookMap.find(szItem);
+			if (itor != m_TabCtrlLookMap.end())
+			{
+				pTabCtrl->ChangeCustomLook((MBTabCtrlLook*)(*itor).second);
+			}
+		}
+	}
+	return pTabCtrl;
+}
+
+MPanel* MIDLResource::GetPanel(rapidxml::xml_node<>* element)
+{
+	MWidget* pParentWidget;	MListener* pListener;
+
+	pListener = pParentWidget = GetParentWidget(element);
+	MPanel* pPanel = (MPanel*)Mint::GetInstance()->NewWidget(MINT_PANEL, "", pParentWidget, pListener);
+	InsertWidget(element, pPanel);
+
+	for (auto childNode = element->first_node(); childNode; childNode = childNode->next_sibling())
+	{
+		if (GetCommonWidgetProperty(pPanel, childNode, childNode->name())) continue;
+
+		if (!_stricmp(childNode->name(), "BORDERSTYLE"))
+		{
+			char szBorderStyle[256];
+			strcpy_s(szBorderStyle, childNode->value());
+
+			if (!_stricmp(szBorderStyle, "none")) pPanel->SetBorderStyle(MBS_NONE);
+			else if (!_stricmp(szBorderStyle, "single")) pPanel->SetBorderStyle(MBS_SINGLE);
+		}
+		else if (!_stricmp(childNode->name(), "BORDERCOLOR"))
+		{
+			MCOLOR color = GetColor(childNode);
+			pPanel->SetBorderColor(color);
+		}
+		else if (!_stricmp(childNode->name(), "BACKGROUND"))
+		{
+			MCOLOR color = GetColor(childNode);
+			pPanel->SetBackgroundColor(color);
+		}
+	}
+	return pPanel;
+}
+
+void MIDLResource::Parse(rapidxml::xml_node<>* element)
+{
+	char szTagName[256];
+	strcpy_s(szTagName, element->name());
+
+	if (!_stricmp(szTagName, "BUTTONLOOKTEMPLATE"))
+	{
+		GetButtonLook(element);
+	}
+	else if (!_stricmp(szTagName, "GROUPLOOKTEMPLATE"))
+	{
+		GetGroupLook(element);
+	}
+	else if (!_stricmp(szTagName, "FRAMELOOKTEMPLATE"))
+	{
+		GetFrameLook(element);
+	}
+	else if (!_stricmp(szTagName, "LABELLOOKTEMPLATE"))
+	{
+		GetLabelLook(element);
+	}
+	else if (!_stricmp(szTagName, "EDITLOOKTEMPLATE"))
+	{
+		GetEditLook(element);
+	}
+	else if (!_stricmp(szTagName, "LISTBOXLOOKTEMPLATE"))
+	{
+		GetListBoxLook(element, 0);
+	}
+	else if (!_stricmp(szTagName, "COMBOLISTBOXLOOKTEMPLATE"))
+	{
+		GetListBoxLook(element, 1);
+	}
+	else if (!_stricmp(szTagName, "ARROWLOOKTEMPLATE"))
+	{
+		GetArrowLook(element);
+	}
+	else if (!_stricmp(szTagName, "THUMBLOOKTEMPLATE"))
+	{
+		GetThumbLook(element);
+	}
+	else if (!_stricmp(szTagName, "SCROLLBARLOOKTEMPLATE"))
+	{
+		GetScrollBarLook(element);
+	}
+	else if (!_stricmp(szTagName, "SLIDERLOOKTEMPLATE"))
+	{
+		GetSliderLook(element);
+	}
+	else if (!_stricmp(szTagName, "TEXTAREALOOKTEMPLATE"))
+	{
+		GetTextAreaLook(element);
+	}
+	else if( !_stricmp(szTagName, "SLIDERTHUMBLOOKTEMPLATE" ))
+	{
+		GetSliderThumbLook( element );
+	}
+	else if( !_stricmp(szTagName, "TABCTRLLOOKTEMPLATE" ))
+	{
+		GetTabCtrlLook( element );
+	}
+	else if (!_stricmp(szTagName, "FONTTEMPLATE"))
+	{
+		GetFont(element);
+	}
+	else if (!_stricmp(szTagName, "FRAME"))
+	{
+		GetFrame(element);
+	}
+	else if (!_stricmp(szTagName, "LABEL"))
+	{
+		GetLabel(element);
+	}
+	else if (!_stricmp(szTagName, "BMLABEL"))
+	{
+		GetBmLabel(element);
+	}
+	else if (!_stricmp(szTagName, "BUTTON"))
+	{
+		GetButton(element);
+	}
+	else if (!_stricmp(szTagName, "BMBUTTON"))
+	{
+		GetBmButton(element);
+	}
+	else if (!_stricmp(szTagName, "EDIT"))
+	{
+		GetEdit(element);
+	}
+	else if (!_stricmp(szTagName, "LISTBOX"))
+	{
+		GetListBox(element);
+	}
+	else if (!_stricmp(szTagName, "PICTURE"))
+	{
+		GetPicture(element);
+	}
+	else if (!_stricmp(szTagName, "SCROLLBAR"))
+	{
+		GetScrollBar(element);
+	}
+	else if (!_stricmp(szTagName, "SLIDER"))
+	{
+		GetSlider(element);
+	}
+	else if (!_stricmp(szTagName, "GROUP"))
+	{
+		GetGroup(element);
+	}
+	else if (!_stricmp(szTagName, "COMBOBOX"))
+	{
+		GetComboBox(element);
+	}
+	else if (!_stricmp(szTagName, "POPUPMENU"))
+	{
+		GetPopupMenu(element);
+	}
+	else if (!_stricmp(szTagName, "ANIMATIONTEMPLATE"))
+	{
+		GetAniBitmap(element);
+	}
+	else if (!_stricmp(szTagName, "ANIMATION"))
+	{
+		GetAnimation(element);
+	}
+	else if (!_stricmp(szTagName, "CURSOR"))
+	{
+		GetCursor(element);
+	}
+	else if (!_stricmp(szTagName, "HOTKEY"))
+	{
+		GetHotKey(element);
+	}
+/*	else if (!_stricmp(szTagName, "ACTIONKEY"))
+	{
+		GetActionKey(element);
+	}	*/
+	else if (!_stricmp(szTagName, "TEXTAREA"))
+	{
+		GetTextArea(element);
+	}
+	else if (!_stricmp(szTagName, "TABCONTROL"))
+	{
+		GetTabCtrl(element);
+	}
+	else if (!_stricmp(szTagName, "PANEL"))
+	{
+		GetPanel(element);
+	}
+	else if (!_stricmp(szTagName, "BITMAPALIAS"))
+	{
+		GetBitmapAlias(element);
+	}
+	else if (!_stricmp(szTagName, "REBOUNDS"))
+	{
+		GetRebounds(element);
+	}
+}
+
+bool MIDLResource::LoadFromFile(const char* szFileName, MWidget* pParent,MZFileSystem *pfs)
+{
+	m_pParent = pParent;
+	if(m_pParent==NULL) m_pParent = Mint::GetInstance()->GetMainFrame();
+
+	MZFile mzf;
+	if (pfs) {
+		if (!mzf.Open(szFileName, pfs)) {
+			if (!mzf.Open(szFileName))
+				return false;
+		}
+	}
+	else {
+
+		if (!mzf.Open(szFileName))
+			return false;
+	}
+
+	char* buffer = new char[mzf.GetLength() + 1];
+	buffer[mzf.GetLength()] = 0;
+	mzf.Read(buffer, mzf.GetLength());
+
+	rapidxml::xml_document<> doc;
+	if (!doc.parse<0>(buffer)) {
+		mlog("Error parsing %s\n", szFileName);
+		delete[] buffer;
+		return false;
+	}
+
+	rapidxml::xml_node<>* rootNode = doc.first_node();
+	for (auto childNode = rootNode->first_node(); childNode; childNode = childNode->next_sibling())
+	{
+		if (childNode->name()[0] == '#')
+			continue;
+
+		if (strcmp(childNode->name(), "INCLUDE") == 0)
+		{
+			const char* pdest;
+			pdest = strrchr(szFileName, '\\');
+			if (pdest == NULL) pdest = strrchr(szFileName, '/');
+
+			char szContents[256], szFileName2[256];
+			strcpy_s(szContents, childNode->value());
+
+			memset(szFileName2, 0, sizeof(szFileName2));
+			if (pdest != NULL)
+			{
+				int t = pdest - szFileName + 1;
+				strncpy(szFileName2, szFileName, t);
+			}
+			strcat(szFileName2, szContents);
+
+			LoadFromFile(szFileName2, m_pParent, pfs);
+		}
+		Parse(childNode);
+
+	}
+	
+	delete[] buffer;
+	doc.clear();
+	mzf.Close();
+
+	return true;
+}
+
+///TODO: translate this later, i dont reallyf eel like doing it atm, it seems to be unused
+bool MIDLResource::SaveToFile(const char* szFileName)
+{
+	return true;
+/*	MXmlDocument	xmlDocument;
+	MXmlElement		rootElement, childElement;
+	if (!xmlDocument.Create()) return false;
+	xmlDocument.CreateProcessingInstruction();
+	rootElement = xmlDocument.CreateElement(IDL_ROOT);
+	rootElement.AppendText("\n\t");
+	xmlDocument.AppendChild(rootElement);
+
+	for (MWidgetMMap::iterator itor = m_WidgetMap.begin(); itor != m_WidgetMap.end(); ++itor)
+	{
+		MWidget* pWidget = (*itor).second;
+		if (!strcmp(pWidget->GetClassName(), MINT_LABEL))
+		{
+			SetLabel(rootElement, (MLabel*)pWidget);
+		}
+	}
+
+	rootElement.AppendText("\n");
+	if (!xmlDocument.SaveToFile(szFileName)) 
+	{
+		xmlDocument.Destroy();
+		return false;
+	}
+	xmlDocument.Destroy();
+	return true;*/
+}
+
+void MIDLResource::ClearLooks()
+{
+#define CLEAR(x) while(!x.empty()) { delete (*x.begin()).second; x.erase(x.begin()); }
+
+	// 룩을 클리어하기 전에 위젯들이 디폴트 룩을 사용하도록 바꾼다 (언어변환으로 리소스 리로딩할때 문제 생김)
+	MButton::ChangeLook(NULL);
+	MListBox::ChangeLook(NULL);
+	MEdit::ChangeLook(NULL);
+	MFrame::ChangeLook(NULL);
+	MGroup::ChangeLook(NULL);
+	MEdit::ChangeLook(NULL);
+	MLabel::ChangeLook(NULL);
+	MListBox::ChangeLook(NULL);
+	MPanel::ChangeLook(NULL);
+	MPopupMenu::ChangeLook(NULL);
+	MThumb::ChangeLook(NULL);
+	MArrow::ChangeLook(NULL);
+	MScrollBar::ChangeLook(NULL);
+	MSliderThumb::ChangeLook(NULL);
+	MScrollBar::ChangeLook(NULL);
+	MTabCtrl::ChangeLook(NULL);
+	MTextArea::ChangeLook(NULL);
+
+
+	CLEAR(m_LabelLookMap);
+	CLEAR(m_ButtonLookMap);
+	CLEAR(m_GroupLookMap);
+	CLEAR(m_FrameLookMap);
+	CLEAR(m_EditLookMap);
+	CLEAR(m_ListBoxLookMap);
+	CLEAR(m_ScrollBarLookMap);
+	CLEAR(m_ArrowLookMap);
+	CLEAR(m_ThumbLookMap);
+//	CLEAR(m_SliderLookMap);
+	CLEAR(m_AniBitmapMap);
+//	CLEAR(m_WidgetMap)
+	CLEAR(m_TabCtrlLookMap);
+
+	CLEAR(m_TextAreaLookMap);
+	CLEAR(m_ButtonGroupMap);
+}
+
+void MIDLResource::Clear()
+{
+	ClearLooks();
+
+	mlog("clear looks end.\n");
+
+	m_WidgetMap.Clear();
+
+	mlog("Widget map clear end.\n");
+
+	MCursorSystem::Destroy();
+
+	mlog("desctroy cursor system end.\n");
+}
+/*
+void MIDLResource::SetLabel(MXmlElement& element, MLabel* pLabel)
+{
+	MXmlElement childElement, labelElement;
+	labelElement = element.CreateChildElement(IDL_LABEL);
+
+	MRECT rect = pLabel->GetRect();
+	SetRect(labelElement, &rect, "BOUNDS");
+	pLabel->m_IDLRect = rect;
+
+	MCOLOR color = pLabel->GetTextColor();
+	SetColor(labelElement, &color, "TEXTCOLOR");
+
+	childElement = labelElement.CreateChildElement(IDL_TEXT);
+	childElement.SetContents(pLabel->GetText());
+}
+
+void MIDLResource::SetPoint(MXmlElement& element, MPOINT* pPoint, const char* szTagName)
+{
+	MXmlElement pointElement, childElement;
+	pointElement = element.CreateChildElement(szTagName);
+	childElement = pointElement.CreateChildElement("X");
+	childElement.SetContents(pPoint->x);
+	childElement = pointElement.CreateChildElement("Y");
+	childElement.SetContents(pPoint->y);
+}
+
+void MIDLResource::SetRect(MXmlElement& element, MRECT* pRect, const char* szTagName)
+{
+	MXmlElement rectElement, childElement;
+	rectElement = element.CreateChildElement(szTagName);
+	childElement = rectElement.CreateChildElement("X");
+	childElement.SetContents(pRect->x);
+	childElement = rectElement.CreateChildElement("Y");
+	childElement.SetContents(pRect->y);
+	childElement = rectElement.CreateChildElement("W");
+	childElement.SetContents(pRect->w);
+	childElement = rectElement.CreateChildElement("H");
+	childElement.SetContents(pRect->h);
+}
+
+void MIDLResource::SetSize(MXmlElement& element, MSIZE* pSize, const char* szTagName)
+{
+	MXmlElement sizeElement, childElement;
+	sizeElement = element.CreateChildElement(szTagName);
+	childElement = sizeElement.CreateChildElement("W");
+	childElement.SetContents(pSize->w);
+	childElement = sizeElement.CreateChildElement("H");
+	childElement.SetContents(pSize->h);
+}
+
+void MIDLResource::SetColor(MXmlElement& element, MCOLOR* pColor, const char* szTagName)
+{
+	MXmlElement colorElement, childElement;
+	colorElement = element.CreateChildElement(szTagName);
+	childElement = colorElement.CreateChildElement("R");
+	childElement.SetContents(pColor->r);
+	childElement = colorElement.CreateChildElement("G");
+	childElement.SetContents(pColor->g);
+	childElement = colorElement.CreateChildElement("B");
+	childElement.SetContents(pColor->b);
+	childElement = colorElement.CreateChildElement("ALPHA");
+	childElement.SetContents(pColor->a);
+}
+*/
+MWidget* MIDLResource::FindWidget(string szItem)
+{
+	MWidgetMMap::iterator itor = m_WidgetMap.find(szItem);
+	if (itor != m_WidgetMap.end())
+	{
+		return (MWidget*)(*itor).second;
+	}
+	else
+	{
+		return NULL;
+	}
+}
+
+void MIDLResource::FindWidgets(MWidgetList& widgetList, string szItem)
+{
+	pair<MWidgetMMap::iterator, MWidgetMMap::iterator> p = m_WidgetMap.equal_range(szItem);
+
+	for (MWidgetMMap::iterator itor = p.first; itor != p.second; ++itor)
+	{
+		MWidget* pWidget = (*itor).second;
+		widgetList.push_back(pWidget);
+	}
+}
+
+MFrame*	MIDLResource::CreateFrame(const char* szName, MWidget* pParent, MListener* pListener)
+{
+	MFrame* pFrame = (MFrame*)Mint::GetInstance()->NewWidget(MINT_FRAME, szName, pParent, pListener);
+	return pFrame;
+}
+
+MBFrameLook* MIDLResource::FindFrameLook(string szItem)
+{
+	map<string, MBFrameLook*>::iterator itor = m_FrameLookMap.find(szItem);
+	if (itor != m_FrameLookMap.end())
+	{
+		return (*itor).second;
+	}
+
+	return NULL;
+}
+
+void MIDLResource::InsertWidget(const char* pItemName, MWidget* pWidget )
+{
+	m_WidgetMap.insert(MWidgetMMap::value_type(string(pItemName), pWidget) );
+}
+
+void MIDLResource::TransText(char* szSrc, char* szOut)
+{
+	strcpy(szOut, szSrc);
+}
+
+void MIDLResource::GetRebounds(rapidxml::xml_node<>* element)
+{
+	char szItem[256] = {0, };
+
+	if (element->first_attribute("item"))
+		strcpy_s(szItem,element->first_attribute("item")->value());
+	MRECT rt = GetRect(element);
+
+	MWidgetList widget_list;
+	FindWidgets(widget_list, string(szItem));
+
+
+/*
+#ifdef _DEBUG
+	if (widget_list.size() != 1)
+	{
+		_ASSERT(0);		// 위젯이 하나가 아니다.
+	}
+#endif
+*/
+
+	for (MWidgetList::iterator itor = widget_list.begin(); itor != widget_list.end(); ++itor)
+	{
+		MWidget* pWidget = (*itor);
+		pWidget->SetBounds( rt);
+		pWidget->m_IDLRect = rt;
+	}
+}

@@ -1,0 +1,11 @@
+﻿D:\Visual Studio 2019\MSBuild\Microsoft\VC\v150\Platforms\x64\PlatformToolsets\v141_xp\Toolset.targets(39,5): warning MSB8051: Support for targeting Windows XP is deprecated and will not be present in future releases of Visual Studio. Please see https://go.microsoft.com/fwlink/?linkid=2023588 for more information.
+cl : Command line warning D9002: ignoring unknown option '/arch:IA32'
+  stdafx.cpp
+  _WIN32_WINNT not defined. Defaulting to _WIN32_WINNT_MAXVER (see WinSDKVer.h)
+cl : Command line warning D9002: ignoring unknown option '/arch:IA32'
+  MDatabase.cpp
+  ODBCRecordset.cpp
+  Generating Code...
+D:\Visual Studio 2019\MSBuild\Microsoft\VC\v150\Microsoft.CppBuild.targets(1397,5): warning MSB8012: TargetPath(D:\GunZ\Stable\Gunz\x64\Release\MDatabase.lib) does not match the Library's OutputFile property value (D:\GunZ\Stable\Gunz\x64\Release\MDatabase64.lib). This may cause your project to build incorrectly. To correct this, please make sure that $(OutDir), $(TargetName) and $(TargetExt) property values match the value specified in %(Lib.OutputFile).
+D:\Visual Studio 2019\MSBuild\Microsoft\VC\v150\Microsoft.CppBuild.targets(1399,5): warning MSB8012: TargetName(MDatabase) does not match the Library's OutputFile property value (MDatabase64). This may cause your project to build incorrectly. To correct this, please make sure that $(OutDir), $(TargetName) and $(TargetExt) property values match the value specified in %(Lib.OutputFile).
+  MDatabase.vcxproj -> D:\GunZ\Stable\Gunz\x64\Release\MDatabase.lib

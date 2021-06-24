@@ -1,0 +1,1545 @@
+gameguard not running
+Load XML from memory : strings.xml(0x2711) - SUCCESS
+Load XML from memory : cserror.xml(0x2711) - SUCCESS
+[Sun Jun 13 13:46:00 2021] DBMS connected
+
+[Sun Jun 13 13:46:00 2021] Command registeration completed
+
+
+10
+MBMatchServer::AddClanServerSwitchDownSchedule - make close clan mode schedule success. next close clan mode time is 21-6-30 23:50
+
+10
+Start GambleItem Init.
+GIID : 1000001
+  GRIID : M(502003), F(502003), RentHourPeriod(360), ItemCnt(0).
+  GRIID : M(500003), F(500003), RentHourPeriod(360), ItemCnt(0).
+  GRIID : M(502001), F(502001), RentHourPeriod(360), ItemCnt(0).
+  GRIID : M(506002), F(506002), RentHourPeriod(360), ItemCnt(0).
+  GRIID : M(509003), F(509003), RentHourPeriod(360), ItemCnt(0).
+  GRIID : M(505002), F(505002), RentHourPeriod(360), ItemCnt(0).
+  GRIID : M(520032), F(520532), RentHourPeriod(360), ItemCnt(0).
+  GRIID : M(520030), F(520530), RentHourPeriod(360), ItemCnt(0).
+  GRIID : M(521014), F(521514), RentHourPeriod(360), ItemCnt(0).
+  GRIID : M(521024), F(521524), RentHourPeriod(360), ItemCnt(0).
+  GRIID : M(522009), F(522509), RentHourPeriod(360), ItemCnt(0).
+  GRIID : M(522013), F(522513), RentHourPeriod(360), ItemCnt(0).
+  GRIID : M(523027), F(523527), RentHourPeriod(360), ItemCnt(0).
+  GRIID : M(523012), F(523512), RentHourPeriod(360), ItemCnt(0).
+  GRIID : M(524016), F(524516), RentHourPeriod(360), ItemCnt(0).
+  GRIID : M(524025), F(524525), RentHourPeriod(360), ItemCnt(0).
+  GRIID : M(528002), F(528002), RentHourPeriod(360), ItemCnt(0).
+  GRIID : M(520033), F(520533), RentHourPeriod(360), ItemCnt(0).
+  GRIID : M(502004), F(502004), RentHourPeriod(360), ItemCnt(0).
+  GRIID : M(527001), F(527001), RentHourPeriod(360), ItemCnt(0).
+GIID : 1000002
+  GRIID : M(502002), F(502002), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(500004), F(500004), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(500001), F(500001), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(506004), F(506004), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(507003), F(507003), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(504501), F(504501), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(520014), F(520514), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(520029), F(520529), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(521017), F(521517), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(521027), F(521527), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(522020), F(522520), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(522004), F(522504), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(523024), F(523524), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(523005), F(523505), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(524027), F(524527), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(524012), F(524512), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(527002), F(527002), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(520034), F(520534), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(502005), F(502005), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(528001), F(528001), RentHourPeriod(168), ItemCnt(0).
+GIID : 1000003
+  GRIID : M(4), F(4), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(6), F(6), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(14), F(14), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(16), F(16), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(31), F(31), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(4023), F(4023), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(4514), F(4514), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(5016), F(5016), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(6009), F(6009), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(7004), F(7004), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(8001), F(8001), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(9001), F(9001), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(21009), F(21509), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(22006), F(22506), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(23008), F(23511), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(24007), F(24507), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(30403), F(30403), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(25005), F(25005), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(30002), F(30002), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(400007), F(400007), RentHourPeriod(168), ItemCnt(0).
+GIID : 1000004
+  GRIID : M(7), F(7), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(8), F(8), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(17), F(17), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(18), F(18), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(35), F(35), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(4022), F(4022), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(4516), F(4516), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(5020), F(5020), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(6010), F(6010), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(7009), F(7009), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(8004), F(8004), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(9007), F(9007), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(21010), F(21510), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(22007), F(22507), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(23009), F(23512), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(24008), F(24508), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(30003), F(30003), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(25006), F(25006), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(30103), F(30103), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(30305), F(30305), RentHourPeriod(168), ItemCnt(0).
+  GRIID : M(6008), F(6008), RentHourPeriod(168), ItemCnt(0).
+End GambleItem Init.
+
+Start shop GItem list log.
+GambleItemCount : 2.
+Shop GItem : 1000003
+Shop GItem : 1000004
+End shop GItem list log.
+
+
+=== Dump GambleItem Info. ===
+Gamble item list.
+Gamble item. ID(1000001), Name(Blue Box), IsTimeover(0).
+Gamble item. ID(1000002), Name(Pink Box), IsTimeover(0).
+Gamble item. ID(1000003), Name(Green Box), IsTimeover(0).
+Gamble item. ID(1000004), Name(Gold Box), IsTimeover(0).
+
+Send shop gamble item list.
+Shop gamble item count : 2
+Shop gamble item. ID(1000003), Name(Green Box).
+Shop gamble item. ID(1000004), Name(Gold Box).
+=== Completed Dump GambleItem Info. ===
+
+=======================================================================
+ BRID(1), RewardMinutePeriod(1), RewardCount(50)
+    BRIID(1), ItemID(M=506003, F=506003), RentHourPeriod(168), Rate(1000), RateRange(1000)
+=======================================================================
+init GameOn success.
+success init security.
+FILE PATH : D:\GunZ\Server\MD5HashValue.txt
+MD5 Hash Value => 3d 1f dc 59 85 dd ab 05 50 02 8a 9d 7a aa c3 a3 
+
+================================== Server configure info ==================================
+[Sun Jun 13 13:46:00 2021] Release Date : Jun 12 2021
+[Sun Jun 13 13:46:00 2021] MD5 Check Off
+[Sun Jun 13 13:46:00 2021] Loop Log Save Off
+[Sun Jun 13 13:46:00 2021] Server Country : NHNUSA
+[Sun Jun 13 13:46:00 2021] Command version : (58)
+[Sun Jun 13 13:46:00 2021] Event usable state : (false)
+[Sun Jun 13 13:46:00 2021] Load event size : (0)
+[Sun Jun 13 13:46:00 2021] FileCRCCheckSum usable state : (false)
+[Sun Jun 13 13:46:00 2021] FileCRC size : (0)
+[Sun Jun 13 13:46:00 2021] Country Code Filter usalbe state : (false)
+[Sun Jun 13 13:46:00 2021] Accept Invalied IP state : (true)
+[Sun Jun 13 13:46:00 2021] Keeper IP : (127.0.0.1)
+[Sun Jun 13 13:46:00 2021] Monitor IP : (127.0.0.1)
+[Sun Jun 13 13:46:00 2021] Ticket use : 0
+
+===========================================================================================
+
+[Sun Jun 13 13:46:00 2021] Match Server Created (Port:6000)
+
+Dueltournament Service Open(2021-6-13 Hour13, Min46) 
+Daily Survival Ranking Request [month6 day13 hour13 min46]
+
+[Sun Jun 13 13:46:10 2021]  MMatchDBMgr::ExceptionHandler
+ErrSQL( {CALL spDTInsertDTCharacterInfo(2)} ), ErrCode( -1 )
+ErrMsg - Cannot insert duplicate key row in object 'dbo.DTCharacterInfo' with unique index 'DTCharacterInfo_TimeStamp_CID_IX'. The duplicate key value is (<NULL>, 2).
+The statement has been terminated.
+State:23000,Native:2601,Origin:[Microsoft][ODBC SQL Server Driver][SQL Server]
+State:01000,Native:3621,Origin:[Microsoft][ODBC SQL Server Driver][SQL Server]
+
+Cannot insert duplicate key row in object 'dbo.DTCharacterInfo' with unique index 'DTCharacterInfo_TimeStamp_CID_IX'. The duplicate key value is (<NULL>, 2).
+The statement has been terminated.
+Error InsertingDTCharInfoMMatchServer::OnAsyncResponse_GetDuelTournamentCharacterInfo - 실패
+[Sun Jun 13 13:49:00 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=9, objHistoryCount=1
+
+[Sun Jun 13 13:52:00 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=9, objHistoryCount=1
+
+[Sun Jun 13 13:55:00 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=9, objHistoryCount=1
+
+[Sun Jun 13 13:58:00 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=9, objHistoryCount=0
+
+[Sun Jun 13 14:01:00 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=9, objHistoryCount=0
+
+[Sun Jun 13 14:04:00 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=9, objHistoryCount=0
+
+[Sun Jun 13 14:07:00 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=9, objHistoryCount=0
+
+[Sun Jun 13 14:10:00 2021] MDuelTournamentTimeChecker::Current Month - 6, Day - 13
+[Sun Jun 13 14:10:00 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=9, objHistoryCount=0
+
+[Sun Jun 13 14:13:00 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=9, objHistoryCount=0
+
+[Sun Jun 13 14:16:00 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=9, objHistoryCount=0
+
+[Sun Jun 13 14:19:00 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=9, objHistoryCount=0
+
+[Sun Jun 13 14:22:00 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=9, objHistoryCount=0
+
+[Sun Jun 13 14:25:00 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=9, objHistoryCount=0
+
+[Sun Jun 13 14:28:00 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=9, objHistoryCount=0
+
+[Sun Jun 13 14:31:00 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=9, objHistoryCount=0
+
+[Sun Jun 13 14:34:00 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=9, objHistoryCount=0
+
+[Sun Jun 13 14:37:00 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=9, objHistoryCount=0
+
+[Sun Jun 13 14:40:00 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=9, objHistoryCount=0
+
+[Sun Jun 13 14:43:00 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=9, objHistoryCount=0
+
+success to update CustomIP
+[Sun Jun 13 14:46:00 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=9, objHistoryCount=0
+
+[Sun Jun 13 14:49:00 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=9, objHistoryCount=0
+
+[Sun Jun 13 14:52:00 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=9, objHistoryCount=0
+
+[Sun Jun 13 14:55:00 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=9, objHistoryCount=0
+
+[Sun Jun 13 14:58:00 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=9, objHistoryCount=0
+
+[Sun Jun 13 15:01:00 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=9, objHistoryCount=0
+
+[Sun Jun 13 15:04:00 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=9, objHistoryCount=0
+
+[Sun Jun 13 15:07:00 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=9, objHistoryCount=0
+
+[Sun Jun 13 15:10:00 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=9, objHistoryCount=0
+
+[Sun Jun 13 15:13:00 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=9, objHistoryCount=0
+
+[Sun Jun 13 15:16:00 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=9, objHistoryCount=0
+
+[Sun Jun 13 15:19:00 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=9, objHistoryCount=0
+
+[Sun Jun 13 15:22:00 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=9, objHistoryCount=0
+
+[Sun Jun 13 15:25:00 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=9, objHistoryCount=0
+
+[Sun Jun 13 15:28:00 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=9, objHistoryCount=0
+
+[Sun Jun 13 15:31:00 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=9, objHistoryCount=0
+
+[Sun Jun 13 15:34:00 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=9, objHistoryCount=0
+
+[Sun Jun 13 15:37:00 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=9, objHistoryCount=0
+
+[Sun Jun 13 15:40:00 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=9, objHistoryCount=0
+
+[Sun Jun 13 15:43:00 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=9, objHistoryCount=0
+
+success to update CustomIP
+[Sun Jun 13 15:46:00 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=9, objHistoryCount=0
+
+[Sun Jun 13 15:49:00 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=9, objHistoryCount=0
+
+[Sun Jun 13 15:52:00 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=9, objHistoryCount=0
+
+[Sun Jun 13 15:55:00 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=9, objHistoryCount=0
+
+[Sun Jun 13 15:58:00 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=9, objHistoryCount=0
+
+[Sun Jun 13 16:01:00 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=9, objHistoryCount=0
+
+[Sun Jun 13 16:04:00 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=9, objHistoryCount=0
+
+[Sun Jun 13 16:07:00 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=9, objHistoryCount=0
+
+[Sun Jun 13 16:10:00 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=9, objHistoryCount=0
+
+[Sun Jun 13 16:13:00 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=9, objHistoryCount=0
+
+[Sun Jun 13 16:16:00 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=9, objHistoryCount=0
+
+[Sun Jun 13 16:19:00 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=9, objHistoryCount=0
+
+
+[Sun Jun 13 16:20:55 2021]  MMatchDBMgr::ExceptionHandler
+ErrSQL( {CALL spDTInsertDTCharacterInfo(2)} ), ErrCode( -1 )
+ErrMsg - Cannot insert duplicate key row in object 'dbo.DTCharacterInfo' with unique index 'DTCharacterInfo_TimeStamp_CID_IX'. The duplicate key value is (<NULL>, 2).
+The statement has been terminated.
+State:23000,Native:2601,Origin:[Microsoft][ODBC SQL Server Driver][SQL Server]
+State:01000,Native:3621,Origin:[Microsoft][ODBC SQL Server Driver][SQL Server]
+
+Cannot insert duplicate key row in object 'dbo.DTCharacterInfo' with unique index 'DTCharacterInfo_TimeStamp_CID_IX'. The duplicate key value is (<NULL>, 2).
+The statement has been terminated.
+Error InsertingDTCharInfoMMatchServer::OnAsyncResponse_GetDuelTournamentCharacterInfo - 실패
+[Sun Jun 13 16:22:00 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=9, objHistoryCount=1
+
+[Sun Jun 13 16:25:00 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=9, objHistoryCount=1
+
+
+[Sun Jun 13 16:26:04 2021]  MMatchDBMgr::ExceptionHandler
+ErrSQL( {CALL spDTInsertDTCharacterInfo(2)} ), ErrCode( -1 )
+ErrMsg - Cannot insert duplicate key row in object 'dbo.DTCharacterInfo' with unique index 'DTCharacterInfo_TimeStamp_CID_IX'. The duplicate key value is (<NULL>, 2).
+The statement has been terminated.
+State:23000,Native:2601,Origin:[Microsoft][ODBC SQL Server Driver][SQL Server]
+State:01000,Native:3621,Origin:[Microsoft][ODBC SQL Server Driver][SQL Server]
+
+Cannot insert duplicate key row in object 'dbo.DTCharacterInfo' with unique index 'DTCharacterInfo_TimeStamp_CID_IX'. The duplicate key value is (<NULL>, 2).
+The statement has been terminated.
+Error InsertingDTCharInfoMMatchServer::OnAsyncResponse_GetDuelTournamentCharacterInfo - 실패
+
+[Sun Jun 13 16:26:26 2021]  MMatchDBMgr::ExceptionHandler
+ErrSQL( {CALL spDTInsertDTCharacterInfo(2)} ), ErrCode( -1 )
+ErrMsg - Cannot insert duplicate key row in object 'dbo.DTCharacterInfo' with unique index 'DTCharacterInfo_TimeStamp_CID_IX'. The duplicate key value is (<NULL>, 2).
+The statement has been terminated.
+State:23000,Native:2601,Origin:[Microsoft][ODBC SQL Server Driver][SQL Server]
+State:01000,Native:3621,Origin:[Microsoft][ODBC SQL Server Driver][SQL Server]
+
+Cannot insert duplicate key row in object 'dbo.DTCharacterInfo' with unique index 'DTCharacterInfo_TimeStamp_CID_IX'. The duplicate key value is (<NULL>, 2).
+The statement has been terminated.
+Error InsertingDTCharInfoMMatchServer::OnAsyncResponse_GetDuelTournamentCharacterInfo - 실패
+[Sun Jun 13 16:28:00 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=15, objHistoryCount=3
+
+
+[Sun Jun 13 16:28:49 2021]  MMatchDBMgr::ExceptionHandler
+ErrSQL( {CALL spDTInsertDTCharacterInfo(2)} ), ErrCode( -1 )
+ErrMsg - Cannot insert duplicate key row in object 'dbo.DTCharacterInfo' with unique index 'DTCharacterInfo_TimeStamp_CID_IX'. The duplicate key value is (<NULL>, 2).
+The statement has been terminated.
+State:23000,Native:2601,Origin:[Microsoft][ODBC SQL Server Driver][SQL Server]
+State:01000,Native:3621,Origin:[Microsoft][ODBC SQL Server Driver][SQL Server]
+
+Cannot insert duplicate key row in object 'dbo.DTCharacterInfo' with unique index 'DTCharacterInfo_TimeStamp_CID_IX'. The duplicate key value is (<NULL>, 2).
+The statement has been terminated.
+Error InsertingDTCharInfoMMatchServer::OnAsyncResponse_GetDuelTournamentCharacterInfo - 실패
+
+[Sun Jun 13 16:29:44 2021]  MMatchDBMgr::ExceptionHandler
+ErrSQL( {CALL spDTInsertDTCharacterInfo(2)} ), ErrCode( -1 )
+ErrMsg - Cannot insert duplicate key row in object 'dbo.DTCharacterInfo' with unique index 'DTCharacterInfo_TimeStamp_CID_IX'. The duplicate key value is (<NULL>, 2).
+The statement has been terminated.
+State:23000,Native:2601,Origin:[Microsoft][ODBC SQL Server Driver][SQL Server]
+State:01000,Native:3621,Origin:[Microsoft][ODBC SQL Server Driver][SQL Server]
+
+Cannot insert duplicate key row in object 'dbo.DTCharacterInfo' with unique index 'DTCharacterInfo_TimeStamp_CID_IX'. The duplicate key value is (<NULL>, 2).
+The statement has been terminated.
+Error InsertingDTCharInfoMMatchServer::OnAsyncResponse_GetDuelTournamentCharacterInfo - 실패
+[Sun Jun 13 16:31:00 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=15, objHistoryCount=5
+
+[Sun Jun 13 16:34:00 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=15, objHistoryCount=4
+
+[Sun Jun 13 16:37:00 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=15, objHistoryCount=3
+
+[Sun Jun 13 16:40:00 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=15, objHistoryCount=0
+
+[Sun Jun 13 16:43:00 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=15, objHistoryCount=0
+
+
+[Sun Jun 13 16:44:05 2021]  MMatchDBMgr::ExceptionHandler
+ErrSQL( {CALL spDTInsertDTCharacterInfo(2)} ), ErrCode( -1 )
+ErrMsg - Cannot insert duplicate key row in object 'dbo.DTCharacterInfo' with unique index 'DTCharacterInfo_TimeStamp_CID_IX'. The duplicate key value is (<NULL>, 2).
+The statement has been terminated.
+State:23000,Native:2601,Origin:[Microsoft][ODBC SQL Server Driver][SQL Server]
+State:01000,Native:3621,Origin:[Microsoft][ODBC SQL Server Driver][SQL Server]
+
+Cannot insert duplicate key row in object 'dbo.DTCharacterInfo' with unique index 'DTCharacterInfo_TimeStamp_CID_IX'. The duplicate key value is (<NULL>, 2).
+The statement has been terminated.
+Error InsertingDTCharInfoMMatchServer::OnAsyncResponse_GetDuelTournamentCharacterInfo - 실패
+success to update CustomIP
+[Sun Jun 13 16:46:00 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=15, objHistoryCount=1
+
+
+[Sun Jun 13 16:46:20 2021]  MMatchDBMgr::ExceptionHandler
+ErrSQL( {CALL spDTInsertDTCharacterInfo(2)} ), ErrCode( -1 )
+ErrMsg - Cannot insert duplicate key row in object 'dbo.DTCharacterInfo' with unique index 'DTCharacterInfo_TimeStamp_CID_IX'. The duplicate key value is (<NULL>, 2).
+The statement has been terminated.
+State:23000,Native:2601,Origin:[Microsoft][ODBC SQL Server Driver][SQL Server]
+State:01000,Native:3621,Origin:[Microsoft][ODBC SQL Server Driver][SQL Server]
+
+Cannot insert duplicate key row in object 'dbo.DTCharacterInfo' with unique index 'DTCharacterInfo_TimeStamp_CID_IX'. The duplicate key value is (<NULL>, 2).
+The statement has been terminated.
+Error InsertingDTCharInfoMMatchServer::OnAsyncResponse_GetDuelTournamentCharacterInfo - 실패
+
+[Sun Jun 13 16:47:39 2021]  MMatchDBMgr::ExceptionHandler
+ErrSQL( {CALL spDTInsertDTCharacterInfo(2)} ), ErrCode( -1 )
+ErrMsg - Cannot insert duplicate key row in object 'dbo.DTCharacterInfo' with unique index 'DTCharacterInfo_TimeStamp_CID_IX'. The duplicate key value is (<NULL>, 2).
+The statement has been terminated.
+State:23000,Native:2601,Origin:[Microsoft][ODBC SQL Server Driver][SQL Server]
+State:01000,Native:3621,Origin:[Microsoft][ODBC SQL Server Driver][SQL Server]
+
+Cannot insert duplicate key row in object 'dbo.DTCharacterInfo' with unique index 'DTCharacterInfo_TimeStamp_CID_IX'. The duplicate key value is (<NULL>, 2).
+The statement has been terminated.
+Error InsertingDTCharInfoMMatchServer::OnAsyncResponse_GetDuelTournamentCharacterInfo - 실패
+[Sun Jun 13 16:49:00 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=15, objHistoryCount=3
+
+[Sun Jun 13 16:52:00 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=15, objHistoryCount=3
+
+
+[Sun Jun 13 16:53:34 2021]  MMatchDBMgr::ExceptionHandler
+ErrSQL( {CALL spDTInsertDTCharacterInfo(2)} ), ErrCode( -1 )
+ErrMsg - Cannot insert duplicate key row in object 'dbo.DTCharacterInfo' with unique index 'DTCharacterInfo_TimeStamp_CID_IX'. The duplicate key value is (<NULL>, 2).
+The statement has been terminated.
+State:23000,Native:2601,Origin:[Microsoft][ODBC SQL Server Driver][SQL Server]
+State:01000,Native:3621,Origin:[Microsoft][ODBC SQL Server Driver][SQL Server]
+
+Cannot insert duplicate key row in object 'dbo.DTCharacterInfo' with unique index 'DTCharacterInfo_TimeStamp_CID_IX'. The duplicate key value is (<NULL>, 2).
+The statement has been terminated.
+Error InsertingDTCharInfoMMatchServer::OnAsyncResponse_GetDuelTournamentCharacterInfo - 실패
+[Sun Jun 13 16:55:00 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=15, objHistoryCount=3
+
+
+[Sun Jun 13 16:55:08 2021]  MMatchDBMgr::ExceptionHandler
+ErrSQL( {CALL spDTInsertDTCharacterInfo(2)} ), ErrCode( -1 )
+ErrMsg - Cannot insert duplicate key row in object 'dbo.DTCharacterInfo' with unique index 'DTCharacterInfo_TimeStamp_CID_IX'. The duplicate key value is (<NULL>, 2).
+The statement has been terminated.
+State:23000,Native:2601,Origin:[Microsoft][ODBC SQL Server Driver][SQL Server]
+State:01000,Native:3621,Origin:[Microsoft][ODBC SQL Server Driver][SQL Server]
+
+Cannot insert duplicate key row in object 'dbo.DTCharacterInfo' with unique index 'DTCharacterInfo_TimeStamp_CID_IX'. The duplicate key value is (<NULL>, 2).
+The statement has been terminated.
+Error InsertingDTCharInfoMMatchServer::OnAsyncResponse_GetDuelTournamentCharacterInfo - 실패
+
+[Sun Jun 13 16:56:27 2021]  MMatchDBMgr::ExceptionHandler
+ErrSQL( {CALL spDTInsertDTCharacterInfo(2)} ), ErrCode( -1 )
+ErrMsg - Cannot insert duplicate key row in object 'dbo.DTCharacterInfo' with unique index 'DTCharacterInfo_TimeStamp_CID_IX'. The duplicate key value is (<NULL>, 2).
+The statement has been terminated.
+State:23000,Native:2601,Origin:[Microsoft][ODBC SQL Server Driver][SQL Server]
+State:01000,Native:3621,Origin:[Microsoft][ODBC SQL Server Driver][SQL Server]
+
+Cannot insert duplicate key row in object 'dbo.DTCharacterInfo' with unique index 'DTCharacterInfo_TimeStamp_CID_IX'. The duplicate key value is (<NULL>, 2).
+The statement has been terminated.
+Error InsertingDTCharInfoMMatchServer::OnAsyncResponse_GetDuelTournamentCharacterInfo - 실패
+[Sun Jun 13 16:58:00 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=2
+
+
+[Sun Jun 13 16:58:55 2021]  MMatchDBMgr::ExceptionHandler
+ErrSQL( {CALL spDTInsertDTCharacterInfo(2)} ), ErrCode( -1 )
+ErrMsg - Cannot insert duplicate key row in object 'dbo.DTCharacterInfo' with unique index 'DTCharacterInfo_TimeStamp_CID_IX'. The duplicate key value is (<NULL>, 2).
+The statement has been terminated.
+State:23000,Native:2601,Origin:[Microsoft][ODBC SQL Server Driver][SQL Server]
+State:01000,Native:3621,Origin:[Microsoft][ODBC SQL Server Driver][SQL Server]
+
+Cannot insert duplicate key row in object 'dbo.DTCharacterInfo' with unique index 'DTCharacterInfo_TimeStamp_CID_IX'. The duplicate key value is (<NULL>, 2).
+The statement has been terminated.
+Error InsertingDTCharInfoMMatchServer::OnAsyncResponse_GetDuelTournamentCharacterInfo - 실패
+[Sun Jun 13 17:01:00 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=3
+
+[Sun Jun 13 17:04:00 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=2
+
+
+[Sun Jun 13 17:05:24 2021]  MMatchDBMgr::ExceptionHandler
+ErrSQL( {CALL spDTInsertDTCharacterInfo(2)} ), ErrCode( -1 )
+ErrMsg - Cannot insert duplicate key row in object 'dbo.DTCharacterInfo' with unique index 'DTCharacterInfo_TimeStamp_CID_IX'. The duplicate key value is (<NULL>, 2).
+The statement has been terminated.
+State:23000,Native:2601,Origin:[Microsoft][ODBC SQL Server Driver][SQL Server]
+State:01000,Native:3621,Origin:[Microsoft][ODBC SQL Server Driver][SQL Server]
+
+Cannot insert duplicate key row in object 'dbo.DTCharacterInfo' with unique index 'DTCharacterInfo_TimeStamp_CID_IX'. The duplicate key value is (<NULL>, 2).
+The statement has been terminated.
+Error InsertingDTCharInfoMMatchServer::OnAsyncResponse_GetDuelTournamentCharacterInfo - 실패
+[Sun Jun 13 17:07:00 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=3
+
+[Sun Jun 13 17:10:00 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+
+[Sun Jun 13 17:12:38 2021]  MMatchDBMgr::ExceptionHandler
+ErrSQL( {CALL spDTInsertDTCharacterInfo(2)} ), ErrCode( -1 )
+ErrMsg - Cannot insert duplicate key row in object 'dbo.DTCharacterInfo' with unique index 'DTCharacterInfo_TimeStamp_CID_IX'. The duplicate key value is (<NULL>, 2).
+The statement has been terminated.
+State:23000,Native:2601,Origin:[Microsoft][ODBC SQL Server Driver][SQL Server]
+State:01000,Native:3621,Origin:[Microsoft][ODBC SQL Server Driver][SQL Server]
+
+[Sun Jun 13 17:12:38 2021]  MMatchDBMgr::ExceptionHandler - Disconnect
+[Sun Jun 13 17:12:38 2021]  MMatchDBMgr::ExceptionHandler - Reconnect
+[Sun Jun 13 17:12:38 2021]  MMatchDBMgr::ExceptionHandler - This(147127004)
+Cannot insert duplicate key row in object 'dbo.DTCharacterInfo' with unique index 'DTCharacterInfo_TimeStamp_CID_IX'. The duplicate key value is (<NULL>, 2).
+The statement has been terminated.
+Error InsertingDTCharInfoMMatchServer::OnAsyncResponse_GetDuelTournamentCharacterInfo - 실패
+[Sun Jun 13 17:13:00 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=2
+
+[Sun Jun 13 17:16:00 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=2
+
+
+[Sun Jun 13 17:17:59 2021]  MMatchDBMgr::ExceptionHandler
+ErrSQL( {CALL spDTInsertDTCharacterInfo(2)} ), ErrCode( -1 )
+ErrMsg - Cannot insert duplicate key row in object 'dbo.DTCharacterInfo' with unique index 'DTCharacterInfo_TimeStamp_CID_IX'. The duplicate key value is (<NULL>, 2).
+The statement has been terminated.
+State:23000,Native:2601,Origin:[Microsoft][ODBC SQL Server Driver][SQL Server]
+State:01000,Native:3621,Origin:[Microsoft][ODBC SQL Server Driver][SQL Server]
+
+Cannot insert duplicate key row in object 'dbo.DTCharacterInfo' with unique index 'DTCharacterInfo_TimeStamp_CID_IX'. The duplicate key value is (<NULL>, 2).
+The statement has been terminated.
+Error InsertingDTCharInfoMMatchServer::OnAsyncResponse_GetDuelTournamentCharacterInfo - 실패
+[Sun Jun 13 17:19:00 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=3
+
+
+[Sun Jun 13 17:20:17 2021]  MMatchDBMgr::ExceptionHandler
+ErrSQL( {CALL spDTInsertDTCharacterInfo(2)} ), ErrCode( -1 )
+ErrMsg - Cannot insert duplicate key row in object 'dbo.DTCharacterInfo' with unique index 'DTCharacterInfo_TimeStamp_CID_IX'. The duplicate key value is (<NULL>, 2).
+The statement has been terminated.
+State:23000,Native:2601,Origin:[Microsoft][ODBC SQL Server Driver][SQL Server]
+State:01000,Native:3621,Origin:[Microsoft][ODBC SQL Server Driver][SQL Server]
+
+Cannot insert duplicate key row in object 'dbo.DTCharacterInfo' with unique index 'DTCharacterInfo_TimeStamp_CID_IX'. The duplicate key value is (<NULL>, 2).
+The statement has been terminated.
+Error InsertingDTCharInfoMMatchServer::OnAsyncResponse_GetDuelTournamentCharacterInfo - 실패
+[Sun Jun 13 17:22:00 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=3
+
+[Sun Jun 13 17:25:00 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=2
+
+[Sun Jun 13 17:28:00 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=2
+
+[Sun Jun 13 17:31:00 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+[Sun Jun 13 17:34:00 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+[Sun Jun 13 17:37:00 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+[Sun Jun 13 17:40:00 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+[Sun Jun 13 17:43:00 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+success to update CustomIP
+[Sun Jun 13 17:46:00 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+[Sun Jun 13 17:49:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+[Sun Jun 13 17:52:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+[Sun Jun 13 17:55:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+[Sun Jun 13 17:58:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+[Sun Jun 13 18:01:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+[Sun Jun 13 18:04:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+[Sun Jun 13 18:07:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+[Sun Jun 13 18:10:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+[Sun Jun 13 18:13:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+[Sun Jun 13 18:16:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+[Sun Jun 13 18:19:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+[Sun Jun 13 18:22:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+[Sun Jun 13 18:25:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+[Sun Jun 13 18:28:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+[Sun Jun 13 18:31:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+[Sun Jun 13 18:34:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+[Sun Jun 13 18:37:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+[Sun Jun 13 18:40:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+[Sun Jun 13 18:43:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+success to update CustomIP
+[Sun Jun 13 18:46:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+[Sun Jun 13 18:49:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+[Sun Jun 13 18:52:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+[Sun Jun 13 18:55:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+[Sun Jun 13 18:58:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+[Sun Jun 13 19:01:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+[Sun Jun 13 19:04:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+[Sun Jun 13 19:07:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+[Sun Jun 13 19:10:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+[Sun Jun 13 19:13:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+[Sun Jun 13 19:16:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+[Sun Jun 13 19:19:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+[Sun Jun 13 19:22:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+[Sun Jun 13 19:25:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+[Sun Jun 13 19:28:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+[Sun Jun 13 19:31:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+[Sun Jun 13 19:34:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+[Sun Jun 13 19:37:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+[Sun Jun 13 19:40:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+[Sun Jun 13 19:43:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+success to update CustomIP
+[Sun Jun 13 19:46:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+[Sun Jun 13 19:49:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+[Sun Jun 13 19:52:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+[Sun Jun 13 19:55:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+[Sun Jun 13 19:58:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+[Sun Jun 13 20:01:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+[Sun Jun 13 20:04:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+[Sun Jun 13 20:07:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+[Sun Jun 13 20:10:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+[Sun Jun 13 20:13:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+[Sun Jun 13 20:16:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+[Sun Jun 13 20:19:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+[Sun Jun 13 20:22:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+[Sun Jun 13 20:25:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+[Sun Jun 13 20:28:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+[Sun Jun 13 20:31:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+[Sun Jun 13 20:34:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+[Sun Jun 13 20:37:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+[Sun Jun 13 20:40:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+[Sun Jun 13 20:43:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+success to update CustomIP
+[Sun Jun 13 20:46:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+[Sun Jun 13 20:49:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+[Sun Jun 13 20:52:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+[Sun Jun 13 20:55:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+[Sun Jun 13 20:58:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+[Sun Jun 13 21:01:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+[Sun Jun 13 21:04:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+[Sun Jun 13 21:07:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+[Sun Jun 13 21:10:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+[Sun Jun 13 21:13:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+[Sun Jun 13 21:16:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+[Sun Jun 13 21:19:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+[Sun Jun 13 21:22:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+[Sun Jun 13 21:25:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+[Sun Jun 13 21:28:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+[Sun Jun 13 21:31:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+[Sun Jun 13 21:34:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+[Sun Jun 13 21:37:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+[Sun Jun 13 21:40:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+[Sun Jun 13 21:43:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+success to update CustomIP
+[Sun Jun 13 21:46:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+[Sun Jun 13 21:49:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+[Sun Jun 13 21:52:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+[Sun Jun 13 21:55:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+[Sun Jun 13 21:58:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+[Sun Jun 13 22:01:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+[Sun Jun 13 22:04:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+[Sun Jun 13 22:07:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+[Sun Jun 13 22:10:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+[Sun Jun 13 22:13:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+[Sun Jun 13 22:16:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=0
+
+
+[Sun Jun 13 22:18:15 2021]  MMatchDBMgr::ExceptionHandler
+ErrSQL( {CALL spDTInsertDTCharacterInfo(2)} ), ErrCode( -1 )
+ErrMsg - Cannot insert duplicate key row in object 'dbo.DTCharacterInfo' with unique index 'DTCharacterInfo_TimeStamp_CID_IX'. The duplicate key value is (<NULL>, 2).
+The statement has been terminated.
+State:23000,Native:2601,Origin:[Microsoft][ODBC SQL Server Driver][SQL Server]
+State:01000,Native:3621,Origin:[Microsoft][ODBC SQL Server Driver][SQL Server]
+
+Cannot insert duplicate key row in object 'dbo.DTCharacterInfo' with unique index 'DTCharacterInfo_TimeStamp_CID_IX'. The duplicate key value is (<NULL>, 2).
+The statement has been terminated.
+Error InsertingDTCharInfoMMatchServer::OnAsyncResponse_GetDuelTournamentCharacterInfo - 실패
+
+[Sun Jun 13 22:18:38 2021]  MMatchDBMgr::ExceptionHandler
+ErrSQL( {CALL spChangeGambleItemToRewardNormalItem (2, 23, 1000003, 48, 5016, 168)} ), ErrCode( -1 )
+ErrMsg - Could not find stored procedure 'spChangeGambleItemToRewardNormalItem'.
+State:37000,Native:2812,Origin:[Microsoft][ODBC SQL Server Driver][SQL Server]
+
+[Sun Jun 13 22:19:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+
+[Sun Jun 13 22:20:21 2021]  MMatchDBMgr::ExceptionHandler
+ErrSQL( {CALL spChangeGambleItemToRewardNormalItem (2, 23, 1000003, 41, 4, 168)} ), ErrCode( -1 )
+ErrMsg - Invalid object name 'LogDB..GambleLog'.
+Transaction count after EXECUTE indicates a mismatching number of BEGIN and COMMIT statements. Previous count = 0, current count = 1.
+State:S0002,Native:208,Origin:[Microsoft][ODBC SQL Server Driver][SQL Server]
+State:25000,Native:266,Origin:[Microsoft][ODBC SQL Server Driver][SQL Server]
+
+
+[Sun Jun 13 22:21:22 2021]  MMatchDBMgr::ExceptionHandler
+ErrSQL( {CALL spChangeGambleItemToRewardNormalItem (2, 23, 1000003, 57, 30403, 168)} ), ErrCode( -1 )
+ErrMsg - Query timeout expired
+State:S1T00,Native:0,Origin:[Microsoft][ODBC SQL Server Driver]
+
+[Sun Jun 13 22:22:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+
+[Sun Jun 13 22:22:22 2021]  MMatchDBMgr::ExceptionHandler
+ErrSQL( {CALL spChangeGambleItemToRewardNormalItem (2, 23, 1000003, 50, 7004, 168)} ), ErrCode( -1 )
+ErrMsg - Query timeout expired
+State:S1T00,Native:0,Origin:[Microsoft][ODBC SQL Server Driver]
+
+
+[Sun Jun 13 22:23:22 2021]  MMatchDBMgr::ExceptionHandler
+ErrSQL( {CALL spChangeGambleItemToRewardNormalItem (2, 23, 1000003, 48, 5016, 168)} ), ErrCode( -1 )
+ErrMsg - Query timeout expired
+State:S1T00,Native:0,Origin:[Microsoft][ODBC SQL Server Driver]
+
+
+[Sun Jun 13 22:24:22 2021]  MMatchDBMgr::ExceptionHandler
+ErrSQL( {CALL spChangeGambleItemToRewardNormalItem (2, 23, 1000003, 44, 16, 168)} ), ErrCode( -1 )
+ErrMsg - Query timeout expired
+State:S1T00,Native:0,Origin:[Microsoft][ODBC SQL Server Driver]
+
+[Sun Jun 13 22:25:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+
+[Sun Jun 13 22:25:22 2021]  MMatchDBMgr::ExceptionHandler
+ErrSQL( {CALL spChangeGambleItemToRewardNormalItem (2, 23, 1000003, 48, 5016, 168)} ), ErrCode( -1 )
+ErrMsg - Query timeout expired
+State:S1T00,Native:0,Origin:[Microsoft][ODBC SQL Server Driver]
+
+
+[Sun Jun 13 22:26:22 2021]  MMatchDBMgr::ExceptionHandler
+ErrSQL( {CALL spChangeGambleItemToRewardNormalItem (2, 23, 1000003, 56, 24007, 168)} ), ErrCode( -1 )
+ErrMsg - Query timeout expired
+State:S1T00,Native:0,Origin:[Microsoft][ODBC SQL Server Driver]
+
+
+[Sun Jun 13 22:27:22 2021]  MMatchDBMgr::ExceptionHandler
+ErrSQL( {CALL spChangeGambleItemToRewardNormalItem (2, 23, 1000003, 51, 8001, 168)} ), ErrCode( -1 )
+ErrMsg - Query timeout expired
+State:S1T00,Native:0,Origin:[Microsoft][ODBC SQL Server Driver]
+
+[Sun Jun 13 22:28:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+
+[Sun Jun 13 22:28:22 2021]  MMatchDBMgr::ExceptionHandler
+ErrSQL( {CALL spChangeGambleItemToRewardNormalItem (2, 23, 1000003, 55, 23008, 168)} ), ErrCode( -1 )
+ErrMsg - Query timeout expired
+State:S1T00,Native:0,Origin:[Microsoft][ODBC SQL Server Driver]
+
+[Sun Jun 13 22:31:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Sun Jun 13 22:34:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Sun Jun 13 22:37:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Sun Jun 13 22:40:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Sun Jun 13 22:43:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+success to update CustomIP
+[Sun Jun 13 22:46:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Sun Jun 13 22:49:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Sun Jun 13 22:52:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Sun Jun 13 22:55:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Sun Jun 13 22:58:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Sun Jun 13 23:01:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Sun Jun 13 23:04:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Sun Jun 13 23:07:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Sun Jun 13 23:10:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Sun Jun 13 23:13:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Sun Jun 13 23:16:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Sun Jun 13 23:19:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Sun Jun 13 23:22:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Sun Jun 13 23:25:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Sun Jun 13 23:28:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Sun Jun 13 23:31:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Sun Jun 13 23:34:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Sun Jun 13 23:37:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Sun Jun 13 23:40:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Sun Jun 13 23:43:01 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+success to update CustomIP
+[Sun Jun 13 23:46:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Sun Jun 13 23:49:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Sun Jun 13 23:52:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Sun Jun 13 23:55:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Sun Jun 13 23:58:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 00:01:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 00:04:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 00:07:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 00:10:00 2021] MDuelTournamentTimeChecker::Current Month - 6, Day - 14
+[Mon Jun 14 00:10:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 00:13:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 00:16:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 00:19:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 00:22:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 00:25:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 00:28:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 00:31:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 00:34:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 00:37:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 00:40:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 00:43:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+success to update CustomIP
+[Mon Jun 14 00:46:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 00:49:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 00:52:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 00:55:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 00:58:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 01:01:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 01:04:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 01:07:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 01:10:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 01:13:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 01:16:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 01:19:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 01:22:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 01:25:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 01:28:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 01:31:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 01:34:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 01:37:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 01:40:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 01:43:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+success to update CustomIP
+[Mon Jun 14 01:46:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 01:49:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 01:52:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 01:55:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 01:58:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 02:01:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 02:04:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 02:07:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 02:10:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 02:13:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 02:16:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 02:19:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 02:22:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 02:25:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 02:28:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 02:31:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 02:34:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 02:37:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 02:40:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 02:43:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+success to update CustomIP
+[Mon Jun 14 02:46:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 02:49:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 02:52:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 02:55:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 02:58:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 03:01:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 03:04:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 03:07:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 03:10:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 03:13:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 03:16:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 03:19:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 03:22:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 03:25:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 03:28:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 03:31:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 03:34:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 03:37:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 03:40:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 03:43:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+success to update CustomIP
+[Mon Jun 14 03:46:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 03:49:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 03:52:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 03:55:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 03:58:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 04:01:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 04:04:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 04:07:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 04:10:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 04:13:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 04:16:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 04:19:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 04:22:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 04:25:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 04:28:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 04:31:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 04:34:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 04:37:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 04:40:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 04:43:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+success to update CustomIP
+[Mon Jun 14 04:46:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 04:49:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 04:52:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 04:55:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 04:58:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+Daily Survival Ranking Request [month6 day14 hour5 min0]
+[Mon Jun 14 05:01:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 05:04:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 05:07:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 05:10:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 05:13:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 05:16:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 05:19:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 05:22:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 05:25:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 05:28:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 05:31:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 05:34:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 05:37:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 05:40:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 05:43:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+success to update CustomIP
+[Mon Jun 14 05:46:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 05:49:02 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 05:52:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 05:55:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 05:58:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 06:01:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 06:04:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 06:07:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 06:10:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 06:13:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 06:16:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 06:19:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 06:22:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 06:25:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 06:28:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 06:31:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 06:34:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 06:37:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 06:40:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 06:43:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+success to update CustomIP
+[Mon Jun 14 06:46:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 06:49:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 06:52:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 06:55:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 06:58:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 07:01:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 07:04:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 07:07:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 07:10:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 07:13:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 07:16:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 07:19:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 07:22:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 07:25:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 07:28:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 07:31:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 07:34:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 07:37:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 07:40:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 07:43:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+success to update CustomIP
+[Mon Jun 14 07:46:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 07:49:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 07:52:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 07:55:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 07:58:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 08:01:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 08:04:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 08:07:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 08:10:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 08:13:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 08:16:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 08:19:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 08:22:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 08:25:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 08:28:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 08:31:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 08:34:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 08:37:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 08:40:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 08:43:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+success to update CustomIP
+[Mon Jun 14 08:46:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 08:49:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 08:52:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 08:55:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 08:58:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 09:01:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 09:04:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 09:07:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 09:10:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 09:13:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 09:16:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 09:19:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 09:22:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 09:25:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 09:28:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 09:31:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 09:34:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 09:37:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 09:40:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 09:43:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+success to update CustomIP
+[Mon Jun 14 09:46:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 09:49:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 09:52:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 09:55:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 09:58:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 10:01:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 10:04:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 10:07:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 10:10:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 10:13:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 10:16:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 10:19:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 10:22:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 10:25:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 10:28:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 10:31:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 10:34:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 10:37:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 10:40:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 10:43:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+success to update CustomIP
+[Mon Jun 14 10:46:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 10:49:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 10:52:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 10:55:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 10:58:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 11:01:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 11:04:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 11:07:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 11:10:03 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 11:13:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 11:16:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 11:19:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 11:22:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 11:25:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 11:28:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 11:31:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 11:34:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 11:37:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 11:40:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 11:43:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+success to update CustomIP
+[Mon Jun 14 11:46:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 11:49:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 11:52:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 11:55:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 11:58:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 12:01:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 12:04:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 12:07:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 12:10:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 12:13:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 12:16:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 12:19:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 12:22:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 12:25:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 12:28:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 12:31:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 12:34:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 12:37:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 12:40:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 12:43:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+success to update CustomIP
+[Mon Jun 14 12:46:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 12:49:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 12:52:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 12:55:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 12:58:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 13:01:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 13:04:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 13:07:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 13:10:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 13:13:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 13:16:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 13:19:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 13:22:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 13:25:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 13:28:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 13:31:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 13:34:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 13:37:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 13:40:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 13:43:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+success to update CustomIP
+[Mon Jun 14 13:46:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 13:49:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 13:52:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 13:55:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 13:58:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 14:01:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 14:04:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 14:07:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 14:10:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 14:13:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 14:16:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 14:19:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 14:22:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 14:25:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 14:28:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 14:31:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 14:34:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 14:37:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 14:40:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 14:43:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+success to update CustomIP
+[Mon Jun 14 14:46:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 14:49:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 14:52:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 14:55:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 14:58:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 15:01:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 15:04:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 15:07:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 15:10:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 15:13:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 15:16:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 15:19:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 15:22:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 15:25:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 15:28:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 15:31:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 15:34:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 15:37:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 15:40:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 15:43:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+success to update CustomIP
+[Mon Jun 14 15:46:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 15:49:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 15:52:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 15:55:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 15:58:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 16:01:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 16:04:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 16:07:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 16:10:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 16:13:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 16:16:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 16:19:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 16:22:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 16:25:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 16:28:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 16:31:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 16:34:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 16:37:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 16:40:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 16:43:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+success to update CustomIP
+[Mon Jun 14 16:46:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 16:49:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 16:52:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 16:55:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 16:58:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 17:01:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=1, SessionCount=1, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+[Mon Jun 14 17:04:04 2021] GARBAGE SESSION CLEANING : m_This(02), ClientCount=0, SessionCount=0, AgentCount=0, CommandPool=22, objHistoryCount=1
+
+RealCPNet> SessionCreated=19, SessionDestroyed=17 
+RealCPNet> Begin Destroy 
+RealCPNet> Destroy Process 1/4 
+RealCPNet> Destroy Process 2/4 
+RealCPNet> Destroy Process 3/4 
+RealCPNet> Destroy Process 4/4 
+RealCPNet> Destroy End 
+[Mon Jun 14 17:04:23 2021] Match Server Destoryed
+
