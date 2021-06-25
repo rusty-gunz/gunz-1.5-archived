@@ -20,7 +20,8 @@ The 64Bit 3ds max plugins do not allow models to load on the 32bit gunz runnable
 
 To Build:
 
-This doesn't use cmake as the refined base does for anyone coming off that. To build you'll need to use gunz.sln, matchserver.sln, matchagent.sln, and locator.sln
+This doesn't use cmake as the refined base does for anyone coming off that. To build you'll need to use gunz.sln, matchserver.sln, matchagent.sln, and locator.sln, use encrypt_brz_release_publish and use win32 or x64. x64 is still experimental but seems to work fine.
+
 
 Credits To:
 Secrets of The past
