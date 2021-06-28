@@ -9,6 +9,7 @@ ZRuleSkillMap::ZRuleSkillMap(ZMatch* pMatch) : ZRule(pMatch)
 	m_chestGrabber = MUID(0, 0);
 	m_roundStartTime = 15000;
 	currRoundTime = 0;
+	myBestTime = 0;
 }
 
 ZRuleSkillMap::~ZRuleSkillMap()
@@ -79,7 +80,7 @@ bool ZRuleSkillMap::OnCommand(MCommand* command)
 			if (Object == nullptr)
 				return false;
 
-			Object->SetSkillMapBestTime(bestTime);
+			myBestTime = bestTime;
 		} return true;
 		default:
 			break;
@@ -168,6 +169,7 @@ void ZRuleSkillMap::OnSetRoundState(MMATCH_ROUNDSTATE roundState)
 			m_chestGrabber.SetInvalid();
 			m_roundStartTime = 15000;
 			currRoundTime = 0;
+			ZPostRequestSkillMapBestTime(ZGetGame()->m_pMyCharacter->GetUID(), MGetMapDescMgr()->GetMapID(ZGetGame()->GetMatch()->GetMapName()));
 		}break;
 		case MMATCH_ROUNDSTATE_COUNTDOWN:
 		{
@@ -181,15 +183,13 @@ void ZRuleSkillMap::OnSetRoundState(MMATCH_ROUNDSTATE roundState)
 			{
 			 if (ZGetGame()->m_pMyCharacter->GetSkillMapBestTime() == 0)
 			 {
-				 ZPostRequestUpdateSkillMapBestTime(ZGetMyUID(), ZGetGame()->GetMatch()->GetMapName(), currRoundTime);
-				 OnUpdateUI(currRoundTime);
+				 ZPostRequestUpdateSkillMapBestTime(ZGetMyUID(), MGetMapDescMgr()->GetMapID(ZGetGame()->GetMatch()->GetMapName()), currRoundTime);
 			 }
 			 else
 			 {
 				 if (ZGetGame()->m_pMyCharacter->GetSkillMapBestTime() < currRoundTime)
 				 {
-					 ZPostRequestUpdateSkillMapBestTime(ZGetMyUID(), ZGetGame()->GetMatch()->GetMapName(), currRoundTime);
-					 OnUpdateUI(currRoundTime);
+					 ZPostRequestUpdateSkillMapBestTime(ZGetMyUID(), MGetMapDescMgr()->GetMapID(ZGetGame()->GetMatch()->GetMapName()), currRoundTime);
 				 }
 			 }
 			}

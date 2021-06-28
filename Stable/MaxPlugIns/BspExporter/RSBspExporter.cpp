@@ -4,7 +4,7 @@
 
 #include "stdafx.h"
 #include <stdio.h>
-
+#include "MXml.h"
 #include "RSBspExporter.h"
 #include "RMaterialList.h"
 #include "RVersions.h"
@@ -189,110 +189,126 @@ cancel:
 
 bool RSBspExporter::SaveDesc(const char *name)
 {
-	char MessageBuffer[4096]={0,};
-	int nMaterial=MaxSubMaterialList.GetCount();
-	RMaterialList *ml=new RMaterialList;
-	for(int i=0;i<nMaterial;i++)
+	char MessageBuffer[4096] = { 0, };
+	int nMaterial = MaxSubMaterialList.GetCount();
+	RMaterialList* ml = new RMaterialList;
+	for (int i = 0; i < nMaterial; i++)
 	{
-		MaxSubMaterial *material=MaxSubMaterialList.Get(i);
-		RMATERIAL *m=new RMATERIAL;
+		MaxSubMaterial* material = MaxSubMaterialList.Get(i);
+		RMATERIAL* m = new RMATERIAL;
 
-		m->Name=material->Name;
-		m->Ambient=material->Ambient;
-		m->Diffuse=material->Diffuse;
-		m->Specular=material->Specular;
-		m->dwFlags=material->dwFlags;
-		if(material->DiffuseMap.length())
+		m->Name = material->Name;
+		m->Ambient = material->Ambient;
+		m->Diffuse = material->Diffuse;
+		m->Specular = material->Specular;
+		m->dwFlags = material->dwFlags;
+		if (material->DiffuseMap.length())
 		{
-			char drive[_MAX_DRIVE],dir[_MAX_DIR],fname[_MAX_FNAME],ext[_MAX_EXT];
-			_splitpath(material->DiffuseMap.c_str(),drive,dir,fname,ext);
-			m->DiffuseMap=string(fname)+string(ext);
+			char drive[_MAX_DRIVE], dir[_MAX_DIR], fname[_MAX_FNAME], ext[_MAX_EXT];
+			_splitpath(material->DiffuseMap.c_str(), drive, dir, fname, ext);
+			m->DiffuseMap = string(fname) + string(ext);
 		}
 
 		ml->push_back(m);
 	}
 
-	rapidxml::xml_document<> doc;
-	rapidxml::xml_node<>* decl = doc.allocate_node(rapidxml::node_declaration);
-	decl->append_attribute(doc.allocate_attribute("version", "1.0"));
-	decl->append_attribute(doc.allocate_attribute("encoding", "utf-8"));
-	doc.append_node(decl);
+	MXmlDocument	aXml;
 
-	rapidxml::xml_node<>* rootNode = doc.allocate_node(rapidxml::node_element, "XML");
-	rootNode->append_attribute(doc.allocate_attribute("id", doc.allocate_string(name)));
-	doc.append_node(rootNode);
-	
-	rapidxml::xml_node<>* parentNode;
-	rapidxml::xml_node<>* childNode;
-	
+	aXml.Create();
+	aXml.CreateProcessingInstruction();
 
-	ml->Save(rootNode, doc);
+	MXmlElement		aRootElement;
 
-	m_StaticLightList.Save(rootNode, doc);
+	aRootElement = aXml.CreateElement("XML");
+	aRootElement.AppendText("\n\t");
+
+	aXml.AppendChild(aRootElement);
+
+	ml->Save(&aRootElement);
+
+	aRootElement.AppendText("\n\t");
+
+	m_StaticLightList.Save(&aRootElement);
+
+	aRootElement.AppendText("\n\t");
 
 	// save object list
 	{
-		parentNode = doc.allocate_node(rapidxml::node_element, RTOK_OBJECTLIST);
-		for (auto itor = m_ObjectsList.begin(); itor != m_ObjectsList.end(); ++itor)
+		MXmlElement	aObjectListElement = aRootElement.CreateChildElement(RTOK_OBJECTLIST);
+		for (NODELIST::iterator i = m_ObjectsList.begin(); i != m_ObjectsList.end(); i++)
 		{
-			INode* pNode = *itor;
+			INode* pNode = *i;
 
-			childNode = doc.allocate_node(rapidxml::node_element,RTOK_OBJECT);
+			aObjectListElement.AppendText("\n\t\t");
+
+			MXmlElement		aElement, aChild;
+			aElement = aObjectListElement.CreateChildElement(RTOK_OBJECT);
 
 			char filename[256];
 
-			sprintf(filename, "%s_%s.elu", MapName, MSTR(pNode->GetName()).ToCStr().dataForWrite());
+			sprintf(filename, "%s_%s.elu", MapName, pNode->GetName());
 
-			rapidxml::xml_attribute<>* attr = doc.allocate_attribute(RTOK_NAME, doc.allocate_string(filename));
-			childNode->insert_attribute(0,attr);
-			parentNode->insert_node(0,childNode);
+			aElement.AddAttribute(RTOK_NAME, filename);
 
+			aElement.AppendText("\n\t\t");
 		}
-		rootNode->insert_node(0, parentNode);
+		aObjectListElement.AppendText("\n\t");
 	}
 
+
+	aRootElement.AppendText("\n\t");
 
 	// save dummy list
 	{
-		parentNode = doc.allocate_node(rapidxml::node_element, RTOK_DUMMYLIST);
-		for (auto i = m_DummyList.begin(); i != m_DummyList.end(); ++i)
+		MXmlElement	aListElement = aRootElement.CreateChildElement(RTOK_DUMMYLIST);
+
+		for (list<RDUMMY*>::iterator i = m_DummyList.begin(); i != m_DummyList.end(); i++)
 		{
-			RDUMMY *psp = *i;
+			aListElement.AppendText("\n\t\t");
+
+			RDUMMY* psp = *i;
 			char buffer[256];
 
-			childNode = doc.allocate_node(rapidxml::node_element, RTOK_DUMMY);
-			childNode->append_attribute(doc.allocate_attribute(RTOK_NAME,doc.allocate_string(psp->name.c_str())));
-			childNode->insert_node(0, doc.allocate_node(rapidxml::node_element, RTOK_POSITION, doc.allocate_string(Format(buffer, psp->position))));
-			childNode->insert_node(0, doc.allocate_node(rapidxml::node_element, RTOK_DIRECTION, doc.allocate_string(Format(buffer, psp->direction))));
-		
-			parentNode->insert_node(0, childNode);	
-		}			
-		rootNode->insert_node(0, parentNode);
+			MXmlElement		aElement, aChild;
+			aElement = aListElement.CreateChildElement(RTOK_DUMMY);
+
+			aElement.AddAttribute(RTOK_NAME, psp->name.c_str());
+
+			aElement.AppendText("\n\t\t\t");
+			aChild = aElement.CreateChildElement(RTOK_POSITION);
+			aChild.SetContents(Format(buffer, psp->position));
+
+			aElement.AppendText("\n\t\t\t");
+			aChild = aElement.CreateChildElement(RTOK_DIRECTION);
+			aChild.SetContents(Format(buffer, psp->direction));
+
+			aElement.AppendText("\n\t\t");
+		}
+
+		aListElement.AppendText("\n\t");
 	}
 
 
+	aRootElement.AppendText("\n\t");
 
-	m_OcclusionList.Save(rootNode, doc);
+	m_OcclusionList.Save(&aRootElement);
 
-	SaveFog(rootNode,doc);
-	SaveSoundProp(rootNode,doc);
-	SaveCustomProperties(rootNode,doc);
+	SaveFog(aRootElement);
+	SaveSoundProp(aRootElement);
+	SaveCustomProperties(aRootElement);
 
-	std::string xml_as_string;
-	rapidxml::print(std::back_inserter(xml_as_string), doc);
-
-	std::ofstream file_stored(name);
-	file_stored << doc;
-	file_stored.close();
-	doc.clear();
+	aRootElement.AppendText("\n");
+	aXml.SaveToFile(name);
 
 
+	//	ml->Save(name);
 	delete ml;
 
-	if(MessageBuffer[0])
-		MessageBox( NULL, MessageBuffer, "RSM Exporter Error Report", MB_OK );
+	if (MessageBuffer[0])
+		MessageBox(NULL, MessageBuffer, "RSM Exporter Error Report", MB_OK);
 
 	return true;
+
 }
 
 // spawn.xml에서 사용
@@ -303,31 +319,30 @@ bool RSBspExporter::SaveDesc(const char *name)
 
 bool RSBspExporter::SaveSpawn(const char* name)
 {
-	///TODO: change to rapidxml
-	rapidxml::xml_document<> doc;
-	rapidxml::xml_node<>* decl = doc.allocate_node(rapidxml::node_declaration);
-	decl->append_attribute(doc.allocate_attribute("version", "1.0"));
-	decl->append_attribute(doc.allocate_attribute("encoding", "utf-8"));
-	doc.append_node(decl);
-	rapidxml::xml_node<>* rootNode = doc.allocate_node(rapidxml::node_element, "XML");
-	rootNode->append_attribute(doc.allocate_attribute("id", "spawn"));
-	doc.append_node(rootNode);
+	MXmlDocument	aXml;
+
+	aXml.Create();
+	aXml.CreateProcessingInstruction();
+
+	MXmlElement		aRootElement;
+
+	aRootElement = aXml.CreateElement("XML");
+	aRootElement.AppendText("\n\t");
+	aXml.AppendChild(aRootElement);
 
 
-	rapidxml::xml_node<>* parentNode;
-	rapidxml::xml_node<>* childNode;
-	for (int i = 0; i < 2; ++i)
+	for (int i = 0; i < 2; i++)
 	{
 		char szTok[256];
 		if (i == 0) strcpy(szTok, "solo");
 		else strcpy(szTok, "team");
 
-		parentNode = doc.allocate_node(rapidxml::node_element, RTOK_GAMETYPE);
-		parentNode->append_attribute(doc.allocate_attribute("id", doc.allocate_string(szTok)));
+		MXmlElement	aSoloGameTypeElement = aRootElement.CreateChildElement(RTOK_GAMETYPE);
+		aSoloGameTypeElement.AddAttribute("id", szTok);
 
 		for (list<RDUMMY*>::iterator i = m_DummyList.begin(); i != m_DummyList.end(); i++)
 		{
-			RDUMMY *psp = *i;
+			RDUMMY* psp = *i;
 
 			char szDummyName[256];
 			sprintf(szDummyName, "spawn_item_%s", szTok);
@@ -336,14 +351,16 @@ bool RSBspExporter::SaveSpawn(const char* name)
 			{
 				if (strlen(psp->name.c_str()) < 16) continue;
 
+				aSoloGameTypeElement.AppendText("\n\t\t");
 
 				char buffer[256];
 
+				MXmlElement aElement, aChild;
 
-				childNode = doc.allocate_node(rapidxml::node_element, RTOK_SPAWN);
+				aElement = aSoloGameTypeElement.CreateChildElement(RTOK_SPAWN);
 
 				const char* pItemName = &psp->name.c_str()[16];
-				char* plast = strchr(const_cast<char*>(pItemName), '_');
+				const char* plast = strchr(pItemName, '_');
 				char szItemName[256];
 				if (plast != NULL)
 				{
@@ -355,48 +372,48 @@ bool RSBspExporter::SaveSpawn(const char* name)
 					strcpy(szItemName, pItemName);
 				}
 
-				childNode->append_attribute(doc.allocate_attribute("item", doc.allocate_string(szItemName)));
+				aElement.AddAttribute("item", szItemName);
 
 				int nTimeSec = 0;
 				if (!psp->GetUserPropValue("time", &nTimeSec))
 				{
 					nTimeSec = 0;
 				}
-				childNode->append_attribute(doc.allocate_attribute("timesec", doc.allocate_string(to_string(nTimeSec * 1000).c_str())));
+				aElement.AddAttribute("timesec", nTimeSec * 1000);
 
-				rapidxml::xml_node<>* subNode = doc.allocate_node(rapidxml::node_element, RTOK_POSITION, doc.allocate_string(Format(buffer, psp->position)));
-				childNode->insert_node(0, subNode);
-				parentNode->insert_node(0, childNode);
+				aElement.AppendText("\n\t\t\t");
+				aChild = aElement.CreateChildElement(RTOK_POSITION);
+				aChild.SetContents(Format(buffer, psp->position));
+				aElement.AppendText("\n\t\t");
 			}
 		}
-		rootNode->insert_node(0, parentNode);
+		aSoloGameTypeElement.AppendText("\n");
 	}
 
-	std::string xml_as_string;
-	rapidxml::print(std::back_inserter(xml_as_string), doc);
+	aRootElement.AppendText("\n");
+	aXml.SaveToFile(name);
 
-	std::ofstream file_stored(name);
-	file_stored << doc;
-	file_stored.close();
-	doc.clear();
+
+
+	//	if(MessageBuffer[0])
+	//		MessageBox( NULL, MessageBuffer, "RSM Exporter Error Report", MB_OK );
 
 	return true;
+
+
 }
 
 bool RSBspExporter::SaveSmoke(const char* name)
 {
-	
-	rapidxml::xml_document<> doc;
-	rapidxml::xml_node<>* decl = doc.allocate_node(rapidxml::node_declaration);
-	decl->append_attribute(doc.allocate_attribute("version", "1.0"));
-	decl->append_attribute(doc.allocate_attribute("encoding", "utf-8"));
-	doc.append_node(decl);
+	MXmlDocument	aXml;
 
-	rapidxml::xml_node<>* rootNode = doc.allocate_node(rapidxml::node_element, "XML");
-	rootNode->append_attribute(doc.allocate_attribute("id", doc.allocate_string(name)));
-	doc.append_node(rootNode);
+	aXml.Create();
+	aXml.CreateProcessingInstruction();
 
-	rapidxml::xml_node<>* parentNode;
+	MXmlElement	aRootElement;
+
+	aRootElement = aXml.CreateElement("XML");
+	aXml.AppendChild(aRootElement);
 
 	const char* cszDummyName = "smk_";
 	char strBuffer[256];
@@ -405,99 +422,93 @@ bool RSBspExporter::SaveSmoke(const char* name)
 
 	int ntest = 0;
 
-	for(list<RDUMMY*>::iterator i=m_DummyList.begin();i!=m_DummyList.end();++i)
+	for (list<RDUMMY*>::iterator i = m_DummyList.begin(); i != m_DummyList.end(); ++i)
 	{
-		RDUMMY *psp=*i;
+		RDUMMY* psp = *i;
 
-		if( strnicmp( psp->name.c_str(), cszDummyName, strlen(cszDummyName))== 0 )
+		if (strnicmp(psp->name.c_str(), cszDummyName, strlen(cszDummyName)) == 0)
 		{
 			++ntest;
+			aRootElement.AppendText("\n\t");
+
+			MXmlElement SmokeElement = aRootElement.CreateChildElement(RTOK_SMOKE);
 
 			strcpy(strBuffer, psp->name.c_str());
 			strcat(strBuffer, ".elu");
 
-			parentNode = doc.allocate_node(rapidxml::node_element, RTOK_SMOKE);
-			parentNode->append_attribute(doc.allocate_attribute(RTOK_SMOKE_NAME, doc.allocate_string(strBuffer)));
+			SmokeElement.AddAttribute(RTOK_SMOKE_NAME, strBuffer);
 
-
-
-			if( psp->GetUserPropValue(RTOK_SMOKE_DIRECTION, &iBuffer) ) {
-				parentNode->append_attribute(doc.allocate_attribute(RTOK_SMOKE_DIRECTION, doc.allocate_string(to_string(iBuffer).c_str())));
+			if (psp->GetUserPropValue(RTOK_SMOKE_DIRECTION, &iBuffer)) {
+				SmokeElement.AddAttribute(RTOK_SMOKE_DIRECTION, iBuffer);
 			}
 
-			if( psp->GetUserPropValue(RTOK_SMOKE_POWER, &fBuffer) )
+			if (psp->GetUserPropValue(RTOK_SMOKE_POWER, &fBuffer))
 			{
 				int up = (int)fBuffer;
-				int down = (int)((fBuffer - up)*1000);
-				sprintf( strBuffer, "%d.%d", up, down );
-				parentNode->append_attribute(doc.allocate_attribute(RTOK_SMOKE_POWER, doc.allocate_string(strBuffer)));
+				int down = (int)((fBuffer - up) * 1000);
+				sprintf(strBuffer, "%d.%d", up, down);
+				SmokeElement.AddAttribute(RTOK_SMOKE_POWER, strBuffer);
 			}
 
 			if (psp->GetUserPropValue(RTOK_SMOKE_DELAY, &iBuffer))
-				parentNode->append_attribute(doc.allocate_attribute(RTOK_SMOKE_DELAY, doc.allocate_string(to_string(iBuffer).c_str())));
+				SmokeElement.AddAttribute(RTOK_SMOKE_DELAY, iBuffer);
 
-			if( psp->GetUserPropValue(RTOK_SMOKE_SIZE, &fBuffer) )
+			if (psp->GetUserPropValue(RTOK_SMOKE_SIZE, &fBuffer))
 			{
 				int up = (int)fBuffer;
-				int down = (int)((fBuffer - up)*1000);
-				sprintf( strBuffer, "%d.%d", up, down );
-				parentNode->append_attribute(doc.allocate_attribute(RTOK_SMOKE_SIZE, doc.allocate_string(strBuffer)));
+				int down = (int)((fBuffer - up) * 1000);
+				sprintf(strBuffer, "%d.%d", up, down);
+				SmokeElement.AddAttribute(RTOK_SMOKE_SIZE, strBuffer);
 			}
 
-			if( psp->GetUserPropValue(RTOK_SMOKE_COLOR, strBuffer,256) ) {
-				parentNode->append_attribute(doc.allocate_attribute(RTOK_SMOKE_COLOR, doc.allocate_string(strBuffer)));
+			if (psp->GetUserPropValue(RTOK_SMOKE_COLOR, strBuffer, 256)) {
+				SmokeElement.AddAttribute(RTOK_SMOKE_COLOR, strBuffer);
 			}
 
-			if( psp->GetUserPropValue(RTOK_SMOKE_LIFE, &fBuffer) )
+			if (psp->GetUserPropValue(RTOK_SMOKE_LIFE, &fBuffer))
 			{
 				int up = (int)fBuffer;
-				int down = (int)((fBuffer - up)*1000);
-				sprintf( strBuffer, "%d.%d", up, down );
-				parentNode->append_attribute(doc.allocate_attribute(RTOK_SMOKE_LIFE, doc.allocate_string(strBuffer)));
-
+				int down = (int)((fBuffer - up) * 1000);
+				sprintf(strBuffer, "%d.%d", up, down);
+				SmokeElement.AddAttribute(RTOK_SMOKE_LIFE, strBuffer);
 			}
 
-			if( psp->GetUserPropValue(RTOK_SMOKE_TOGMINTIME, &fBuffer) )
+			if (psp->GetUserPropValue(RTOK_SMOKE_TOGMINTIME, &fBuffer))
 			{
 				int up = (int)fBuffer;
-				int down = (int)((fBuffer - up)*1000);
-				sprintf( strBuffer, "%d.%d", up, down );
-				parentNode->append_attribute(doc.allocate_attribute(RTOK_SMOKE_TOGMINTIME, doc.allocate_string(strBuffer)));
+				int down = (int)((fBuffer - up) * 1000);
+				sprintf(strBuffer, "%d.%d", up, down);
+				SmokeElement.AddAttribute(RTOK_SMOKE_TOGMINTIME, strBuffer);
 			}
-			rootNode->insert_node(0, parentNode);
+
+			SmokeElement.AppendText("\t");
+
+			//			mlog("SaveSmoke ????\n");
 		}
 	}
 
-	if( ntest > 0 )
+	if (ntest > 0)
 	{
-		std::string xml_as_string;
-		rapidxml::print(std::back_inserter(xml_as_string), doc);
-
-		std::ofstream file_stored(name);
-		file_stored << doc;
-		file_stored.close();
-		doc.clear();
+		aRootElement.AppendText("\n");
+		aXml.SaveToFile(name);
 	}
 
 	return true;
+
 }
 
 bool RSBspExporter::SaveFlag( const char* name )
 {
 
-	rapidxml::xml_document<> doc;
-	rapidxml::xml_node<>* decl = doc.allocate_node(rapidxml::node_declaration);
-	decl->append_attribute(doc.allocate_attribute("version", "1.0"));
-	decl->append_attribute(doc.allocate_attribute("encoding", "utf-8"));
-	doc.append_node(decl);
+	MXmlDocument	aXml;
 
-	rapidxml::xml_node<>* rootNode = doc.allocate_node(rapidxml::node_element, "XML");
-	rootNode->append_attribute(doc.allocate_attribute("id", doc.allocate_string(name)));
-	doc.append_node(rootNode);
+	aXml.Create();
+	aXml.CreateProcessingInstruction();
 
-	rapidxml::xml_node<>* parentNode;
-	rapidxml::xml_node<>* childNode;
+	MXmlElement		aRootElement;
 
+	aRootElement = aXml.CreateElement("XML");
+	aXml.AppendChild(aRootElement);
 
 	const char* cszDummyName = "obj_flag";
 	char strBuffer[256], strBuffer2[256];
@@ -505,79 +516,76 @@ bool RSBspExporter::SaveFlag( const char* name )
 	float	fBuffer;
 
 	int ntest = 0;
-	
-	for(list<RDUMMY*>::iterator i=m_DummyList.begin();i!=m_DummyList.end();++i)
+
+	for (list<RDUMMY*>::iterator i = m_DummyList.begin(); i != m_DummyList.end(); ++i)
 	{
-		RDUMMY *psp=*i;
-		if( strnicmp( psp->name.c_str(), cszDummyName, strlen(cszDummyName))== 0 )
+		RDUMMY* psp = *i;
+		if (strnicmp(psp->name.c_str(), cszDummyName, strlen(cszDummyName)) == 0)
 		{
 			++ntest;
+			aRootElement.AppendText("\n\t");
+			MXmlElement FlagElement = aRootElement.CreateChildElement(RTOK_FLAG);
+
 			strcpy(strBuffer, psp->name.c_str());
 			strcat(strBuffer, ".elu");
-			parentNode = doc.allocate_node(rapidxml::node_element, RTOK_FLAG,doc.allocate_string(strBuffer));
 
-						
+			FlagElement.AddAttribute(RTOK_FLAG_NAME, strBuffer);
+
 			if (psp->GetUserPropValue(RTOK_FLAG_DIRECTION, &iBuffer))
-				parentNode->append_attribute(doc.allocate_attribute(RTOK_FLAG_DIRECTION, doc.allocate_string(to_string(iBuffer).c_str())));
-			if( psp->GetUserPropValue(RTOK_FLAG_POWER, &fBuffer) )
+				FlagElement.AddAttribute(RTOK_FLAG_DIRECTION, iBuffer);
+			if (psp->GetUserPropValue(RTOK_FLAG_POWER, &fBuffer))
 			{
 				int up = (int)fBuffer;
-				int down = (int)((fBuffer - up)*1000);
-				sprintf( strBuffer, "%d.%d", up, down );
-				parentNode->append_attribute(doc.allocate_attribute(RTOK_FLAG_POWER, doc.allocate_string(strBuffer)));
+				int down = (int)((fBuffer - up) * 1000);
+				sprintf(strBuffer, "%d.%d", up, down);
+				FlagElement.AddAttribute(RTOK_FLAG_POWER, strBuffer);
 			}
 
-			if( psp->GetUserPropValue(RTOK_RESTRICTION, &nTemp ))
+			if (psp->GetUserPropValue(RTOK_RESTRICTION, &nTemp))
 			{
-				for( int i = 0; i < nTemp; ++i )
+				for (int i = 0; i < nTemp; ++i)
 				{
-					childNode = doc.allocate_node(rapidxml::node_element, RTOK_RESTRICTION); 
-					sprintf(strBuffer2, "%s%d", RTOK_RESTRICTION_AXIS, i );
-					log("%s\n",strBuffer2);
+					FlagElement.AppendText("\n\t\t");
+					MXmlElement RestrictionElement = FlagElement.CreateChildElement(RTOK_RESTRICTION);
+					sprintf(strBuffer2, "%s%d", RTOK_RESTRICTION_AXIS, i);
+					log("%s\n", strBuffer2);
 					if (psp->GetUserPropValue(strBuffer2, &iBuffer))
-						childNode->append_attribute(doc.allocate_attribute(RTOK_RESTRICTION_AXIS, doc.allocate_string(to_string(iBuffer).c_str()))); ;
-					sprintf(strBuffer2, "%s%d", RTOK_RESTRICTION_POSITION, i );
-					log("%s\n",strBuffer2);
-					if(psp->GetUserPropValue(strBuffer2, &fBuffer))
+						RestrictionElement.AddAttribute(RTOK_RESTRICTION_AXIS, iBuffer);
+					sprintf(strBuffer2, "%s%d", RTOK_RESTRICTION_POSITION, i);
+					log("%s\n", strBuffer2);
+					if (psp->GetUserPropValue(strBuffer2, &fBuffer))
 					{
 						int up = (int)fBuffer;
-						int down = (int)(fabs((fBuffer - up)*1000));
-						sprintf( strBuffer, "%d.%d", up, down );
-						childNode->append_attribute(doc.allocate_attribute(RTOK_RESTRICTION_POSITION, doc.allocate_string(strBuffer)));
+						int down = (int)(fabs((fBuffer - up) * 1000));
+						sprintf(strBuffer, "%d.%d", up, down);
+						RestrictionElement.AddAttribute(RTOK_RESTRICTION_POSITION, strBuffer);
 					}
-					sprintf(strBuffer2, "%s%d", RTOK_RESTRICTION_COMPARE, i );
-					log("%s\n",strBuffer2);
+					sprintf(strBuffer2, "%s%d", RTOK_RESTRICTION_COMPARE, i);
+					log("%s\n", strBuffer2);
 					if (psp->GetUserPropValue(strBuffer2, &iBuffer))
-						childNode->append_attribute(doc.allocate_attribute(RTOK_RESTRICTION_COMPARE, doc.allocate_string(to_string(iBuffer).c_str())));
-
-					parentNode->insert_node(0, childNode);
+						RestrictionElement.AddAttribute(RTOK_RESTRICTION_COMPARE, iBuffer);
 				}
 			}
 
-			if( psp->GetUserPropValue(RTOK_WINDTYPE, &iBuffer) )
+			if (psp->GetUserPropValue(RTOK_WINDTYPE, &iBuffer))
 			{
-				childNode = doc.allocate_node(rapidxml::node_element, "WINDTYPE");
-				childNode->append_attribute(doc.allocate_attribute(RTOK_WINDTYPE, doc.allocate_string(to_string(iBuffer).c_str()))); 
+				FlagElement.AppendText("\n\t\t");
+				MXmlElement WindElement = FlagElement.CreateChildElement("WINDTYPE");
+				WindElement.AddAttribute(RTOK_WINDTYPE, iBuffer);
 				if (psp->GetUserPropValue(RTOK_WINDDELAY, &iBuffer))
-					childNode->append_attribute(doc.allocate_attribute(RTOK_WINDDELAY, doc.allocate_string(to_string(iBuffer).c_str())));
-
-				parentNode->insert_node(0, childNode);
+					WindElement.AddAttribute(RTOK_WINDDELAY, iBuffer);
 			}
-			rootNode->insert_node(0, parentNode);
+			FlagElement.AppendText("\n\t");
 		}
 	}
-//	doc.insert_node(0, rootNode);
 
-	if (ntest > 0) {
-		std::string xml_as_string;
-		rapidxml::print(std::back_inserter(xml_as_string), doc);
-
-		std::ofstream file_stored(name);
-		file_stored << doc;
-		file_stored.close();
-		doc.clear();
+	if (ntest > 0)
+	{
+		aRootElement.AppendText("\n");
+		aXml.SaveToFile(name);
 	}
 	return true;
+
 }
 
 TSTR WSTRToTSTR( LPWSTR pwstr )
@@ -636,14 +644,11 @@ void VariantToString(const PROPVARIANT* pProp, TCHAR* szString, int bufSize)
 #define DEFAULT_FOG_COLOR_G 255
 #define DEFAULT_FOG_COLOR_B 255
 
-bool RSBspExporter::SaveFog(rapidxml::xml_node<>* Root, rapidxml::xml_document<>& doc)
+bool RSBspExporter::SaveFog(MXmlElement& Root)
 {
-
-	return true;
-	
 	char szBuffer[256];
-	int min =DEFAULT_FOG_MIN;
-	int max =DEFAULT_FOG_MAX;
+	int min = DEFAULT_FOG_MIN;
+	int max = DEFAULT_FOG_MAX;
 	int r = DEFAULT_FOG_COLOR_R;
 	int g = DEFAULT_FOG_COLOR_G;
 	int b = DEFAULT_FOG_COLOR_B;
@@ -651,108 +656,114 @@ bool RSBspExporter::SaveFog(rapidxml::xml_node<>* Root, rapidxml::xml_document<>
 	bool bFogEnable = false;
 
 	int nProp = ip->GetNumProperties(PROPSET_USERDEFINED);
-	if( nProp <= 0 ) return false;
+	if (nProp <= 0) return false;
 
+	MXmlElement FogElement;
 
-	rapidxml::xml_node<>* rootNode;
-
-	for(int i = 0; i < nProp; ++i)
+	for (int i = 0; i < nProp; ++i)
 	{
 		const PROPSPEC* prospec = ip->GetPropertySpec(PROPSET_USERDEFINED, i);
 		const PROPVARIANT* provariant = ip->GetPropertyVariant(PROPSET_USERDEFINED, i);
 
-		if (prospec->ulKind == PRSPEC_PROPID) 
+		if (prospec->ulKind == PRSPEC_PROPID)
 			_stprintf(szBuffer, "%ld", prospec->propid);
-		else 
-			_tcscpy(szBuffer, WSTRToTSTR(prospec->lpwstr) );
+		else
+			_tcscpy(szBuffer, WSTRToTSTR(prospec->lpwstr));
 
-		if(stricmp("fog_enable", szBuffer) == 0)
+		if (stricmp("fog_enable", szBuffer) == 0)
 		{
 			bFogEnable = true;
-			if(!provariant->boolVal) return false;
+			if (!provariant->boolVal) return false;
 			else
 			{
-				rootNode = doc.allocate_node(rapidxml::node_element, RTOK_FOG);
+				Root.AppendText("\n\t");
+				FogElement = Root.CreateChildElement(RTOK_FOG);
 			}
 		}
-		else if(stricmp("fog_min", szBuffer) == 0)
+		else if (stricmp("fog_min", szBuffer) == 0)
 		{
 			VariantToString(provariant, szBuffer, 256);
 			min = atoi(szBuffer);
 		}
-		else if(stricmp("fog_max", szBuffer) == 0)
+		else if (stricmp("fog_max", szBuffer) == 0)
 		{
 			VariantToString(provariant, szBuffer, 256);
 			max = atoi(szBuffer);
 		}
-		else if(stricmp("fog_color", szBuffer) == 0)
+		else if (stricmp("fog_color", szBuffer) == 0)
 		{
 			char* token;
 			VariantToString(provariant, szBuffer, 256);
-			token = strtok(szBuffer,",");
-			if(token!=NULL) r=atoi(token);
-			token = strtok(NULL,",");
-			if(token!=NULL) g=atoi(token);
-			token = strtok(NULL,",");
-			if(token!=NULL) b=atoi(token);
-		}	
-	}	
+			token = strtok(szBuffer, ",");
+			if (token != NULL) r = atoi(token);
+			token = strtok(NULL, ",");
+			if (token != NULL) g = atoi(token);
+			token = strtok(NULL, ",");
+			if (token != NULL) b = atoi(token);
+		}
+	}
 
 	if (bFogEnable)
 	{
-		rootNode->append_attribute(doc.allocate_attribute("min", doc.allocate_string(to_string(min).c_str())));
-		rootNode->append_attribute(doc.allocate_attribute("max", doc.allocate_string(to_string(max).c_str())));
+		FogElement.AddAttribute("min", min);
+		FogElement.AddAttribute("max", max);
 
-		rapidxml::xml_node<>* childNode = doc.allocate_node(rapidxml::node_element, "R", doc.allocate_string(to_string(r).c_str()));
-		rootNode->insert_node(0, childNode);
+		FogElement.AppendText("\n\t\t");
+		MXmlElement r_elem = FogElement.CreateChildElement("R");
+		r_elem.SetContents(r);
 
-		childNode = doc.allocate_node(rapidxml::node_element, "G", doc.allocate_string(to_string(r).c_str()));
-		rootNode->insert_node(0, childNode);
+		FogElement.AppendText("\n\t\t");
+		MXmlElement g_elem = FogElement.CreateChildElement("G");
+		g_elem.SetContents(g);
 
+		FogElement.AppendText("\n\t\t");
+		MXmlElement b_elem = FogElement.CreateChildElement("B");
+		b_elem.SetContents(b);
 
-		childNode = doc.allocate_node(rapidxml::node_element, "B", doc.allocate_string(to_string(r).c_str()));
-		rootNode->insert_node(0, childNode);
+		FogElement.AppendText("\n\t");
 	}
-	Root->insert_node(0, rootNode);
 
 	return true;
+
 }
 
-bool RSBspExporter::SaveSoundProp(rapidxml::xml_node<>* Root, rapidxml::xml_document<>& doc)
+bool RSBspExporter::SaveSoundProp(MXmlElement& Root)
 {
 	char szBuffer[256];
 	const char* cszDummyName = "snd_amb";
 
-	//Root.AppendText("\n\t");
-	rapidxml::xml_node<>* rootNode = doc.allocate_node(rapidxml::node_element, "AMBIENTSOUNDLIST");
+	Root.AppendText("\n\t");
+	MXmlElement ambSndElementList = Root.CreateChildElement("AMBIENTSOUNDLIST");
 
-	for(list<RDUMMY*>::iterator i=m_DummyList.begin();i!=m_DummyList.end();++i)
+	for (list<RDUMMY*>::iterator i = m_DummyList.begin(); i != m_DummyList.end(); ++i)
 	{
 		D3DXVECTOR3 vec_min, vec_max;
 		bool bmin, bmax;
 		char* token = 0;
 
-		RDUMMY *psp=*i;
+		RDUMMY* psp = *i;
 		bmin = false;
 		bmax = false;
 
-		if( strnicmp( psp->name.c_str(), cszDummyName, strlen(cszDummyName))== 0 )
+		if (strnicmp(psp->name.c_str(), cszDummyName, strlen(cszDummyName)) == 0)
 		{
-			rapidxml::xml_node<>* parentNode = doc.allocate_node(rapidxml::node_element, "AMBIENTSOUND");
-			parentNode->append_attribute(doc.allocate_attribute("ObjName", doc.allocate_string(psp->name.c_str())));
-			
-			
-            if(psp->GetUserPropValue("type",szBuffer,256))
+			ambSndElementList.AppendText("\n\t\t");
+			MXmlElement ambSndElement = ambSndElementList.CreateChildElement("AMBIENTSOUND");
+
+			ambSndElement.AddAttribute("ObjName", psp->name.c_str());
+
+			if (psp->GetUserPropValue("type", szBuffer, 256))
 			{
-				parentNode->append_attribute(doc.allocate_attribute("type", doc.allocate_string(szBuffer)));
-				if(szBuffer[1]=='1') // 구일 경우 중심을 표시
+				ambSndElement.AddAttribute("type", szBuffer);
+				if (szBuffer[1] == '1') // ?? ?? ??? ??
 				{
-					rapidxml::xml_node<>* childNode = doc.allocate_node(rapidxml::node_element, "CENTER", doc.allocate_string(Format(szBuffer, psp->position)));
-					parentNode->insert_node(0, childNode);
+					ambSndElement.AppendText("\n\t\t\t");
+					MXmlElement posElement = ambSndElement.CreateChildElement("CENTER");
+					posElement.SetContents(Format(szBuffer, psp->position));
 				}
 			}
 
-			if(psp->GetUserPropValue("min_point",szBuffer,256))
+			if (psp->GetUserPropValue("min_point", szBuffer, 256))
 			{
 				token = strtok(szBuffer, ",");
 				vec_max.x = -atof(token);
@@ -761,9 +772,9 @@ bool RSBspExporter::SaveSoundProp(rapidxml::xml_node<>* Root, rapidxml::xml_docu
 				token = strtok(NULL, ",");
 				vec_min.z = atof(token);
 
-				bmin = true;				
+				bmin = true;
 			}
-			if(psp->GetUserPropValue("max_point",szBuffer,256))
+			if (psp->GetUserPropValue("max_point", szBuffer, 256))
 			{
 				token = strtok(szBuffer, ",");
 				vec_min.x = -atof(token);
@@ -774,38 +785,41 @@ bool RSBspExporter::SaveSoundProp(rapidxml::xml_node<>* Root, rapidxml::xml_docu
 
 				bmax = true;
 			}
-			if(psp->GetUserPropValue("r",szBuffer,256))
+			if (psp->GetUserPropValue("r", szBuffer, 256))
 			{
-			//	ambSndElement.AppendText("\n\t\t\t");
-				rapidxml::xml_node<>* childNode = doc.allocate_node(rapidxml::node_element, "RADIUS", doc.allocate_string(szBuffer));
-				parentNode->insert_node(0, childNode);
+				ambSndElement.AppendText("\n\t\t\t");
+				MXmlElement posElement = ambSndElement.CreateChildElement("RADIUS");
+				posElement.SetContents(szBuffer);
 			}
-			if(psp->GetUserPropValue("file",szBuffer,256))
+			if (psp->GetUserPropValue("file", szBuffer, 256))
 			{
-				parentNode->append_attribute(doc.allocate_attribute("filename", doc.allocate_string(szBuffer)));
+				ambSndElement.AddAttribute("filename", szBuffer);
 			}
-			if( bmax & bmin )
+			if (bmax & bmin)
 			{
-				rapidxml::xml_node<>* childNode = doc.allocate_node(rapidxml::node_element, "MIN_POSITION", doc.allocate_string(Format(szBuffer, vec_min)));
-				parentNode->insert_node(0, childNode);
+				ambSndElement.AppendText("\n\t\t\t");
+				MXmlElement posElement = ambSndElement.CreateChildElement("MIN_POSITION");
+				posElement.SetContents(Format(szBuffer, vec_min));
 
-				childNode = doc.allocate_node(rapidxml::node_element, "MAX_POSITION", doc.allocate_string(Format(szBuffer, vec_max)));
-				parentNode->insert_node(0, childNode);
+				ambSndElement.AppendText("\n\t\t\t");
+				posElement = ambSndElement.CreateChildElement("MAX_POSITION");
+				posElement.SetContents(Format(szBuffer, vec_max));
 
 				bmin = bmax = false;
 			}
-			
-			rootNode->insert_node(0, parentNode);
-		}		
-	}
-	Root->insert_node(0, rootNode);
 
+			ambSndElement.AppendText("\n\t\t");
+		}
+	}
+
+	ambSndElementList.AppendText("\n\t");
 	return true;
+
 }
 
 // xml에 <GLOBAL> 태그안에 Property들이 저장된다. 
 // 맵의 전역적인 값을 설정할때 사용함.
-bool RSBspExporter::SaveCustomProperties(rapidxml::xml_node<>* Root, rapidxml::xml_document<>& doc)
+bool RSBspExporter::SaveCustomProperties(MXmlElement& Root)
 {
 	char szBuffer[256];
 	char szValue[1024];
@@ -813,7 +827,9 @@ bool RSBspExporter::SaveCustomProperties(rapidxml::xml_node<>* Root, rapidxml::x
 	int nProp = ip->GetNumProperties(PROPSET_USERDEFINED);
 	if (nProp <= 0) return false;
 
-	rapidxml::xml_node<>* parentNode = doc.allocate_node(rapidxml::node_element, RTOK_GLOBAL);
+	Root.AppendText("\n\t");
+	MXmlElement globalElement = Root.CreateChildElement(RTOK_GLOBAL);
+
 	for (int i = 0; i < nProp; ++i)
 	{
 		const PROPSPEC* prospec = ip->GetPropertySpec(PROPSET_USERDEFINED, i);
@@ -833,12 +849,15 @@ bool RSBspExporter::SaveCustomProperties(rapidxml::xml_node<>* Root, rapidxml::x
 
 
 
-		rapidxml::xml_node<>* childNode = doc.allocate_node(rapidxml::node_element, doc.allocate_string(szBuffer), doc.allocate_string(szValue));
-		parentNode->insert_node(0, childNode);
+		globalElement.AppendText("\n\t\t");
+		MXmlElement element1 = globalElement.CreateChildElement(szBuffer);
+		element1.SetContents(szValue);
+
 	}
-	Root->insert_node(0, parentNode);
+	globalElement.AppendText("\n\t");
 
 	return true;
+
 }
 
 // for debug variables...

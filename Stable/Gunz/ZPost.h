@@ -1254,14 +1254,14 @@ inline void ZPostRequestCheckMods(void* stageModBlob, const MUID& player)
 	ZPOSTCMD2(MC_MATCH_CHECK_STAGEMODS, MCmdParamBlob(stageModBlob, MGetBlobArraySize(stageModBlob)), MCmdParamUID(player));
 }
 
-inline void ZPostRequestUpdateSkillMapBestTime(const MUID& player, const char* mapID,unsigned int bestTime)
+inline void ZPostRequestUpdateSkillMapBestTime(const MUID& player, const int& mapID,unsigned int bestTime)
 {
-	ZPOSTCMD3(MC_MATCH_UPDATE_SKILLMAP_BESTTIME, MCmdParamUID(player), MCmdParamStr(mapID),MCmdParamInt(bestTime));
+	ZPOSTCMD3(MC_MATCH_UPDATE_SKILLMAP_BESTTIME, MCmdParamUID(player), MCmdParamInt(mapID),MCmdParamInt(bestTime));
 }
 
-inline void ZPostRequestSkillMapBestTime(const MUID& player, const char* mapName)
+inline void ZPostRequestSkillMapBestTime(const MUID& player, const int& mapName)
 {
-	ZPOSTCMD2(MC_MATCH_REQUEST_SKILLMAP_BESTTIME, MCmdParamUID(player), MCmdParamStr(mapName));
+	ZPOSTCMD2(MC_MATCH_REQUEST_SKILLMAP_BESTTIME, MCmdParamUID(player), MCmdParamInt(mapName));
 }
 
 ///Custom: Admin Slap
@@ -1277,10 +1277,4 @@ inline void ZPostCreateAccount(const char* Username, const char* Password, const
 	ZPOSTCMD3(MC_MATCH_REQUEST_CREATE_ACCOUNT, MCmdParamStr(Username),
 		MCmdParamStr(Password), MCmdParamStr(Email));
 }
-
-inline void ZPostPlayerInformation(const char* pszTargetName)
-{
-	ZPOSTCMD1(MC_MATCH_INFORMATION, MCmdParamStr(pszTargetName));
-}
-
 #endif

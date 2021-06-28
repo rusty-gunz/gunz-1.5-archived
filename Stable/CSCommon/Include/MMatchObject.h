@@ -92,7 +92,6 @@ struct MMatchAccountInfo
 
 	bool					m_bIsPowerLevelingHacker;
 	int						m_nPowerLevelingRegTimeMin;
-	bool					m_isBanned;
 
 	int						m_nCCode;
 
@@ -102,7 +101,6 @@ struct MMatchAccountInfo
 		m_dwHackingBlockEndTimeMS	= 0;
 		m_bIsPowerLevelingHacker	= false;
 		m_nPowerLevelingRegTimeMin	= 0;
-		m_isBanned					= false;
 		
 		memset(m_szUserID, 0, MAX_USERID_STRING_LEN);
 	}

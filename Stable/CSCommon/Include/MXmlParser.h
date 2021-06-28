@@ -1,7 +1,7 @@
 #ifndef _MXMLPARSER_H
 #define _MXMLPARSER_H
 
-
+#include "rapidxml.hpp"
 class MZFileSystem;
 
 class MXmlParser

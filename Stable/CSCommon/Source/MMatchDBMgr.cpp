@@ -25,8 +25,8 @@
 // 계정 생성 - UserID, Password, UGradeID, PGradeID, Name, Email, RegNum, Sex, ZipCode, Address
 // 바꾼자. - 넷마블 서버는 아직 안바꿨음, Cert컬럼도 추가해야함
 //TCHAR g_szDB_CREATE_ACCOUNT[] = _T("{CALL spInsertAccount ('%s', '%s', %d, %d, '%s', '%s', '%s', %d, '%s', '%s')}");
-// UserID, Password, Cert, Name, Age, Sex 
-TCHAR g_szDB_CREATE_ACCOUNT[] = _T("{CALL spInsertAccount ('%s', '%s', %d, '%s', %d, %d)}");
+// UserID, Email,Password, Cert, Name, Age 
+TCHAR g_szDB_CREATE_ACCOUNT[] = _T("{CALL spInsertAccount ('%s', '%s', '%s', %d, '%s')}");
 TCHAR g_szDB_CREATE_ACCOUNT_NETMARBLE[] = _T("{CALL spInsertAccount_Netmarble ('%s', '%s', %d, %d, %d)}");
 
 // 계정 로그인 정보 받아오기
@@ -38,6 +38,7 @@ TCHAR g_szDB_GET_LOGININFO[] = _T("{CALL spGetLoginInfo ('%s')}");
 TCHAR g_szDB_GET_LOGININFO_NETMARBLE[] = _T("{CALL spGetLoginInfo_Netmarble ('%s', '%s')}");
 TCHAR g_szDB_GET_LOGININFO_NETMARBLE2[] = _T("{CALL spGetLoginInfo_Netmarble2 ('%s', '%s')}");
 
+// 계정 정보 받아오기
 // 계정 정보 받아오기
 TCHAR g_szDB_GET_ACCOUNTINFO[] = _T("{CALL spGetAccountInfo (%d)}");
 
@@ -500,17 +501,25 @@ TCHAR g_szDB_GET_REWARD_CHAR_BR[] = _T("{CALL spRewardCharBattleTimeReward (%d, 
 
 TCHAR g_szDB_ON_BAN_PLAYER[] = _T("{CALL spOnBanPlayer (%d,%d,'%s')}");
 
-TCHAR g_szDB_UPDATE_SKILLMAP_BESTTIME[] = _T("{CALL spInsertSkillMapTime (%d,'%s',%d)}");
+TCHAR g_szDB_UPDATE_SKILLMAP_BESTTIME[] = _T("{CALL spInsertSkillMapTime (%d,%d,%d)}");
 
-TCHAR g_szDB_GET_SKILLMAP_BESTTIME[] = _T("{CALL spGetSkillMapBestTime (%d,'%s',%d)}");
+TCHAR g_szDB_GET_SKILLMAP_BESTTIME[] = _T("{CALL spGetSkillMapBestTime (%d,%d)}");
 
 
 TCHAR g_szDB_GET_ACHIEVEMENT_BYCID[] = _T("{CALL spGetAchievementByCID (%d, %d, %d)}");
 
-static std::string FilterSQL(std::string str)
+bool FilterSQL(std::string& target,const char* illegalcharacters)
 {
-	erase_remove(str, '\'');
-	return str;
+	const int charLength = strlen(illegalcharacters);
+	for (int i = 0; i < charLength; ++i)
+	{
+		char illegalCharacter = illegalcharacters[i];
+		if (target.find_first_of(illegalCharacter) != std::string::npos)
+		{
+			false;
+		}
+	}
+	return true;
 }
 
 enum ACCOUNTRESULT
@@ -671,20 +680,28 @@ bool MMatchDBMgr::GetLoginInfo_Netmarble(const TCHAR* szUserID, unsigned int* po
 }
 
 bool MMatchDBMgr::CreateAccount(const TCHAR* szUserID, 
+								const TCHAR* szEmail,
 								const TCHAR* szPassword, 
 								const int nCert,
 								const TCHAR* szName,
-								const int nAge, 
-								const int nSex)
+								const int nAge)
 
 {
 	_STATUS_DB_START;
 	if (!CheckOpen()) return false;	
 
+	string safeUser = szUserID;
+
+	if (std::all_of(safeUser.begin(), safeUser.end(), isalnum) == false)
+		return false;
+	
+	if (FilterSQL(std::string(szUserID), "\'%$-+\"") == false)
+		return false;
+
 	CString strSQL;
 
 	try {		
-		strSQL.Format(g_szDB_CREATE_ACCOUNT, szUserID, szPassword, nCert, szName, nAge, nSex);
+		strSQL.Format(g_szDB_CREATE_ACCOUNT, safeUser.c_str(), szEmail,szPassword, nCert, szName);
 		m_DB.ExecuteSQL( strSQL );
 	} 
 	catch(CDBException* e) {		
@@ -695,6 +712,20 @@ bool MMatchDBMgr::CreateAccount(const TCHAR* szUserID,
 	_STATUS_DB_END(1);
 
 	return true;
+}
+
+
+bool MMatchDBMgr::CreateAccountNew(const char* szUserName, const char* szPassword, const char* szEmail)
+{
+	_STATUS_DB_START;
+	if (!CheckOpen()) return false;
+
+	if (szUserName == nullptr || szPassword == nullptr || szEmail == nullptr)
+		return false;
+
+	bool result =  CreateAccount(szUserName, szEmail,szPassword,0," ", 0);
+	
+	return result;
 }
 
 bool MMatchDBMgr::CreateAccount_Netmarble(const TCHAR* szUserID, 
@@ -730,79 +761,6 @@ bool MMatchDBMgr::CreateAccount_Netmarble(const TCHAR* szUserID,
 	return true;
 }
 
-bool MMatchDBMgr::CreateAccountNew(const char* szUserName, const char* szPassword, const char* szEmail)
-{
-	_STATUS_DB_START;
-	if (!CheckOpen()) return false;
-
-
-	CString strSQL;
-	CODBCRecordset rs(&m_DB);
-
-	string userName = FilterSQL(szUserName), FilterSQL(szEmail);
-
-	szUserName = userName.c_str();
-	szEmail = userName.c_str();
-
-	char szSQL[1024];
-
-	try {
-
-		sprintf_s(szSQL, "SELECT AID FROM Account WHERE UserID = '%s'", szUserName);
-
-		rs.Open(szSQL, CRecordset::forwardOnly, CRecordset::readOnly);
-
-		if (rs.IsOpen() == 0)
-			return ACCOUNTRESULT::DBERROR;
-
-		if (rs.GetRecordCount() > 0)
-			return ACCOUNTRESULT::USERNAMEALRDYEXIST;
-
-		sprintf_s(szSQL, "INSERT INTO Account (UserID, UGradeID, PGradeID, RegDate, Age, Name) VALUES ('%s', '0', '0', GETDATE(), '0', '')",
-			szUserName);
-
-		m_DB.ExecuteSQL(szSQL);
-
-		rs.Close();
-
-		sprintf_s(szSQL, "SELECT AID FROM Account WHERE UserID = '%s'", szUserName);
-
-		rs.Open(szSQL, CRecordset::forwardOnly, CRecordset::readOnly);
-
-		if (rs.IsOpen() == 0 || rs.GetRecordCount() <= 0 || rs.IsBOF() == 1)
-			return ACCOUNTRESULT::DBERROR;
-
-		int AID = rs.Field("AID").AsInt();
-
-		rs.Close();
-
-		if (!CheckMd5IntegrityHash((char*)szPassword)) return ACCOUNTRESULT::DBERROR;
-
-		sprintf_s(szSQL, "INSERT INTO Login(UserID, AID, Password, Email) VALUES('%s', %d, '%s', '%s')", szUserName, AID, szPassword,szEmail);
-
-		m_DB.ExecuteSQL(szSQL);
-	}
-	catch (CDBException * e) {
-		ExceptionHandler(strSQL, e);
-		return ACCOUNTRESULT::DBERROR;
-	}
-	catch (CException * e)
-	{
-		char szError[128];
-		e->GetErrorMessage(szError, sizeof(szError));
-		Log("MMatchDBMgr::CreateAccountNew - CException : %s\n", szError);
-		return ACCOUNTRESULT::DBERROR;
-	}
-	catch (...)
-	{
-		Log("MMatchDBMgr::CreateAccountNew - Unknow Exception\n");
-		return ACCOUNTRESULT::DBERROR;
-	}
-
-	_STATUS_DB_END(0);
-
-	return ACCOUNTRESULT::SUCCESS;
-}
 
 bool MMatchDBMgr::CheckDuplicateCharactername(int* pnOutResult, const TCHAR* szNewName)
 {
@@ -1137,8 +1095,6 @@ bool MMatchDBMgr::GetAccountInfo( const unsigned long int nAID, MMatchAccountInf
 				+ (static_cast<DWORD>(rs.Field("HackingBlockTimeRemainderMin").AsInt()) * 60000);
 		}
 	}
-
-	poutAccountInfo->m_isBanned = (1 == rs.Field("IsBanned").AsInt());
 #endif
 
 	_STATUS_DB_END(5);
@@ -4582,7 +4538,7 @@ bool MMatchDBMgr::OnBanPlayer(const int AID, const MMatchHackID hackID,const cha
 }
 
 //Custom: update skillmap besttime
-bool MMatchDBMgr::UpdateSkillMapBestTIme(const unsigned int player, const char* mapID, const unsigned int bestTime)
+bool MMatchDBMgr::UpdateSkillMapBestTIme(const unsigned int player, const int& mapID, const unsigned int bestTime)
 {
 	_STATUS_DB_START;
 	if (!CheckOpen()) return false;
@@ -4605,7 +4561,7 @@ bool MMatchDBMgr::UpdateSkillMapBestTIme(const unsigned int player, const char* 
 	return true;
 }
 
-bool MMatchDBMgr::GetSkillMapBestTimeByMapName(int CID, const char* mapName, unsigned int* outValue)
+bool MMatchDBMgr::GetSkillMapBestTime(int CID, const int& mapID, unsigned int* outValue)
 {
 	///TODO: getskillmap BestTime;
 	_STATUS_DB_START;
@@ -4614,7 +4570,7 @@ bool MMatchDBMgr::GetSkillMapBestTimeByMapName(int CID, const char* mapName, uns
 
 
 	CString strSQL;
-	strSQL.Format(g_szDB_GET_SKILLMAP_BESTTIME, CID, mapName,*outValue);
+	strSQL.Format(g_szDB_GET_SKILLMAP_BESTTIME, CID, mapID);
 
 	CODBCRecordset rs(&m_DB);
 
@@ -4706,60 +4662,3 @@ bool MMatchDBMgr::test()
 	return true;
 }
 #endif
-
-TCHAR g_szDB_INSERT_PROMOCODE[] = _T("{CALL spInsertPromoCode (%d, %d)}");
-TCHAR g_szDB_GET_PROMOCODE[] = _T("{CALL spGetPromoCode (%d, %d)}");
-
-#ifdef _PROMOCODE
-bool MMatchDBMgr::PCToAccount(const int nAID, const char* szPromoCode)
-{
-	_STATUS_DB_START;
-
-	if (!CheckOpen()) return false;
-
-	CString strSQL;
-	try {
-		strSQL.Format(g_szDB_INSERT_PROMOCODE, nAID, szPromoCode);
-		m_DB.ExecuteSQL(strSQL);
-	}
-	catch (CDBException * e)
-	{
-		ExceptionHandler(strSQL, e);
-		return false;
-	}
-	_STATUS_DB_END(48);
-	return true;
-}
-
-bool MMatchDBMgr::GetPCFromAccount(const int nAID, const char* szPromCode)
-{
-	_STATUS_DB_START;
-
-	if (!CheckOpen()) return false;
-
-	CString strSQL;
-	strSQL.Format(g_szDB_GET_PROMOCODE, nAID, szPromCode);
-
-	CODBCRecordset rs(&m_DB);
-
-	bool bException = false;
-	try {
-		rs.Open(strSQL, CRecordset::forwardOnly, CRecordset::readOnly);
-	}
-	catch (CDBException * e) {
-		bException = true;
-		ExceptionHandler(strSQL, e);
-		return false;
-	}
-	if ((rs.IsOpen() == FALSE) || (rs.GetRecordCount() <= 0) || (rs.IsBOF() == TRUE)) {
-		return false;
-	}
-	_STATUS_DB_END(0);
-
-	int nRet = rs.Field("Ret").AsInt();
-	if (nRet < 0)
-		return false;
-
-	return true;
-}
-#endif // _PROMOCODE

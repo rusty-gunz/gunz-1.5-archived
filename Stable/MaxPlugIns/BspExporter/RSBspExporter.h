@@ -355,9 +355,9 @@ public:
 	bool SaveNavigation(const char* name);
 
 
-	bool SaveSoundProp(rapidxml::xml_node<>* Root,rapidxml::xml_document<>& doc);
-	bool SaveFog(rapidxml::xml_node<>* Root, rapidxml::xml_document<>& doc);
-	bool SaveCustomProperties(rapidxml::xml_node<>* Root, rapidxml::xml_document<>& doc);
+	bool SaveSoundProp(MXmlElement& Root);
+	bool SaveFog(MXmlElement& Root);
+	bool SaveCustomProperties(MXmlElement& Root);
 
 
 	char	MapName[256];

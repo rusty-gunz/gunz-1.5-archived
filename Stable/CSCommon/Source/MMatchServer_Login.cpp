@@ -78,23 +78,16 @@ void MMatchServer::CreateAccount(const MUID& uidComm, const char* szUserName, co
 		CreateAccountResponse(uidComm, "Account creation failed: Empty Email");
 		return;
 	}
-	auto ret = GetDBMgr()->CreateAccountNew(szUserName, szPassword, szEmail);
-
-	switch (ret)
+	bool result = GetDBMgr()->CreateAccountNew(szUserName, szPassword, szEmail);
+	if (result == true)
 	{
-	case 0:	// ACCOUNTRESULT::SUCCESS
-		CreateAccountResponse(uidComm, "Account Created",true);
-		break;
-	case 1:	// ACCOUNTRESULT::USERNAMEALRDY
-		CreateAccountResponse(uidComm, "Account Creation Failed : Username already exists");
-		break;
-	case 2:	// ACCOUNTRESULT::DBERROR
-		CreateAccountResponse(uidComm, "Account Creation Failed : Unknow database error");
-		break;
-	default:
-		CreateAccountResponse(uidComm, "Account Creation Failed : Unknown Error");
-		break;
-	};
+		CreateAccountResponse(uidComm, "Account Created", true);
+	}
+
+	else
+	{
+		CreateAccountResponse(uidComm, "Account Creation Failed!");
+	}
 }
 
 void MMatchServer::CreateAccountResponse(const MUID& uidComm, const char* szReason, bool const& success)
@@ -197,12 +190,6 @@ void MMatchServer::OnMatchLogin(MUID CommUID, const char* szUserID, const char* 
 	{
 		MCommand* pCmd = CreateCmdMatchResponseLoginFailed(CommUID, MERR_CLIENT_MMUG_BLOCKED);
 		Post(pCmd);	
-		return;
-	}
-
-	if (accountInfo.m_isBanned == true) {
-		MCommand* pCmd = CreateCmdMatchResponseLoginFailed(CommUID, MERR_CLIENT_MMUG_BLOCKED);
-		Post(pCmd);
 		return;
 	}
 

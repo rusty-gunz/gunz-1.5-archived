@@ -35,32 +35,6 @@ void MBMatchAsyncDBJob_GameOnLogin::Run( void* pContext )
 {
 	MMatchDBMgr* pDBMgr = (MMatchDBMgr*)pContext;
 
-	TCHAR szDBPassword[ 20 ] = {0,};
-	if( !pDBMgr->GetLoginInfo(m_strUserID.c_str(), &m_nAID, szDBPassword) )
-	{
-		// 처음 접속하는 유저.
-
-		// int nGunzSex;	// 건즈디비의 성별값은 넷마블 성별값과 반대이다.
-		// if (m_nSex == 0) nGunzSex = 1; else nGunzSex = 0;
-
-		// int nCert = 0;
-		// if (strlen(m_szCertificate) > 0)
-		// {
-		//	if (m_szCertificate[0] == '1') nCert =1;
-		// }
-
-		// 지금은 다른 userid외에는 알수 있는 방법이 없어서 임시로 이렇게 한다.
-		pDBMgr->CreateAccount(
-            	m_strUserID.c_str(),	// user id
-				"",						// password
-				1,						// cert
-				"",						// name
-				0,						// age
-				0);						// sex
-		
-		pDBMgr->GetLoginInfo(m_strUserID.c_str(), &m_nAID, szDBPassword);
-	}
-
 	// 계정 정보를 읽는다.
 	if (!pDBMgr->GetAccountInfo(m_nAID, m_pAccountInfo, m_nServerID))
 	{

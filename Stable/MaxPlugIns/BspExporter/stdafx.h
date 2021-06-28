@@ -8,11 +8,9 @@
 
 #if _MSC_VER > 1000
 #pragma once
+#pragma comment(lib,"msxml6.lib")
 #endif // _MSC_VER > 1000
 
-#include "rapidxml.hpp"
-#include "rapidxml_utils.hpp"
-#include "rapidxml_print.hpp"
 // ¿©±â´Ù include
 
 #endif

@@ -1046,7 +1046,7 @@ void ZGame::OnPreDraw()
 	RGetDevice()->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_ZERO);
 	RGetDevice()->SetRenderState(D3DRS_ZWRITEENABLE, true );
 
-	LPDIRECT3DDEVICE9EX pd3dDevice=RGetDevice();
+	LPDIRECT3DDEVICE9 pd3dDevice=RGetDevice();
 	pd3dDevice->SetTexture(0,NULL);
 	pd3dDevice->SetTexture(1,NULL);
 	pd3dDevice->SetTextureStageState( 0, D3DTSS_COLORARG1, D3DTA_TEXTURE );
@@ -1079,71 +1079,21 @@ extern MDrawContextR2* g_pDC;
 
 void ZGame::Draw()
 {
-////////테스트 용 코드...나중에 지울것..//////////////////////////////
-////////////////////////////////////////////////////////////////////for test
-	/*
-#ifdef _DEBUG
-	if(GetAsyncKeyState( VK_UP ))	//칼샷 핵
-	{
-		fShotTime += 0.1f;
-		rvector vPos = g_pGame->m_pMyCharacter->GetPosition();
-	
-		ZPostShotMelee( vPos, nShot);
-		nShot++;
-		if(nShot >4)
-			nShot = 1;
-	}
-	if(GetAsyncKeyState( VK_LEFT ))		//강베기 핵
-	{
-		fShotTime += 0.1f;
-		ZPostSkill( ZC_SKILL_SPLASHSHOT, MMCIP_MELEE);
-
-	}
-	if(GetAsyncKeyState( VK_RIGHT ))	//수류탄 핵
-	{
-		rvector vPos = g_pGame->m_pMyCharacter->GetPosition();
-		rvector vDir = g_pGame->m_pMyCharacter->GetDirection();
-		fShotTime += 0.1f;
-
-		vPos.z += 120.0f;
-
-		int type = ZC_WEAPON_SP_GRENADE;	//weapon
-		int sel_type = MMCIP_MELEE; //MMCIP_PRIMARY; //MMCIP_MELEE;			//parts
-		ZPostShotSp( vPos, vDir, type, sel_type);
-	}
-	if(GetAsyncKeyState( VK_DOWN ))	    //로켓 핵
-	{
-		rvector vPos = g_pGame->m_pMyCharacter->GetPosition();
-		rvector vDir = g_pGame->m_pMyCharacter->GetDirection();
-
-		vPos.z += 120.0f;
-		fShotTime += 0.1f;
-
-		int type = ZC_WEAPON_SP_ROCKET; //ZC_WEAPON_SP_GRENADE;	//weaponww
-	혹시 나중에 또 핵 관련해서 쓸일이 있을수도 있어서 주석처리해서 남겨둠..
-	*/
-
-	
-	
-////////////////////////////////////////////////////////////////////
 	__BP(20,"ZGame::Draw");
 
-	RRESULT isOK=RIsReadyToRender();
-
-	if(isOK==R_NOTREADY)
+	//TODO: gotta check if a device is lost!
+	if (!g_isDirect3D9ExEnabled)
 	{
-		__EP(20);
-		return ;
+		RRESULT isOK = RIsReadyToRender();
+
+		if (isOK == R_NOTREADY)
+		{
+			__EP(20);
+			return;
+		}
 	}
 
-	OnPreDraw();		// Device 상태값 설정은 여기서 하자
-
-//	RRenderNodeMgr::m_bRenderBuffer = true;//------test code
-	/*
-	else if(isOK==R_RESTORED) {
-
-	} // restore device dependent objects
-	*/
+	OnPreDraw();	
 
 	rmatrix _mat;
 	RGetDevice()->GetTransform(D3DTS_WORLD, &_mat);

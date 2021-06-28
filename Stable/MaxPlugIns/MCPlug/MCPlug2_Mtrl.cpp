@@ -201,27 +201,15 @@ WCHAR* MCplug2::GetMapID(Class_ID cid, int subNo)
 	return buf;
 }
 
-void el_cut_path(WCHAR *name)
+wstring el_cut_path(WCHAR *name)
 {
-	WCHAR r_name[256];
-	int st;
-	int i = 0;
-	for(int i=wcslen(name)-1; i>=0; i--) {
-		if(name[i]==L'\\') {
-			break;
-		}
-		st = i + 1;
+	wstring outStr = name;
+	if (outStr.find('\\') != std::string::npos)
+	{
+		wstring texName = outStr.substr(outStr.find_last_of('\\'));
+		outStr = texName;
 	}
-
-	
-	for(i=st; i<(int)wcslen(name); i++)	{
-		r_name[i-st]=name[i];
-
-	}
-	r_name[i - st] = NULL;
-
-
-	wcscpy(name,r_name);
+	return outStr;
 }
 
 void MCplug2::DumpTexture(Texmap* tex, Class_ID cid, int subNo, float amt,mtrl_data* mtrl_node)
@@ -238,7 +226,8 @@ void MCplug2::DumpTexture(Texmap* tex, Class_ID cid, int subNo, float amt,mtrl_d
 		MSTR mapName = ((BitmapTex *)tex)->GetMapName();
 		MSTR str = FixupName(mapName.ToBSTR());
 
-		el_cut_path(str.ToBSTR());
+
+		str = el_cut_path(str.ToBSTR()).c_str();
 
 		if(wcscmp(GetMapID(cid, subNo),ID_MAP_DIFFUSE)==0) {
 			wcstombs(mtrl_node->m_tex_name,str,wcslen(str));

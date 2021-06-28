@@ -9,7 +9,7 @@
 static HWND hWnd,hWnd_Edit;
 bool breadytodestroy;
 
-BOOL CALLBACK LogDlgProc ( HWND hWnd, UINT iMsg, WPARAM wParam, LPARAM lParam)
+static INT_PTR CALLBACK LogDlgProc ( HWND hWnd, UINT iMsg, WPARAM wParam, LPARAM lParam)
 {
 	switch (iMsg)
 	{

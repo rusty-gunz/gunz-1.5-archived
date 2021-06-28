@@ -1,5 +1,6 @@
 #include "stdafx.h"
 //#include <sys/stat.h>
+#include "MXml.h"
 #include "MDebug.h"
 #include "RMaterialList.h"
 
@@ -126,100 +127,111 @@ bool RMaterialList::Open(const char *szFileName)
 */
 
 #define READVECTOR(v,s) sscanf(s,"%f %f %f",&v.x,&v.y,&v.z)
-bool RMaterialList::Open(rapidxml::xml_node<> *pElement)
+bool RMaterialList::Open(MXmlElement* pElement)
 {
-	for (auto itor = pElement->first_node(); itor; itor = itor->next_sibling())
-	{
-		RMATERIAL* pMaterial = new RMATERIAL;
-		pMaterial->dwFlags = 0;
-		pMaterial->Name = itor->first_attribute()->value();
-		rapidxml::xml_node<>* subChild = itor->first_node();
-		for (auto it = subChild; it; it = it->next_sibling())
-		{
-			if (stricmp(it->name(), RTOK_AMBIENT) == 0)
-			{
-				READVECTOR(pMaterial->Ambient, it->value());
-			}
-			if (stricmp(it->name(), RTOK_DIFFUSE) == 0)
-			{
-				READVECTOR(pMaterial->Diffuse, it->value());
-			}
-			if (stricmp(it->name(), RTOK_SPECULAR) == 0)
-			{
-				READVECTOR(pMaterial->Specular, it->value());
-			}
-			if (stricmp(it->name(), RTOK_DIFFUSEMAP) == 0)
-			{
-				pMaterial->DiffuseMap = it->value();
-			}
-			if (stricmp(it->name(), RTOK_POWER) == 0)
-			{
-				sscanf(it->value(), "%f", &pMaterial->Power);
-			}
-			if (stricmp(it->name(), RTOK_ADDITIVE) == 0)
-				pMaterial->dwFlags |= RM_FLAG_ADDITIVE;
-			if (stricmp(it->name(), RTOK_USEOPACITY) == 0)
-				pMaterial->dwFlags |= RM_FLAG_USEOPACITY;
-			if (stricmp(it->name(), RTOK_TWOSIDED) == 0)
-				pMaterial->dwFlags |= RM_FLAG_TWOSIDED;
-			if (stricmp(it->name(), RTOK_USEALPHATEST) == 0)
-				pMaterial->dwFlags |= RM_FLAG_USEALPHATEST;
-		}
-		push_back(pMaterial);
+	MXmlElement	aMaterialNode, aChild;
+	int nCount = pElement->GetChildNodeCount();
 
+	char szTagName[256], szContents[256];
+	for (int i = 0; i < nCount; i++)
+	{
+		aMaterialNode = pElement->GetChildNode(i);
+		aMaterialNode.GetTagName(szTagName);
+
+		if (stricmp(szTagName, RTOK_MATERIAL) == 0)
+		{
+			RMATERIAL* pMaterial = new RMATERIAL;
+			pMaterial->dwFlags = 0;
+			aMaterialNode.GetAttribute(szContents, RTOK_NAME);
+			pMaterial->Name = szContents;
+
+			int nChildCount = aMaterialNode.GetChildNodeCount();
+			for (int j = 0; j < nChildCount; j++)
+			{
+				aChild = aMaterialNode.GetChildNode(j);
+				aChild.GetTagName(szTagName);
+				aChild.GetContents(szContents);
+
+#define READVECTOR(v) sscanf(szContents,"%f %f %f",&v.x,&v.y,&v.z)
+
+				if (stricmp(szTagName, RTOK_AMBIENT) == 0)		READVECTOR(pMaterial->Ambient); else
+					if (stricmp(szTagName, RTOK_DIFFUSE) == 0)		READVECTOR(pMaterial->Diffuse); else
+						if (stricmp(szTagName, RTOK_SPECULAR) == 0)		READVECTOR(pMaterial->Specular); else
+							if (stricmp(szTagName, RTOK_DIFFUSEMAP) == 0)	pMaterial->DiffuseMap = szContents; else
+								if (stricmp(szTagName, RTOK_POWER) == 0)		sscanf(szContents, "%f", &pMaterial->Power); else
+									if (stricmp(szTagName, RTOK_ADDITIVE) == 0)		pMaterial->dwFlags |= RM_FLAG_ADDITIVE; else
+										if (stricmp(szTagName, RTOK_USEOPACITY) == 0)	pMaterial->dwFlags |= RM_FLAG_USEOPACITY; else
+											if (stricmp(szTagName, RTOK_TWOSIDED) == 0)		pMaterial->dwFlags |= RM_FLAG_TWOSIDED; else
+												if (stricmp(szTagName, RTOK_USEALPHATEST) == 0)	pMaterial->dwFlags |= RM_FLAG_USEALPHATEST;
+			}
+
+			push_back(pMaterial);
+		}
 	}
 	return true;
 }
 
-bool RMaterialList::Save(rapidxml::xml_node<> *pElement, rapidxml::xml_document<>& doc)
+bool RMaterialList::Save(MXmlElement* pElement)
 {
-	rapidxml::xml_node<>* rootNode = doc.allocate_node(rapidxml::node_element, RTOK_MATERIALLIST);
+	MXmlElement	aMaterialListElement = pElement->CreateChildElement(RTOK_MATERIALLIST);
 
-	for (auto i = begin(); i != end(); ++i)
 	{
-		RMATERIAL *pMaterial = *i;
-		char buffer[256];
-
-		rapidxml::xml_node<>*  parentNode = doc.allocate_node(rapidxml::node_element, RTOK_MATERIAL);
-		parentNode->append_attribute(doc.allocate_attribute(RTOK_NAME, pMaterial->Name.c_str()));
-
-		rapidxml::xml_node<>* childNode = doc.allocate_node(rapidxml::node_element, RTOK_DIFFUSE, doc.allocate_string(Format(buffer, pMaterial->Diffuse)));
-		parentNode->insert_node(0, childNode);
-
-		childNode = doc.allocate_node(rapidxml::node_element, RTOK_AMBIENT, doc.allocate_string(Format(buffer, pMaterial->Ambient)));
-		parentNode->insert_node(0, childNode);
-
-		childNode = doc.allocate_node(rapidxml::node_element, RTOK_SPECULAR, doc.allocate_string(Format(buffer, pMaterial->Specular)));
-		parentNode->insert_node(0, childNode);
-
-		childNode = doc.allocate_node(rapidxml::node_element, RTOK_DIFFUSEMAP, doc.allocate_string(pMaterial->DiffuseMap.c_str()));
-		parentNode->insert_node(0, childNode);
-
-		if ((pMaterial->dwFlags & RM_FLAG_ADDITIVE) != 0)
+		for (iterator i = begin(); i != end(); i++)
 		{
-			childNode = doc.allocate_node(rapidxml::node_element, RTOK_ADDITIVE);
-			parentNode->insert_node(0, childNode);
-		}
-		if ((pMaterial->dwFlags & RM_FLAG_TWOSIDED) != 0)
-		{
-			childNode = doc.allocate_node(rapidxml::node_element, RTOK_TWOSIDED);
-			parentNode->insert_node(0, childNode);
-		}
-		if ((pMaterial->dwFlags & RM_FLAG_USEOPACITY) != 0)
-		{
-			childNode = doc.allocate_node(rapidxml::node_element, RTOK_USEOPACITY);
-			parentNode->insert_node(0, childNode);
-		}
-		if ((pMaterial->dwFlags & RM_FLAG_USEALPHATEST) != 0)
-		{
-			childNode = doc.allocate_node(rapidxml::node_element, RTOK_USEALPHATEST);
-			parentNode->insert_node(0, childNode);
-		}
-		rootNode->insert_node(0, parentNode);
+			aMaterialListElement.AppendText("\n\t\t");
 
+			RMATERIAL* pMaterial = *i;
+
+			char buffer[256];
+
+			MXmlElement		aElement, aChild;
+			aElement = aMaterialListElement.CreateChildElement(RTOK_MATERIAL);
+			aElement.AddAttribute(RTOK_NAME, pMaterial->Name.c_str());
+
+			aElement.AppendText("\n\t\t\t");
+			aChild = aElement.CreateChildElement(RTOK_DIFFUSE);
+			aChild.SetContents(Format(buffer, pMaterial->Diffuse));
+
+			aElement.AppendText("\n\t\t\t");
+			aChild = aElement.CreateChildElement(RTOK_AMBIENT);
+			aChild.SetContents(Format(buffer, pMaterial->Ambient));
+
+			aElement.AppendText("\n\t\t\t");
+			aChild = aElement.CreateChildElement(RTOK_SPECULAR);
+			aChild.SetContents(Format(buffer, pMaterial->Specular));
+
+			aElement.AppendText("\n\t\t\t");
+			aChild = aElement.CreateChildElement(RTOK_DIFFUSEMAP);
+			aChild.SetContents(pMaterial->DiffuseMap.c_str());
+
+			{
+				MXmlElement aFlagElement;
+
+				if ((pMaterial->dwFlags & RM_FLAG_ADDITIVE) != 0)
+				{
+					aElement.AppendText("\n\t\t\t");
+					aElement.CreateChildElement(RTOK_ADDITIVE);
+				}
+				if ((pMaterial->dwFlags & RM_FLAG_TWOSIDED) != 0)
+				{
+					aElement.AppendText("\n\t\t\t");
+					aElement.CreateChildElement(RTOK_TWOSIDED);
+				}
+				if ((pMaterial->dwFlags & RM_FLAG_USEOPACITY) != 0)
+				{
+					aElement.AppendText("\n\t\t\t");
+					aElement.CreateChildElement(RTOK_USEOPACITY);
+				}
+				if ((pMaterial->dwFlags & RM_FLAG_USEALPHATEST) != 0)
+				{
+					aElement.AppendText("\n\t\t\t");
+					aElement.CreateChildElement(RTOK_USEALPHATEST);
+				}
+			}
+			aElement.AppendText("\n\t\t");
+		}
+		aMaterialListElement.AppendText("\n\t");
 	}
-	pElement->insert_node(0, rootNode);
-
 	return true;
 }
 

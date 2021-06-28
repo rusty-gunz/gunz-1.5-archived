@@ -1,4 +1,5 @@
-#include "stdafx.h"
+Ôªø#include "stdafx.h"
+#include "MXml.h"
 #include "ROcclusionList.h"
 #include "RToken.h"
 #include "RealSpace2.h"
@@ -27,125 +28,151 @@ ROcclusionList::~ROcclusionList()
 #define READVECTOR(v,s) sscanf(s,"%f %f %f",&v.x,&v.y,&v.z)
 
 
-bool ROcclusionList::Open(rapidxml::xml_node<>* pElement)
+bool ROcclusionList::Open(MXmlElement* pElement)
 {
-	for (auto itor = pElement->first_node(); itor; itor = itor->next_sibling())
-	{
-		ROcclusion *poc = new ROcclusion;
-		poc->Name = itor->first_attribute()->value();
-		rapidxml::xml_node<>* childNode = itor->first_node();
-		list<rvector> winding;
-		for (auto it = childNode; it; it = it->next_sibling())
-		{
-			if (stricmp(it->name(), RTOK_POSITION) == 0) {
-				rvector temp;
-				READVECTOR(temp, it->value());
-				winding.push_back(temp);
-			}
-		}
-		poc->nCount = winding.size();
-		poc->pVertices = new rvector[poc->nCount];
-		list<rvector>::iterator k = winding.begin();
-		for (int j = 0; j < poc->nCount; j++)
-		{
-			poc->pVertices[j] = *k;
-			k++;
-		}
+	MXmlElement	aOcclusionNode, aChild;
+	int nCount = pElement->GetChildNodeCount();
 
-		push_back(poc);
+	char szTagName[256], szContents[256];
+	for (int i = 0; i < nCount; i++)
+	{
+		aOcclusionNode = pElement->GetChildNode(i);
+		aOcclusionNode.GetTagName(szTagName);
+
+		if (stricmp(szTagName, RTOK_OCCLUSION) == 0)
+		{
+			ROcclusion* poc = new ROcclusion;
+			aOcclusionNode.GetAttribute(szContents, RTOK_NAME);
+			poc->Name = szContents;
+
+			list<rvector> winding;
+
+			int nChildCount = aOcclusionNode.GetChildNodeCount();
+			for (int j = 0; j < nChildCount; j++)
+			{
+				aChild = aOcclusionNode.GetChildNode(j);
+				aChild.GetTagName(szTagName);
+				aChild.GetContents(szContents);
+
+#define READVECTOR(v) sscanf(szContents,"%f %f %f",&v.x,&v.y,&v.z)
+
+				if (stricmp(szTagName, RTOK_POSITION) == 0) {
+					rvector temp;
+					READVECTOR(temp);
+					winding.push_back(temp);
+				}
+			}
+
+			poc->nCount = winding.size();
+			poc->pVertices = new rvector[poc->nCount];
+			list<rvector>::iterator k = winding.begin();
+			for (int j = 0; j < poc->nCount; j++)
+			{
+				poc->pVertices[j] = *k;
+				k++;
+			}
+
+			push_back(poc);
+		}
 	}
 	return true;
 }
 
-bool ROcclusionList::Save(rapidxml::xml_node<>* pElement,rapidxml::xml_document<>& doc)
+bool ROcclusionList::Save(MXmlElement* pElement)
 {
-	rapidxml::xml_node<>* rootNode = doc.allocate_node(rapidxml::node_element, RTOK_OCCLUSIONLIST);
-	for (auto i = begin(); i != end(); ++i)
+	MXmlElement	aOcclusionListElement = pElement->CreateChildElement(RTOK_OCCLUSIONLIST);
+
+	for (ROcclusionList::iterator i = begin(); i != end(); i++)
 	{
-		ROcclusion *poc = *i;
+		aOcclusionListElement.AppendText("\n\t\t");
+
+		ROcclusion* poc = *i;
 		char buffer[256];
 
-		rapidxml::xml_node<>* parentNode = doc.allocate_node(rapidxml::node_element, RTOK_OCCLUSION);
-		parentNode->append_attribute(doc.allocate_attribute(RTOK_NAME, doc.allocate_string(poc->Name.c_str())));
+		MXmlElement		aElement, aChild;
+		aElement = aOcclusionListElement.CreateChildElement(RTOK_OCCLUSION);
 
-		for (int j = 0; j<poc->nCount; j++)
+		aElement.AddAttribute(RTOK_NAME, poc->Name.c_str());
+
+		for (int j = 0; j < poc->nCount; j++)
 		{
+			aElement.AppendText("\n\t\t\t");
 
-			rapidxml::xml_node<>* childNode = doc.allocate_node(rapidxml::node_element, RTOK_POSITION, doc.allocate_string(Format(buffer, poc->pVertices[j])));
-			parentNode->insert_node(0, childNode);
+			aChild = aElement.CreateChildElement(RTOK_POSITION);
+			aChild.SetContents(Format(buffer, poc->pVertices[j]));
 		}
-		rootNode->insert_node(0, parentNode);
+
+		aElement.AppendText("\n\t\t");
 	}
-	pElement->insert_node(0, rootNode);
-
-
+	aOcclusionListElement.AppendText("\n\t");
 	return true;
 }
 
-// bb ∞° ∫∏¿Ã¥¬¡ˆ∏¶ ∆«¡§«—¥Ÿ
-bool ROcclusionList::IsVisible(rboundingbox &bb)
+// bb Í∞Ä Î≥¥Ïù¥ÎäîÏßÄÎ•º ÌåêÏ†ïÌïúÎã§
+bool ROcclusionList::IsVisible(rboundingbox& bb)
 {
-	for(ROcclusionList::iterator i=begin();i!=end();i++)
+	for (ROcclusionList::iterator i = begin(); i != end(); i++)
 	{
-		ROcclusion *poc=*i;
+		ROcclusion* poc = *i;
 
-		bool bVisible=false;
+		bool bVisible = false;
 
-		for(int j=0;j<poc->nCount+1;j++)
+		for (int j = 0; j < poc->nCount + 1; j++)
 		{
-			if(isInPlane(&bb,&poc->pPlanes[j]))
+			if (isInPlane(&bb, &poc->pPlanes[j]))
 			{
-				bVisible=true;
+				bVisible = true;
 				break;
 			}
 		}
 
-		// «œ≥™¿« occlusion ø°∂Ûµµ ∞°∑¡¡Æ¿÷¿∏∏È ¥ı¿ÃªÛ ∫º« ø‰æ¯¥Ÿ.
-		if(!bVisible) 
+		// ÌïòÎÇòÏùò occlusion ÏóêÎùºÎèÑ Í∞ÄÎ†§Ï†∏ÏûàÏúºÎ©¥ ÎçîÏù¥ÏÉÅ Î≥ºÌïÑÏöîÏóÜÎã§.
+		if (!bVisible)
 			return false;
 	}
 	return true;
 }
 
-// ƒ´∏ﬁ∂Ûø° µ˚∂Û occlusion¿« ∆Ú∏È¿ª ∞ªΩ≈«—¥Ÿ.		
-void ROcclusionList::UpdateCamera(rmatrix &matWorld,rvector &cameraPos)
+// Ïπ¥Î©îÎùºÏóê Îî∞Îùº occlusionÏùò ÌèâÎ©¥ÏùÑ Í∞±Ïã†ÌïúÎã§.		
+void ROcclusionList::UpdateCamera(rmatrix& matWorld, rvector& cameraPos)
 {
-	// TODO : matWorld ∞° identity ∞° æ∆¥—∞ÊøÏ ∞À¡ı¿Ã æ»µ«æÓ¿÷¿Ω
+	// TODO : matWorld Í∞Ä identity Í∞Ä ÏïÑÎãåÍ≤ΩÏö∞ Í≤ÄÏ¶ùÏù¥ ÏïàÎêòÏñ¥ÏûàÏùå
 
 	float	fDet;
 	rmatrix invWorld;
-	D3DXMatrixInverse(&invWorld,&fDet,&matWorld);
+	D3DXMatrixInverse(&invWorld, &fDet, &matWorld);
 
-	// camera ¿« ¡¬«•∏¶ local∑Œ ∞°¡Æø¬¥Ÿ
+	// camera Ïùò Ï¢åÌëúÎ•º localÎ°ú Í∞ÄÏ†∏Ïò®Îã§
 	rvector localCameraPos;
-	D3DXVec3TransformCoord(&localCameraPos,&cameraPos,&invWorld);
+	D3DXVec3TransformCoord(&localCameraPos, &cameraPos, &invWorld);
 
 	rmatrix trInvMat;
 	D3DXMatrixTranspose(&trInvMat, &invWorld);
 
-	for(ROcclusionList::iterator i=begin();i!=end();i++)
+	for (ROcclusionList::iterator i = begin(); i != end(); i++)
 	{
-		ROcclusion *poc=*i;
+		ROcclusion* poc = *i;
 
-		bool bm_pPositive=D3DXPlaneDotCoord(&poc->plane,&localCameraPos)>0;
+		bool bm_pPositive = D3DXPlaneDotCoord(&poc->plane, &localCameraPos) > 0;
 
-		// ∑Œƒ√¿« ∆Ú∏È¿« πÊ¡§Ωƒ¿ª ø˘µÂ∑Œ ∞°¡Æ∞°∞Ì ΩÕ¥Ÿ. matWorld ∑Œ ∫Ø»Ø«œ∏Èµ«¥¬µ•,
-		// D3DXPlaneTransform ¿« ªÁøÎπ˝¿Ã ∫Ø»Ø«‡∑ƒ¿« inverse transpose ∏≈∆Æ∏ØΩ∫∏¶ ≥—∞‹¡‡æﬂ«œπ«∑Œ
-		// tr(inv(matWorld)) ∞° µ«π«∑Œ ∞·±π tr(mat) ∞° µ»¥Ÿ
-		D3DXPlaneTransform(poc->pPlanes,poc->pPlanes,&trInvMat);
+		// Î°úÏª¨Ïùò ÌèâÎ©¥Ïùò Î∞©Ï†ïÏãùÏùÑ ÏõîÎìúÎ°ú Í∞ÄÏ†∏Í∞ÄÍ≥† Ïã∂Îã§. matWorld Î°ú Î≥ÄÌôòÌïòÎ©¥ÎêòÎäîÎç∞,
+		// D3DXPlaneTransform Ïùò ÏÇ¨Ïö©Î≤ïÏù¥ Î≥ÄÌôòÌñâÎ†¨Ïùò inverse transpose Îß§Ìä∏Î¶≠Ïä§Î•º ÎÑòÍ≤®Ï§òÏïºÌïòÎØÄÎ°ú
+		// tr(inv(matWorld)) Í∞Ä ÎêòÎØÄÎ°ú Í≤∞Íµ≠ tr(mat) Í∞Ä ÎêúÎã§
+		D3DXPlaneTransform(poc->pPlanes, poc->pPlanes, &trInvMat);
 
 		poc->pPlanes[0] = bm_pPositive ? poc->plane : -poc->plane;
-		for(int j=0;j<poc->nCount;j++)
+		for (int j = 0; j < poc->nCount; j++)
 		{
-			if(bm_pPositive)
-				D3DXPlaneFromPoints(poc->pPlanes+j+1,&poc->pVertices[j],&poc->pVertices[(j+1)%poc->nCount],&localCameraPos);
+			if (bm_pPositive)
+				D3DXPlaneFromPoints(poc->pPlanes + j + 1, &poc->pVertices[j], &poc->pVertices[(j + 1) % poc->nCount], &localCameraPos);
 			else
-				D3DXPlaneFromPoints(poc->pPlanes+j+1,&poc->pVertices[(j+1)%poc->nCount],&poc->pVertices[j],&localCameraPos);
+				D3DXPlaneFromPoints(poc->pPlanes + j + 1, &poc->pVertices[(j + 1) % poc->nCount], &poc->pVertices[j], &localCameraPos);
 
-			// ∑Œƒ√¿« ∆Ú∏È¿« πÊ¡§Ωƒ¿ª ø˘µÂ∑Œ ∞°¡Æ∞°∞Ì ΩÕ¥Ÿ. ¿ßøÕ ∞∞¥Ÿ
-			D3DXPlaneTransform(poc->pPlanes+j+1,poc->pPlanes+j+1,&trInvMat);
+			// Î°úÏª¨Ïùò ÌèâÎ©¥Ïùò Î∞©Ï†ïÏãùÏùÑ ÏõîÎìúÎ°ú Í∞ÄÏ†∏Í∞ÄÍ≥† Ïã∂Îã§. ÏúÑÏôÄ Í∞ôÎã§
+			D3DXPlaneTransform(poc->pPlanes + j + 1, poc->pPlanes + j + 1, &trInvMat);
 		}
 	}
 }
+
 
 _NAMESPACE_REALSPACE2_END

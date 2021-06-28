@@ -72,12 +72,12 @@ public:
 
 	bool UpdateLastConnDate(const TCHAR* szUserID, const TCHAR* szIP);
 
-	bool CreateAccount(const TCHAR* szUserID,					// 사용자ID
+	bool CreateAccount(const TCHAR* szUserID,
+		const TCHAR* szEmail,// 사용자ID
 		const TCHAR* szPassword,					// 패스워드
 		const int nCert,							// 실명인증
 		const TCHAR* szName,						// 사용자이름
-		const int nAge,							// 나이
-		const int nSex);							// 성별 0 - 여자, 1 - 남자
+		const int nAge);							// 성별 0 - 여자, 1 - 남자
 
 	bool CreateAccount_Netmarble(const TCHAR* szUserID,			// 사용자ID
 								const TCHAR* szPassword,		// 사용자 CN
@@ -399,15 +399,10 @@ public:
 	
 	bool RewardCharBattleTimeReward(int nCID, int nBRID, int nBRTID, int nBattleTime, int nKillCount, int nItemID, int nItemCnt, int nRentHourPeriod, bool bIsSpendable, int* noutCIID);
 	bool OnBanPlayer(int AID, MMatchHackID hackID, const char* banReason);
-	bool UpdateSkillMapBestTIme(const unsigned int player, const char* mapName, const unsigned int bestTime);
-	bool GetSkillMapBestTimeByMapName(int CID, const char* mapName, unsigned int* outValue);
+	bool UpdateSkillMapBestTIme(const unsigned int player, const int& mapID, const unsigned int bestTime);
+	bool GetSkillMapBestTime(int CID, const int& mapName, unsigned int* outValue);
 	bool FindAchievements(int cid, achievementNode& outValue);
 	bool GetCharacterAchievements(int CID, MMatchCharInfo* pOutCharInfo);
-
-#ifdef _PROMOCODE
-	bool PCToAccount(const int nAID, const char* szPromoCode);
-	bool GetPCFromAccount(const int nAID, const char* szPromCode);
-#endif // _DEBUG
 
 #ifdef _DEBUG
 	bool test();

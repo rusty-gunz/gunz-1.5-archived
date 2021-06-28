@@ -1810,12 +1810,12 @@ void MAddSharedCommandTable(MCommandManager* pCommandManager, int nSharedType)
 	//Custom: Skillmap updatetime
 	C(MC_MATCH_UPDATE_SKILLMAP_BESTTIME,"","",MCDT_MACHINE2MACHINE)
 		P(MPT_UID,"player")
-		P(MPT_STR,"mapID")
+		P(MPT_INT,"mapID")
 		P(MPT_UINT,"bestTime")
 
 	C(MC_MATCH_REQUEST_SKILLMAP_BESTTIME,"","",MCDT_MACHINE2MACHINE)
 		P(MPT_UID,"player")
-		P(MPT_STR,"mapName")
+		P(MPT_INT,"mapName")
 
 	C(MC_MATCH_RESPONSE_SKILLMAP_BESTTIME,"","",MCDT_MACHINE2MACHINE)
 		P(MPT_UID,"player")

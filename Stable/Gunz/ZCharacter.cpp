@@ -4298,7 +4298,7 @@ ZOBJECTHITTEST ZCharacter::HitTest( const rvector& origin, const rvector& to, fl
 {
 	// 적절한 시점의 위치를 얻어낼수없으면 실패..
 	rvector footpos,headpos,characterdir;
-	if(GetHistory(&footpos,&characterdir,fTime))
+	if(ZObject::GetHistory(&footpos,&characterdir,fTime))
 	{
 		// 발위치 높이 보정 +5
 		footpos.z+= 5.f;			

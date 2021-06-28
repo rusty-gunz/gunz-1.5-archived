@@ -4212,51 +4212,5 @@ void MMatchServer::Log(unsigned int nLogLevel, const char* szLog)
 	}
 }
 
-#ifdef _PROMOCODE
-void MMatchServer::OnRequestPromoCode(const MUID& uidComm, const char* szPromoCode)
-{
-	MMatchObject* pObj = GetObject(uidComm);
 
-	if (pObj == NULL /*|| IsAdminGrade(pObj)*/) return;
-
-	if (m_MatchDBMgr.PCToAccount(pObj->GetAccountInfo()->m_nAID, szPromoCode))
-	{
-		LOG(LOG_PROG, "Trying to insert something into the database AID : [%u] PROMOCODE : [%s]", pObj->GetAccountInfo()->m_nAID, szPromoCode);
-	}
-
-	// if pass then just send an advice
-	Announce(pObj, "You've received something");
-
-	// trying to send some kind of item
-
-/*
-	const char* szPlayer = pObj->GetCharInfo()->m_szName;
-	int nCID = 0;
-
-	if (m_MatchDBMgr.GetCharCID(szPlayer, &nCID) == false)
-	{
-		Announce(pObj, "Player doesn't exist");
-		return;
-	}
-
-	unsigned long int nNewCIID = 0;
-	if (!m_MatchDBMgr.InsertDistributeItem(nCID, nItemId, nDays != 0, nDays * 24, &nNewCIID)) {
-		Announce(pObj, "The item can't be sended");
-		return;
-	}
-
-	if (pObj != NULL) {
-		MUID uidNew = MMatchItemMap::UseUID();
-		pObj->GetCharInfo()->m_ItemList.CreateItem(uidNew, nNewCIID, nItemId, nDays != 0, nDays * 24 * 60, nDays * 24);
-
-		UpdateCharItemDBCachingData(pObj);
-
-		ResponseCharacterItemList(pObj->GetUID());
-
-		Announce(pObj, "You've received something");
-	}*/
-
-	return;
-}
-#endif // _PROMOCODE
 

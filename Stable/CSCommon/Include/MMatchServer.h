@@ -323,7 +323,7 @@ public:
 	//Custom: checkhacks
 	void OnCheckStageModHacks(vector<int> stageMods,const MUID& player);
 	void OnAdminBanPlayer(MMatchObject* pObj, MMatchHackID hackingID);
-	void RequestUpdateSkillMapBestTime(const MUID& player, const char* mapID, const unsigned int bestTime);
+	void RequestUpdateSkillMapBestTime(const MUID& player, const int& mapID, const unsigned int bestTime);
 	void ResponseSkillMapBestTime(const MUID& player, const char* mapName);
 protected:
 	friend MMatchStage;
@@ -900,10 +900,6 @@ protected:
 	/*??????? ???? ??? ??? void OnRequestUseSpendableBuffItem(const MUID& uidPlayer, const MUID& uidItem);*/
 	void OnNewQuestRequestNPCDead(const MUID& uidSender, const MUID& uidKiller, MUID& uidNPC, MVector& pos);
 	void OnRequestPlantBomb(const MUID& planter);
-
-#ifdef _PROMOCODE
-	void OnRequestPromoCode(const MUID& uidComm, const char* szPromoCode);
-#endif // _PROMOCODE
 protected:
 	MMatchBRMachine m_BattletimeRewardMachine;
 

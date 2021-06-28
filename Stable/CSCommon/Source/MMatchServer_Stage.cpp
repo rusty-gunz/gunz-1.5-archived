@@ -3325,18 +3325,18 @@ void MMatchServer::OnCheckStageModHacks(vector<int> stageMods, const MUID& playe
 
 #include "SkillMap.h"
 
-void MMatchServer::RequestUpdateSkillMapBestTime(const MUID& player, const char* mapID, const unsigned int bestTime)
+void MMatchServer::RequestUpdateSkillMapBestTime(const MUID& player, const int& mapID, const unsigned int bestTime)
 {
 	MMatchObject* playerObj = GetObject(player);
 	if (!IsEnabledObject(playerObj))
 		return;
 
-	if (!MGetSkillMap()->FindMap(mapID)) {
-		mlog("Error finding mapName");
-		return;
-	}
+	//if (!MGetSkillMap()->FindMap(mapID)) {
+	//	mlog("Error finding mapName");
+	//	return;
+	//}
 
-	GetDBMgr()->UpdateSkillMapBestTIme(playerObj->GetCharInfo()->m_nCID, mapID, bestTime);
+	GetDBMgr()->UpdateSkillMapBestTIme(playerObj->GetCharInfo()->m_nCID, MGetMapDescMgr()->GetMapID(mapID), bestTime);
 }
 
 void MMatchServer::ResponseSkillMapBestTime(const MUID& player, const char* mapName)
@@ -3354,7 +3354,7 @@ void MMatchServer::ResponseSkillMapBestTime(const MUID& player, const char* mapN
 
 	unsigned int* outBestTime;
 
-	if (!GetDBMgr()->GetSkillMapBestTimeByMapName(playerObj->GetCharInfo()->m_nCID, mapName,outBestTime))
+	if (!GetDBMgr()->GetSkillMapBestTime(playerObj->GetCharInfo()->m_nCID, MGetMapDescMgr()->GetMapID(mapName),outBestTime))
 		return;
 
 	MCommand* command = CreateCommand(MC_MATCH_RESPONSE_SKILLMAP_BESTTIME, MUID(0, 0));

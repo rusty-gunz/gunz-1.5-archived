@@ -90,6 +90,8 @@ public:
 	float GetExpRatio( const int nMapID); 
 	int GetMaxPlayers( const int nMapID);
 
+	int GetMapID(const char* mapName);
+
 	int GetMapCount(){ return MMATCH_MAP_COUNT; }
 };
 

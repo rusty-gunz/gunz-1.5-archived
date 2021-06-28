@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#include "MXml.h"
 #include "RLightList.h"
 #include "RToken.h"
 
@@ -13,84 +14,97 @@ RLightList::~RLightList()
 #define READVECTOR(v,s) sscanf(s,"%f %f %f",&v.x,&v.y,&v.z)
 
 
-bool RLightList::Open(rapidxml::xml_node<> *pElement)
+bool RLightList::Open(MXmlElement* pElement)
 {
-	for (auto itor = pElement->first_node(); itor; itor = itor->next_sibling())
+	MXmlElement	aLightNode, aChild;
+	int nCount = pElement->GetChildNodeCount();
+
+	char szTagName[256], szContents[256];
+	for (int i = 0; i < nCount; i++)
 	{
-		RLIGHT *plight = new RLIGHT;
-		plight->Name = itor->first_attribute()->value();
-		plight->dwFlags = 0;
-		rapidxml::xml_node<>* subChild = itor->first_node();
-		for (auto it = subChild; it; it = it->next_sibling())
+		aLightNode = pElement->GetChildNode(i);
+		aLightNode.GetTagName(szTagName);
+
+		if (stricmp(szTagName, RTOK_LIGHT) == 0)
 		{
-			if (stricmp(it->name(), RTOK_POSITION) == 0)
+			RLIGHT* plight = new RLIGHT;
+			aLightNode.GetAttribute(szContents, RTOK_NAME);
+			plight->Name = szContents;
+			plight->dwFlags = 0;
+
+			int nChildCount = aLightNode.GetChildNodeCount();
+			for (int j = 0; j < nChildCount; j++)
 			{
-				READVECTOR(plight->Position, it->value());
+				aChild = aLightNode.GetChildNode(j);
+				aChild.GetTagName(szTagName);
+				aChild.GetContents(szContents);
+
+#define READVECTOR(v) sscanf(szContents,"%f %f %f",&v.x,&v.y,&v.z)
+
+				if (stricmp(szTagName, RTOK_POSITION) == 0)		READVECTOR(plight->Position); else
+					if (stricmp(szTagName, RTOK_COLOR) == 0)		READVECTOR(plight->Color); else
+						if (stricmp(szTagName, RTOK_INTENSITY) == 0)	sscanf(szContents, "%f", &plight->fIntensity); else
+							if (stricmp(szTagName, RTOK_ATTNSTART) == 0)	sscanf(szContents, "%f", &plight->fAttnStart); else
+								if (stricmp(szTagName, RTOK_ATTNEND) == 0)		sscanf(szContents, "%f", &plight->fAttnEnd); else
+									if (stricmp(szTagName, RTOK_CASTSHADOW) == 0)	plight->dwFlags |= RM_FLAG_CASTSHADOW;
 			}
-			if (stricmp(it->name(), RTOK_COLOR) == 0)
-			{
-				READVECTOR(plight->Color, it->value());
-			}
-			if (stricmp(it->name(), RTOK_INTENSITY) == 0)
-			{
-				plight->fIntensity = atof(it->value());
-			}
-			if (stricmp(it->name(), RTOK_ATTNSTART) == 0)
-			{
-				plight->fAttnStart = atof(it->value());
-			}
-			if (stricmp(it->name(), RTOK_ATTNEND) == 0)
-			{
-				plight->fAttnEnd = atof(it->value());
-			}
-			if (stricmp(it->name(), RTOK_CASTSHADOW) == 0)
-			{
-				plight->dwFlags |= RM_FLAG_CASTSHADOW;
-			}
+
+			push_back(plight);
 		}
-		push_back(plight);
 	}
-	return true;
 	return true;
 }
 
-bool RLightList::Save(rapidxml::xml_node<>* pElement, rapidxml::xml_document<>& doc)
+bool RLightList::Save(MXmlElement* pElement)
 {
-	rapidxml::xml_node<>* rootNode = doc.allocate_node(rapidxml::node_element, RTOK_LIGHTLIST);
-	for (auto i = begin(); i != end(); ++i)
+	MXmlElement	aLightListElement = pElement->CreateChildElement(RTOK_LIGHTLIST);
+
+	for (RLightList::iterator i = begin(); i != end(); i++)
 	{
-		RLIGHT *plight = *i;
+		aLightListElement.AppendText("\n\t\t");
+
+		RLIGHT* plight = *i;
 		char buffer[256];
 
-		rapidxml::xml_node<>*  parentNode = doc.allocate_node(rapidxml::node_element, RTOK_LIGHT);
-		parentNode->append_attribute(doc.allocate_attribute( RTOK_NAME, doc.allocate_string(plight->Name.c_str())));
+		MXmlElement		aElement, aChild;
+		aElement = aLightListElement.CreateChildElement(RTOK_LIGHT);
 
+		aElement.AddAttribute(RTOK_NAME, plight->Name.c_str());
 
-		rapidxml::xml_node<>* childNode = doc.allocate_node(rapidxml::node_element, RTOK_POSITION, doc.allocate_string(Format(buffer, plight->Position)));
-		parentNode->insert_node(0, childNode);
+		aElement.AppendText("\n\t\t\t");
+		aChild = aElement.CreateChildElement(RTOK_POSITION);
+		aChild.SetContents(Format(buffer, plight->Position));
 
-		childNode = doc.allocate_node(rapidxml::node_element, RTOK_COLOR, doc.allocate_string(Format(buffer, plight->Color)));
-		parentNode->insert_node(0, childNode);
+		aElement.AppendText("\n\t\t\t");
+		aChild = aElement.CreateChildElement(RTOK_COLOR);
+		aChild.SetContents(Format(buffer, plight->Color));
 
-		childNode = doc.allocate_node(rapidxml::node_element, RTOK_INTENSITY, doc.allocate_string(Format(buffer, plight->fIntensity)));
-		parentNode->insert_node(0, childNode);
+		aElement.AppendText("\n\t\t\t");
+		aChild = aElement.CreateChildElement(RTOK_INTENSITY);
+		aChild.SetContents(Format(buffer, plight->fIntensity));
 
-		childNode = doc.allocate_node(rapidxml::node_element, RTOK_ATTNSTART, doc.allocate_string(Format(buffer, plight->fAttnStart)));
-		parentNode->insert_node(0, childNode);
+		aElement.AppendText("\n\t\t\t");
+		aChild = aElement.CreateChildElement(RTOK_ATTNSTART);
+		aChild.SetContents(Format(buffer, plight->fAttnStart));
 
-		childNode = doc.allocate_node(rapidxml::node_element, RTOK_ATTNEND, doc.allocate_string(Format(buffer, plight->fAttnEnd)));
-		parentNode->insert_node(0, childNode);
+		aElement.AppendText("\n\t\t\t");
+		aChild = aElement.CreateChildElement(RTOK_ATTNEND);
+		aChild.SetContents(Format(buffer, plight->fAttnEnd));
 
-		if ((plight->dwFlags & RM_FLAG_CASTSHADOW) != 0) {
-			childNode = doc.allocate_node(rapidxml::node_element, RTOK_CASTSHADOW);
-			parentNode->insert_node(0, childNode);
+		{
+			MXmlElement aFlagElement;
+
+			if ((plight->dwFlags & RM_FLAG_CASTSHADOW) != 0)
+			{
+				aElement.AppendText("\n\t\t\t");
+				aElement.CreateChildElement(RTOK_CASTSHADOW);
+			}
 		}
-		rootNode->insert_node(0, parentNode);
-
+		aElement.AppendText("\n\t\t");
 	}
-	pElement->insert_node(0, rootNode);
-
+	aLightListElement.AppendText("\n\t");
 	return true;
 }
+
 
 _NAMESPACE_REALSPACE2_END

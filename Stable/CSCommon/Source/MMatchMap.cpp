@@ -155,6 +155,16 @@ const char* MMapDesc::GetMapName(const int nMapID)
 		return 0;
 }
 
+int MMapDesc::GetMapID(const char* mapname)
+{
+	for (int i = 0; i < MMATCH_MAP_COUNT; ++i)
+	{
+		if (stricmp(mapname, m_MapVectors[i].szMapName))
+			return m_MapVectors[i].nMapID;
+	}
+	return -1;
+}
+
 
 const char* MMapDesc::GetMapImageName(const char* szMapName)
 {

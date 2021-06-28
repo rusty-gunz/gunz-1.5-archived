@@ -6877,9 +6877,6 @@ void ZGame::ConfigureCharacter(const MUID& uidChar, MMatchTeam nTeam, unsigned c
 	pChar->InitStatus();
 	pChar->InitRound();
 
-	if (GetMatch()->GetMatchType() == MMATCH_GAMETYPE_SKILLMAP)
-		ZPostRequestSkillMapBestTime(pChar->GetUID(), GetMatch()->GetMapName());
-
 	ZGetCombatInterface()->OnAddCharacter(pChar);
 }
 

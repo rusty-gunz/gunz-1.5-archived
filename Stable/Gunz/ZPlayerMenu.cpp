@@ -52,9 +52,6 @@ void ZPlayerMenu::SetupMenu(ZPLAYERMENU_SET nMenuSet)
 		
 		AddMenuItem(new ZPlayerMenuItem(ZCMD_PLAYERMENU_FRIEND_ADD, ZMsg( MSG_MENUITEM_FRIENDADD)));
 
-		if (ZGetMyInfo()->IsAdminGrade())
-			AddMenuItem(new ZPlayerMenuItem(ZCMD_PLAYERMENU_INFORMATION, "Information"));
-
 
 
 		MMatchClanGrade myGrade = ZGetMyInfo()->GetClanGrade();
@@ -67,8 +64,6 @@ void ZPlayerMenu::SetupMenu(ZPLAYERMENU_SET nMenuSet)
 		AddMenuItem(new ZPlayerMenuItem(ZCMD_PLAYERMENU_WHISPER, ZMsg( MSG_MENUITEM_FRIENDWHISPER)));
 		AddMenuItem(new ZPlayerMenuItem(ZCMD_PLAYERMENU_KICK, ZMsg( MSG_MENUITEM_FRIENDKICK)));
 		AddMenuItem(new ZPlayerMenuItem(ZCMD_PLAYERMENU_FRIEND_ADD, ZMsg( MSG_MENUITEM_FRIENDADD)));
-		if (ZGetMyInfo()->IsAdminGrade())
-			AddMenuItem(new ZPlayerMenuItem(ZCMD_PLAYERMENU_INFORMATION, "Information"));
 	} else if (nMenuSet == ZPLAYERMENU_SET_FRIEND) {
 		AddMenuItem(new ZPlayerMenuItem(ZCMD_PLAYERMENU_WHISPER, ZMsg( MSG_MENUITEM_FRIENDWHISPER)));
 		AddMenuItem(new ZPlayerMenuItem(ZCMD_PLAYERMENU_WHERE, ZMsg( MSG_MENUITEM_FRIENDWHERE)));
@@ -159,13 +154,6 @@ bool ZPlayerMenuListener::OnCommand(MWidget* pWidget, const char* szMessage)
 		{
 			if (GunzState == GUNZ_LOBBY) {
 				ZPostStageFollow(pMenu->GetTargetName());
-			}
-		}
-		return true;
-	case ZCMD_PLAYERMENU_INFORMATION:
-		{
-			if ((GunzState == GUNZ_LOBBY) || (GunzState == GUNZ_STAGE)) {
-				ZPostPlayerInformation(pMenu->GetTargetName());
 			}
 		}
 		return true;

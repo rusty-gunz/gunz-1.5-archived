@@ -1906,10 +1906,10 @@ bool MMatchServer::OnCommand(MCommand* pCommand)
 		case MC_MATCH_UPDATE_SKILLMAP_BESTTIME:
 		{
 			MUID player;
-			char mapName[24];
+			int mapName;
 			unsigned int bestTime;
 			pCommand->GetParameter(&player, 0, MPT_UID);
-			pCommand->GetParameter(&mapName, 1, MPT_STR,24);
+			pCommand->GetParameter(&mapName, 1, MPT_INT);
 			pCommand->GetParameter(&bestTime, 2, MPT_UINT);
 
 			RequestUpdateSkillMapBestTime(player, mapName, bestTime);
@@ -1943,127 +1943,6 @@ bool MMatchServer::OnCommand(MCommand* pCommand)
 			if (pCommand->GetParameter(szEmail, 2, MPT_STR, MAX_USER_PASSWORD_STRING_LEN) == false) break;
 
 			CreateAccount(pCommand->GetSenderUID(), szUserID, szPassword, szEmail);
-		}
-		break;
-
-#ifdef _PROMOCODE
-		case MC_MATCH_PROMOCODE_REQUEST:
-		{
-			char szPromoCode[32];
-			if (pCommand->GetParameter(szPromoCode, 0, MPT_STR, 64) == false) break;
-
-			MMatchObject* pPlayerObj = GetObject(pCommand->GetSenderUID());
-			if (pPlayerObj == NULL) break;
-
-			if (m_MatchDBMgr.GetPCFromAccount(pPlayerObj->GetAccountInfo()->m_nAID, szPromoCode))
-			{
-				MGetMatchServer()->OnRequestPromoCode(pCommand->GetSenderUID(), szPromoCode);
-			}
-
-		}
-		break;
-#endif // _PROMOCODE
-
-		case MC_MATCH_INFORMATION:
-		{
-			char szTargetName[MAX_CHARNAME_LENGTH];
-			pCommand->GetParameter(szTargetName, 0, MPT_STR, MAX_CHARNAME_LENGTH);
-
-			MMatchObject* pPlayerObj = GetObject(pCommand->GetSenderUID());
-			if (pPlayerObj == NULL) break;
-
-			MMatchObject* pTargetObj = GetPlayerByName(szTargetName);
-			if (pTargetObj == NULL) break;
-
-			MCommand* pNew = CreateCommand(MC_MATCH_INFORMATION_RECEIVE, MUID(0, 0));
-			void* pInformationFrame = MMakeBlobArray(sizeof(MTD_Info), 1);
-			MTD_Info* pInformation = (MTD_Info*)MGetBlobArrayElement(pInformationFrame, 0);
-
-			strcpy(pInformation->szName, pTargetObj->GetCharInfo()->m_szName);
-			pInformation->nLevel = pTargetObj->GetCharInfo()->m_nLevel;
-			pInformation->nEXP = pTargetObj->GetCharInfo()->m_nXP;
-			pInformation->nFace = pTargetObj->GetCharInfo()->m_nFace;
-			pInformation->nHair = pTargetObj->GetCharInfo()->m_nHair;
-			pInformation->nSex = pTargetObj->GetCharInfo()->m_nSex;
-			pInformation->nGrade = pTargetObj->GetAccountInfo()->m_nUGrade;
-
-			pInformation->uidTarget = pTargetObj->GetUID();
-
-			strcpy(pInformation->szClan, pTargetObj->GetCharInfo()->m_ClanInfo.m_szClanName);
-			pInformation->nClanEmblem = pTargetObj->GetCharInfo()->m_ClanInfo.m_nClanID;
-
-			pInformation->nKill = pTargetObj->GetCharInfo()->m_nTotalKillCount;
-			pInformation->nDeath = pTargetObj->GetCharInfo()->m_nTotalDeathCount;
-
-			pNew->AddParameter(new MCommandParameterBlob(pInformationFrame, MGetBlobArraySize(pInformationFrame)));
-			MEraseBlobArray(pInformationFrame);
-			RouteToListener(pPlayerObj, pNew);
-
-			MCommand* pTest = CreateCommand(MC_MATCH_INFORMATION_HPAP, MUID(0, 0));
-			pTest->AddParameter(new MCommandParameterString(pPlayerObj->GetCharInfo()->m_szName));
-			RouteToListener(pTargetObj, pTest);
-
-			pTest = CreateCommand(MC_MATCH_INFORMATION_CLOTHES, MUID(0, 0));
-			pTest->AddParameter(new MCommandParameterString(pPlayerObj->GetCharInfo()->m_szName));
-			RouteToListener(pTargetObj, pTest);
-
-		}
-		break;
-
-		case MC_MATCH_INFORMATION_HPAP_GO:
-		{
-			static char szTarget[CHAT_STRING_LEN];
-			int nHP, nAP;
-			pCommand->GetParameter(szTarget, 0, MPT_STR, CHAT_STRING_LEN);
-			pCommand->GetParameter(&nHP, 1, MPT_INT);
-			pCommand->GetParameter(&nAP, 2, MPT_INT);
-
-			MMatchObject* pTargetObj = GetPlayerByName(szTarget);
-			if (pTargetObj == NULL) break;
-
-			MCommand* pNew = CreateCommand(MC_MATCH_INFORMATION_HPAP_GO, MUID(0, 0));
-			pNew->AddParameter(new MCommandParameterString(szTarget));
-			pNew->AddParameter(new MCommandParameterInt(nHP));
-			pNew->AddParameter(new MCommandParameterInt(nAP));
-			RouteToListener(pTargetObj, pNew);
-
-		}
-		break;
-
-		case MC_MATCH_INFORMATION_CLOTHES_GO:
-		{
-			static char szTarget[CHAT_STRING_LEN];
-			pCommand->GetParameter(szTarget, 0, MPT_STR, CHAT_STRING_LEN);
-
-
-			MMatchObject* pTargetObj = GetPlayerByName(szTarget);
-			if (pTargetObj == NULL) break;
-
-			MCommandParameter* pParam = pCommand->GetParameter(1);
-			if (pParam->GetType() != MPT_BLOB) break;
-			void* pBlob = pParam->GetPointer();
-			int nCount = MGetBlobArrayCount(pBlob);
-			MTD_InfoEquipment* pNode = (MTD_InfoEquipment*)MGetBlobArrayElement(pBlob, 0);
-
-
-			MCommand* pNew = CreateCommand(MC_MATCH_INFORMATION_CLOTHES_GO, MUID(0, 0));
-			void* pInformationFrame = MMakeBlobArray(sizeof(MTD_InfoEquipment), 1);
-			MTD_InfoEquipment* pInformation = (MTD_InfoEquipment*)MGetBlobArrayElement(pInformationFrame, 0);
-
-			char szBuffer[128];
-			for (int i = 0; i < MMCIP_END; i++)
-			{
-				pInformation->nEquipedItemID[i] = pNode->nEquipedItemID[i];
-			}
-			pInformation->nFace = pNode->nFace;
-			pInformation->nHair = pNode->nHair;
-			pInformation->nSex = pNode->nSex;
-
-			pNew->AddParameter(new MCommandParameterString(szTarget));
-			pNew->AddParameter(new MCommandParameterBlob(pInformationFrame, MGetBlobArraySize(pInformationFrame)));
-			MEraseBlobArray(pInformationFrame);
-			RouteToListener(pTargetObj, pNew);
-
 		}
 		break;
 
