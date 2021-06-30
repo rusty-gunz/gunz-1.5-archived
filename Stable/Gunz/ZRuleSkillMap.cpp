@@ -79,8 +79,13 @@ bool ZRuleSkillMap::OnCommand(MCommand* command)
 			ZCharacter* Object = static_cast<ZCharacter*>(ZGetCharacterManager()->Find(player));
 			if (Object == nullptr)
 				return false;
+			if (player == ZGetMyUID())
+			{
+				ZGetGame()->m_pMyCharacter->SetSkillMapBestTime(bestTime);
+				myBestTime = bestTime;
 
-			myBestTime = bestTime;
+			}
+
 		} return true;
 		default:
 			break;
@@ -178,21 +183,8 @@ void ZRuleSkillMap::OnSetRoundState(MMATCH_ROUNDSTATE roundState)
 		case MMATCH_ROUNDSTATE_PLAY: {
 			m_setDrawStartNotice = false;
 		}break;
-		case MMATCH_ROUNDSTATE_FINISH: {
-		 if (m_chestGrabber == ZGetMyUID() && ZGetGame()->GetMatch()->GetCurrRound() == 0)
-			{
-			 if (ZGetGame()->m_pMyCharacter->GetSkillMapBestTime() == 0)
-			 {
-				 ZPostRequestUpdateSkillMapBestTime(ZGetMyUID(), MGetMapDescMgr()->GetMapID(ZGetGame()->GetMatch()->GetMapName()), currRoundTime);
-			 }
-			 else
-			 {
-				 if (ZGetGame()->m_pMyCharacter->GetSkillMapBestTime() < currRoundTime)
-				 {
-					 ZPostRequestUpdateSkillMapBestTime(ZGetMyUID(), MGetMapDescMgr()->GetMapID(ZGetGame()->GetMatch()->GetMapName()), currRoundTime);
-				 }
-			 }
-			}
+		case MMATCH_ROUNDSTATE_FINISH: 
+		{
 		}break;
 	}
 }

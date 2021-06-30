@@ -206,7 +206,7 @@ wstring el_cut_path(WCHAR *name)
 	wstring outStr = name;
 	if (outStr.find('\\') != std::string::npos)
 	{
-		wstring texName = outStr.substr(outStr.find_last_of('\\'));
+		wstring texName = outStr.substr(outStr.find_last_of('\\') + 1);
 		outStr = texName;
 	}
 	return outStr;

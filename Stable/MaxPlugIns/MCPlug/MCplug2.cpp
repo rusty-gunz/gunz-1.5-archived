@@ -241,7 +241,6 @@ BOOL MCplug2::SupportsOptions(int ext, DWORD options) {
 int MCplug2::DoExport(const WCHAR *name,ExpInterface *ei,Interface *i, BOOL suppressPrompts, DWORD options)
 {
 	exportSelected = (options & SCENE_EXPORT_SELECTED) ? TRUE : FALSE;
-	suppressPrompts = true;
 //	BOOL tm_ani = (options & SCENE_EXPORT_SCALE_ANI) ? TRUE : FALSE;
 
 	ip = i;// 3DMAX 정보 인터페이스...

@@ -1,11 +1,11 @@
-USE [GunzDBTest]
+USE [GunzDB15]
 
 GO
 
 CREATE PROCEDURE [dbo].[spInsertAchievement]
-@CID int
+@CID int,
 @AchievementID int,
-@AchievementType tinyint,
+@AchievementType tinyint
 
 AS
 	BEGIN

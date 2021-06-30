@@ -73,6 +73,25 @@ void MMatchRuleSkillMap::OnObtainWorldItem(MMatchObject* pObj, int nItemID, int*
 
 	MGetMatchServer()->RouteToBattle(GetStage()->GetUID(), pCmd);
 
+	unsigned int mapTime = 0;
+
+	bool updateSkillMapTime = MGetMatchServer()->GetDBMgr()->GetSkillMapBestTime(pObj->GetCharInfo()->m_nCID, MGetMapDescMgr()->GetMapID(GetStage()->GetMapName()), &mapTime);
+	if (mapTime == 0)
+	{
+		DWORD bestTime = MGetMatchServer()->GetGlobalClockCount() - GetRoundStateTimer();
+		MGetMatchServer()->GetDBMgr()->UpdateSkillMapBestTIme(pObj->GetCharInfo()->m_nCID, MGetMapDescMgr()->GetMapID(GetStage()->GetMapName()), bestTime);
+
+		pCmd = MGetMatchServer()->CreateCommand(MC_MATCH_RESPONSE_SKILLMAP_BESTTIME, MUID(0, 0));
+		pCmd->AddParameter(new MCmdParamUID(pObj->GetUID()));
+		pCmd->AddParameter(new MCmdParamUInt(bestTime));
+		MGetMatchServer()->RouteToBattle(GetStage()->GetUID(), pCmd);
+	}
+	else
+	{
+		//TODO:
+	}
+
+
 	m_roundFinish = true;
 }
 

@@ -643,18 +643,6 @@ enum Z_Rewards
 	RE_MAX
 };
 
-struct MTD_PromoCode
-{
-	bool bValid;				// Its a valid promocode, for confirmation.
-	Z_Rewards nItemType;		// Item Type
-	char szItemName[128];		// Iten Name
-	char szDescription[128];	// Desc
-	unsigned long int nItemID;	// ItemID
-	int nQuantity;				// Quantity
-	bool bSpendable;			// for the lulz
-	int nDays;					// isn't supossed to show up a specific time or whatevah :v
-};
-
 struct MTD_Info
 {
 	int nLevel;
