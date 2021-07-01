@@ -74,21 +74,30 @@ void MMatchRuleSkillMap::OnObtainWorldItem(MMatchObject* pObj, int nItemID, int*
 	MGetMatchServer()->RouteToBattle(GetStage()->GetUID(), pCmd);
 
 	unsigned int mapTime = 0;
+	DWORD currTime = MGetMatchServer()->GetGlobalClockCount() - GetRoundStateTimer();
+
 
 	bool updateSkillMapTime = MGetMatchServer()->GetDBMgr()->GetSkillMapBestTime(pObj->GetCharInfo()->m_nCID, MGetMapDescMgr()->GetMapID(GetStage()->GetMapName()), &mapTime);
 	if (mapTime == 0)
 	{
-		DWORD bestTime = MGetMatchServer()->GetGlobalClockCount() - GetRoundStateTimer();
-		MGetMatchServer()->GetDBMgr()->UpdateSkillMapBestTIme(pObj->GetCharInfo()->m_nCID, MGetMapDescMgr()->GetMapID(GetStage()->GetMapName()), bestTime);
+		MGetMatchServer()->GetDBMgr()->UpdateSkillMapBestTIme(pObj->GetCharInfo()->m_nCID, MGetMapDescMgr()->GetMapID(GetStage()->GetMapName()), currTime);
 
 		pCmd = MGetMatchServer()->CreateCommand(MC_MATCH_RESPONSE_SKILLMAP_BESTTIME, MUID(0, 0));
 		pCmd->AddParameter(new MCmdParamUID(pObj->GetUID()));
-		pCmd->AddParameter(new MCmdParamUInt(bestTime));
+		pCmd->AddParameter(new MCmdParamUInt(currTime));
 		MGetMatchServer()->RouteToBattle(GetStage()->GetUID(), pCmd);
 	}
 	else
 	{
-		//TODO:
+		if (currTime < mapTime)
+		{
+			MGetMatchServer()->GetDBMgr()->UpdateSkillMapBestTIme(pObj->GetCharInfo()->m_nCID, MGetMapDescMgr()->GetMapID(GetStage()->GetMapName()), currTime);
+
+			pCmd = MGetMatchServer()->CreateCommand(MC_MATCH_RESPONSE_SKILLMAP_BESTTIME, MUID(0, 0));
+			pCmd->AddParameter(new MCmdParamUID(pObj->GetUID()));
+			pCmd->AddParameter(new MCmdParamUInt(currTime));
+			MGetMatchServer()->RouteToBattle(GetStage()->GetUID(), pCmd);
+		}
 	}
 
 
